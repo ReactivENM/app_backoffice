@@ -56,3 +56,5 @@ C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\System.Memory.xml
 C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\System.Numerics.Vectors.xml
 C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.User.CreateUser.resources
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.User.EditUser.resources
