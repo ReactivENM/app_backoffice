@@ -83,6 +83,7 @@
     <Compile Include="Backoffice.Designer.cs">
       <DependentUpon>Backoffice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\PackageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WareHouseController.cs" />
     <Compile Include="DB\DBConnection.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Forms\User\EditUser.Designer.cs">
       <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\PackageModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\WareHouseModel.cs" />
     <Compile Include="Forms\FormJourney.cs">
