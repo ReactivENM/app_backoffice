@@ -33,6 +33,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormWarehouse));
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nro_puerta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cod_postal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnDeleteWarehouse = new System.Windows.Forms.Button();
             this.btnEditWarehouse = new System.Windows.Forms.Button();
@@ -40,11 +45,6 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.lblPage = new System.Windows.Forms.Label();
             this.btnPrev = new System.Windows.Forms.Button();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nro_puerta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cod_postal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panel2.SuspendLayout();
@@ -58,7 +58,7 @@
             this.panel1.Controls.Add(this.dataGridView);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(868, 489);
+            this.panel1.Size = new System.Drawing.Size(824, 508);
             this.panel1.TabIndex = 0;
             // 
             // dataGridView
@@ -100,8 +100,40 @@
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(868, 489);
+            this.dataGridView.Size = new System.Drawing.Size(824, 508);
             this.dataGridView.TabIndex = 0;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // calle
+            // 
+            this.calle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.calle.HeaderText = "Calle";
+            this.calle.Name = "calle";
+            this.calle.ReadOnly = true;
+            // 
+            // nro_puerta
+            // 
+            this.nro_puerta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nro_puerta.HeaderText = "Número de puerta";
+            this.nro_puerta.Name = "nro_puerta";
+            this.nro_puerta.ReadOnly = true;
+            // 
+            // cod_postal
+            // 
+            this.cod_postal.HeaderText = "Código postal";
+            this.cod_postal.Name = "cod_postal";
+            this.cod_postal.ReadOnly = true;
+            // 
+            // capacidad
+            // 
+            this.capacidad.HeaderText = "Capacidad";
+            this.capacidad.Name = "capacidad";
+            this.capacidad.ReadOnly = true;
             // 
             // panel2
             // 
@@ -113,9 +145,9 @@
             this.panel2.Controls.Add(this.lblPage);
             this.panel2.Controls.Add(this.btnPrev);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 507);
+            this.panel2.Location = new System.Drawing.Point(0, 526);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(892, 60);
+            this.panel2.Size = new System.Drawing.Size(848, 60);
             this.panel2.TabIndex = 1;
             // 
             // btnDeleteWarehouse
@@ -165,7 +197,7 @@
             // 
             this.btnNext.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNext.Location = new System.Drawing.Point(481, 15);
+            this.btnNext.Location = new System.Drawing.Point(459, 15);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 33);
             this.btnNext.TabIndex = 2;
@@ -176,7 +208,7 @@
             // lblPage
             // 
             this.lblPage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblPage.Location = new System.Drawing.Point(425, 25);
+            this.lblPage.Location = new System.Drawing.Point(403, 25);
             this.lblPage.Name = "lblPage";
             this.lblPage.Size = new System.Drawing.Size(50, 13);
             this.lblPage.TabIndex = 1;
@@ -187,7 +219,7 @@
             // 
             this.btnPrev.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnPrev.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPrev.Location = new System.Drawing.Point(353, 15);
+            this.btnPrev.Location = new System.Drawing.Point(331, 15);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(66, 33);
             this.btnPrev.TabIndex = 0;
@@ -195,43 +227,11 @@
             this.btnPrev.UseVisualStyleBackColor = true;
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // calle
-            // 
-            this.calle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.calle.HeaderText = "Calle";
-            this.calle.Name = "calle";
-            this.calle.ReadOnly = true;
-            // 
-            // nro_puerta
-            // 
-            this.nro_puerta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nro_puerta.HeaderText = "Número de puerta";
-            this.nro_puerta.Name = "nro_puerta";
-            this.nro_puerta.ReadOnly = true;
-            // 
-            // cod_postal
-            // 
-            this.cod_postal.HeaderText = "Código postal";
-            this.cod_postal.Name = "cod_postal";
-            this.cod_postal.ReadOnly = true;
-            // 
-            // capacidad
-            // 
-            this.capacidad.HeaderText = "Capacidad";
-            this.capacidad.Name = "capacidad";
-            this.capacidad.ReadOnly = true;
-            // 
             // FormWarehouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 567);
+            this.ClientSize = new System.Drawing.Size(848, 586);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FormWarehouse";

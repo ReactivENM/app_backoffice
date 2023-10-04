@@ -5,7 +5,7 @@ using MySqlConnector;
 using WindowsFormsApp1.DB;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1.Controllers.Warehouse
+namespace WindowsFormsApp1.Controllers.WarehouseController
 {
     class WareHouseController
     {
@@ -17,9 +17,9 @@ namespace WindowsFormsApp1.Controllers.Warehouse
             connection = conn.GetConnection();
         }
 
-        public List<WareHouse> GetAll()
+        public List<WareHouseModel> GetAll()
         {
-            List<WareHouse> data = new List<WareHouse>();
+            List<WareHouseModel> data = new List<WareHouseModel>();
 
             try
             {
@@ -35,7 +35,7 @@ namespace WindowsFormsApp1.Controllers.Warehouse
                             string nro_puerta = reader.GetString(2);
                             string cod_postal = reader.GetString(3);
                             string capacidad = reader.GetInt32(4).ToString();
-                            WareHouse wh = new WareHouse(id, calle, nro_puerta, cod_postal, capacidad);
+                            WareHouseModel wh = new WareHouseModel(id, calle, nro_puerta, cod_postal, capacidad);
                             data.Add(wh);
                         }
                         return data;

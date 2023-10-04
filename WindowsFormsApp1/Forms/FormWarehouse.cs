@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Net.Http;
 using WindowsFormsApp1.Models;
-using WindowsFormsApp1.Controllers.Warehouse;
+using WindowsFormsApp1.Controllers.WarehouseController;
 
 namespace WindowsFormsApp1.Forms
 {
@@ -19,7 +19,7 @@ namespace WindowsFormsApp1.Forms
 
     public partial class FormWarehouse : Form, HandleWarehouse
     {
-        List<WareHouse> wareHouseData = new List<WareHouse>();
+        List<WareHouseModel> wareHouseData = new List<WareHouseModel>();
         private int wareHouseLength = 0;
         private const int rowsPerPage = 10;
 
@@ -27,7 +27,7 @@ namespace WindowsFormsApp1.Forms
         private int actualPage = 1;
 
         private bool isRowSelected = false;
-        WareHouse selectedWarehouse = null;
+        WareHouseModel selectedWarehouse = null;
 
         public FormWarehouse()
         {
@@ -57,8 +57,8 @@ namespace WindowsFormsApp1.Forms
         public async Task fetchWareHouseData()
         {
             WareHouseController wh = new WareHouseController();
-            List<WareHouse> warehouses = wh.GetAll();
-            foreach (WareHouse warehouse in warehouses)
+            List<WareHouseModel> warehouses = wh.GetAll();
+            foreach (WareHouseModel warehouse in warehouses)
             {
                 wareHouseData.Add(warehouse);
             }
@@ -88,7 +88,7 @@ namespace WindowsFormsApp1.Forms
                 object nro_puerta = row.Cells["nro_puerta"].Value;
                 object cod_postal = row.Cells["cod_postal"].Value;
                 object capacidad = row.Cells["capacidad"].Value;
-                WareHouse wh = new WareHouse(Convert.ToInt32(id), calle.ToString(), nro_puerta.ToString(), cod_postal.ToString(), capacidad.ToString());
+                WareHouseModel wh = new WareHouseModel(Convert.ToInt32(id), calle.ToString(), nro_puerta.ToString(), cod_postal.ToString(), capacidad.ToString());
                 selectedWarehouse = wh;
                 btnEditWarehouse.Enabled = true;
                 btnDeleteWarehouse.Enabled = true;
@@ -132,7 +132,7 @@ namespace WindowsFormsApp1.Forms
 
         public void OnCreateWarehouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad)
         {
-            WareHouse wh = new WareHouse(id, calle, nro_puerta, cod_postal, capacidad);
+            WareHouseModel wh = new WareHouseModel(id, calle, nro_puerta, cod_postal, capacidad);
             wareHouseData.Add(wh);
             wareHouseLength += 1;
             int lastPageRes = (int)Math.Ceiling((double)wareHouseLength / rowsPerPage);
@@ -154,7 +154,7 @@ namespace WindowsFormsApp1.Forms
 
         public void OnEditWarehouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad)
         {
-            WareHouse editedWarehouse = wareHouseData.Find(wh => wh.id == id);
+            WareHouseModel editedWarehouse = wareHouseData.Find(wh => wh.id == id);
             if (editedWarehouse == null) return;
             editedWarehouse.calle = calle;
             editedWarehouse.nro_puerta = nro_puerta;

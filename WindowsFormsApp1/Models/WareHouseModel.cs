@@ -1,6 +1,6 @@
 namespace WindowsFormsApp1.Models
 {
-    public class WareHouse
+    public class WareHouseModel
     {
         public int id { get; set; }
         public string calle { get; set; }
@@ -8,7 +8,7 @@ namespace WindowsFormsApp1.Models
         public string cod_postal { get; set; }
         public string capacidad { get; set; }
 
-        public WareHouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad)
+        public WareHouseModel(int id, string calle, string nro_puerta, string cod_postal, string capacidad)
         {
             this.id = id;
             this.calle = calle;
