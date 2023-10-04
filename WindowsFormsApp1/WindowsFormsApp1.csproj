@@ -83,9 +83,23 @@
     <Compile Include="Backoffice.Designer.cs">
       <DependentUpon>Backoffice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WareHouseController.cs" />
     <Compile Include="DB\DBConnection.cs" />
-    <Compile Include="Models\WareHouse.cs" />
+    <Compile Include="Forms\User\CreateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\CreateUser.Designer.cs">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\EditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\EditUser.Designer.cs">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\WareHouseModel.cs" />
     <Compile Include="Forms\FormJourney.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +176,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormWarehouse.resx">
       <DependentUpon>FormWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\CreateUser.resx">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\EditUser.resx">
+      <DependentUpon>EditUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Warehouse\CreateWarehouse.resx">
       <DependentUpon>CreateWarehouse.cs</DependentUpon>
