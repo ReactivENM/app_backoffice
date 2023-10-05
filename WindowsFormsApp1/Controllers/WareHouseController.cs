@@ -35,7 +35,8 @@ namespace WindowsFormsApp1.Controllers.WarehouseController
                             string nro_puerta = reader.GetString(2);
                             string cod_postal = reader.GetString(3);
                             string capacidad = reader.GetInt32(4).ToString();
-                            WareHouseModel wh = new WareHouseModel(id, calle, nro_puerta, cod_postal, capacidad);
+                            string departamento = reader.GetString(5);
+                            WareHouseModel wh = new WareHouseModel(id, calle, nro_puerta, cod_postal, capacidad, departamento);
                             data.Add(wh);
                         }
                         return data;
@@ -46,19 +47,24 @@ namespace WindowsFormsApp1.Controllers.WarehouseController
             {
                 return data;
             }
+            finally
+            {
+                connection.Close();
+            }
         }
 
-        public int Create(string calle, string nro_puerta, string cod_postal, int capacidad)
+        public int Create(string calle, string nro_puerta, string cod_postal, int capacidad, string departamento)
         {
             try
             {
-                string sql = "INSERT INTO Almacen(calle, nro_puerta, cod_postal, capacidad) VALUES(@calle, @nro_puerta, @cod_postal, @capacidad); SELECT LAST_INSERT_ID()";
+                string sql = "INSERT INTO Almacen(calle, nro_puerta, cod_postal, capacidad, departamento) VALUES(@calle, @nro_puerta, @cod_postal, @capacidad, @departamento); SELECT LAST_INSERT_ID()";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@calle", calle);
                     command.Parameters.AddWithValue("@nro_puerta", nro_puerta);
                     command.Parameters.AddWithValue("@cod_postal", cod_postal);
                     command.Parameters.AddWithValue("@capacidad", capacidad);
+                    command.Parameters.AddWithValue("@departamento", departamento);
 
                     int id = Convert.ToInt32(command.ExecuteScalar());
                     Console.WriteLine($"Almacen agregado exitosamente con ID: {id}");
@@ -67,15 +73,20 @@ namespace WindowsFormsApp1.Controllers.WarehouseController
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return 0;
+            }
+            finally
+            {
+                connection.Close();
             }
         }
 
-        public bool Edit(int id, string calle, string nro_puerta, string cod_postal, int capacidad)
+        public bool Edit(int id, string calle, string nro_puerta, string cod_postal, int capacidad, string departamento)
         {
             try
             {
-                string sql = "UPDATE Almacen SET calle = @calle, nro_puerta = @nro_puerta, cod_postal = @cod_postal, capacidad = @capacidad WHERE id = @id";
+                string sql = "UPDATE Almacen SET calle = @calle, nro_puerta = @nro_puerta, cod_postal = @cod_postal, capacidad = @capacidad, departamento = @departamento WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
@@ -83,6 +94,7 @@ namespace WindowsFormsApp1.Controllers.WarehouseController
                     command.Parameters.AddWithValue("@nro_puerta", nro_puerta);
                     command.Parameters.AddWithValue("@cod_postal", cod_postal);
                     command.Parameters.AddWithValue("@capacidad", capacidad);
+                    command.Parameters.AddWithValue("@departamento", departamento);
 
                     int affectedRows = command.ExecuteNonQuery();
 
@@ -99,6 +111,10 @@ namespace WindowsFormsApp1.Controllers.WarehouseController
             catch (Exception ex)
             {
                 return false;
+            }
+            finally
+            {
+                connection.Close();
             }
         }
 
@@ -126,6 +142,10 @@ namespace WindowsFormsApp1.Controllers.WarehouseController
             catch (Exception ex)
             {
                 return false;
+            }
+            finally
+            {
+                connection.Close();
             }
         }
     }

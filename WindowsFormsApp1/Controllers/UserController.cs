@@ -48,6 +48,10 @@ namespace WindowsFormsApp1.Controllers.UserController
             {
                 return data;
             }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public int Create(string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, string rol)
@@ -73,6 +77,10 @@ namespace WindowsFormsApp1.Controllers.UserController
             catch (Exception ex)
             {
                 return 0;
+            }
+            finally
+            {
+                connection.Close();
             }
         }
 
@@ -108,6 +116,10 @@ namespace WindowsFormsApp1.Controllers.UserController
             {
                 return false;
             }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public bool Delete(int id)
@@ -134,6 +146,10 @@ namespace WindowsFormsApp1.Controllers.UserController
             catch (Exception ex)
             {
                 return false;
+            }
+            finally
+            {
+                connection.Close();
             }
         }
     }
