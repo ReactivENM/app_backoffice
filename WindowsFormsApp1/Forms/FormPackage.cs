@@ -12,6 +12,7 @@ namespace WindowsFormsApp1.Forms
     public interface HandlePackage
     {
         void OnCreate(int id_interno, string id_externo, int id_almacen, double peso, string descripcion, string dir_envio, string estado);
+        void OnEdit(int id_interno, string id_externo, int id_almacen, double peso, string descripcion, string dir_envio, string estado);
     }
 
     public partial class FormPackage : Form, HandlePackage
@@ -84,13 +85,7 @@ namespace WindowsFormsApp1.Forms
 
                 DataGridViewRow row = dataGridView.Rows[e.RowIndex];
                 object id_interno = row.Cells["id_interno"].Value;
-                object id_externo = row.Cells["id_externo"].Value;
-                object id_almacen = row.Cells["id_almacen"].Value;
-                object peso = row.Cells["peso"].Value;
-                object descripcion = row.Cells["descripcion"].Value;
-                object dir_envio = row.Cells["dir_envio"].Value;
-                object estado = row.Cells["estado"].Value;
-                PackageModel package = new PackageModel(Convert.ToInt32(id_interno), id_externo.ToString(), Convert.ToInt32(id_almacen), Convert.ToDouble(peso), descripcion.ToString(), dir_envio.ToString(), estado.ToString());
+                PackageModel package = packageData.Find(p => p.id_interno == Convert.ToInt32(id_interno));
                 selectedPackage = package;
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
@@ -140,6 +135,31 @@ namespace WindowsFormsApp1.Forms
             int lastPageRes = (int)Math.Ceiling((double)dataLength / rowsPerPage);
             lastPage = Convert.ToInt32(lastPageRes);
             lblPage.Text = actualPage.ToString() + "/" + lastPage;
+            showRows(actualPage);
+
+            // Disable buttons and unselect actual warehouse
+            selectedPackage = null;
+            btnEdit.Enabled = false;
+            btnDelete.Enabled = false;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            Form editPackage = new Forms.Package.EditPackage(selectedPackage.id_interno, selectedPackage.id_externo, selectedPackage.id_almacen, selectedPackage.peso, selectedPackage.descripcion, selectedPackage.dir_envio, selectedPackage.estado, this);
+            editPackage.ShowDialog();
+        }
+
+        public void OnEdit(int id_interno, string id_externo, int id_almacen, double peso, string descripcion, string dir_envio, string estado)
+        {
+            PackageModel editedPackage = packageData.Find(package => package.id_interno == id_interno);
+            if (editedPackage == null) return;
+            editedPackage.id_interno = id_interno;
+            editedPackage.id_externo = id_externo;
+            editedPackage.id_almacen = id_almacen;
+            editedPackage.peso = peso;
+            editedPackage.descripcion = descripcion;
+            editedPackage.dir_envio = dir_envio;
+            editedPackage.estado = estado;
             showRows(actualPage);
 
             // Disable buttons and unselect actual warehouse

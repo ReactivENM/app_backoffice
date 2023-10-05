@@ -36,9 +36,8 @@ namespace WindowsFormsApp1.Controllers.PackageController
                             string descripcion = reader.GetString(4);
                             string dir_envio = reader.GetString(5);
                             string estado = reader.GetString(6);
-                            PackageModel user = new PackageModel(id_interno, id_externo, id_almacen, peso, descripcion, dir_envio, estado);
-                            data.Add(user);
-                            Console.WriteLine(user);
+                            PackageModel package = new PackageModel(id_interno, id_externo, id_almacen, peso, descripcion, dir_envio, estado);
+                            data.Add(package);
                         }
                         return data;
                     }
@@ -77,6 +76,43 @@ namespace WindowsFormsApp1.Controllers.PackageController
             catch (Exception ex)
             {
                 return 0;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public bool Edit(int id_interno, string id_externo, int id_almacen, double peso, string descripcion, string dir_envio, string estado)
+        {
+            try
+            {
+                string sql = "UPDATE Paquete SET id_externo = @id_externo, id_almacen = @id_almacen, peso = @peso, descripcion = @descripcion, dir_envio = @dir_envio, estado = @estado  WHERE id_interno = @id_interno";
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@id_interno", id_interno);
+                    command.Parameters.AddWithValue("@id_externo", id_externo);
+                    command.Parameters.AddWithValue("@id_almacen", id_almacen);
+                    command.Parameters.AddWithValue("@peso", peso);
+                    command.Parameters.AddWithValue("@descripcion", descripcion);
+                    command.Parameters.AddWithValue("@dir_envio", dir_envio);
+                    command.Parameters.AddWithValue("@estado", estado);
+
+                    int affectedRows = command.ExecuteNonQuery();
+
+                    if (affectedRows > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
             finally
             {

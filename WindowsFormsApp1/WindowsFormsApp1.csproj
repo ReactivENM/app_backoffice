@@ -90,6 +90,12 @@
     <Compile Include="Controllers\WareHouseController.cs" />
     <Compile Include="DB\DBConnection.cs" />
     <Compile Include="Dictionaries\Dictionaries.cs" />
+    <Compile Include="Forms\Package\EditPackage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Package\EditPackage.Designer.cs">
+      <DependentUpon>EditPackage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Package\CreatePackage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormWarehouse.resx">
       <DependentUpon>FormWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Package\EditPackage.resx">
+      <DependentUpon>EditPackage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Package\CreatePackage.resx">
       <DependentUpon>CreatePackage.cs</DependentUpon>
