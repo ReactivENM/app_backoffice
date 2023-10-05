@@ -23,10 +23,11 @@ namespace WindowsFormsApp1.Forms.Warehouse
             string nro_puerta = inputNumber.Text;
             string cod_postal = inputPostalCode.Text;
             string capacidad = inputCapacity.Text;
+            string departamento = inputDeparamento.Text;
 
             WareHouseController controller = new WareHouseController();
-            int id = controller.Create(calle, nro_puerta, cod_postal, int.Parse(capacidad));
-            callback.OnCreateWarehouse(id, calle, nro_puerta, cod_postal, capacidad.ToString());
+            int id = controller.Create(calle, nro_puerta, cod_postal, int.Parse(capacidad), departamento);
+            callback.OnCreateWarehouse(id, calle, nro_puerta, cod_postal, capacidad.ToString(), departamento);
 
             this.Close();
         }

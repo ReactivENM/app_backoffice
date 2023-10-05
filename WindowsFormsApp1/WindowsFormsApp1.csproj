@@ -11,6 +11,8 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -87,6 +89,13 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WareHouseController.cs" />
     <Compile Include="DB\DBConnection.cs" />
+    <Compile Include="Dictionaries\Dictionaries.cs" />
+    <Compile Include="Forms\Package\CreatePackage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Package\CreatePackage.Designer.cs">
+      <DependentUpon>CreatePackage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\User\CreateUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormWarehouse.resx">
       <DependentUpon>FormWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Package\CreatePackage.resx">
+      <DependentUpon>CreatePackage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\CreateUser.resx">
       <DependentUpon>CreateUser.cs</DependentUpon>

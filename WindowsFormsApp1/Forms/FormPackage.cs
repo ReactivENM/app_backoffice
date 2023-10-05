@@ -5,10 +5,16 @@ using System.Drawing;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.Controllers.PackageController;
+using WindowsFormsApp1.Dictionary;
 
 namespace WindowsFormsApp1.Forms
 {
-    public partial class FormPackage : Form
+    public interface HandlePackage
+    {
+        void OnCreate(int id_interno, string id_externo, int id_almacen, double peso, string descripcion, string dir_envio, string estado);
+    }
+
+    public partial class FormPackage : Form, HandlePackage
     {
         List<PackageModel> packageData = new List<PackageModel>();
         private int dataLength = 0;
@@ -61,8 +67,11 @@ namespace WindowsFormsApp1.Forms
             dataGridView.Rows.Clear();
             for (int i = (page - 1) * rowsPerPage; i < (page * rowsPerPage > dataLength ? dataLength : page * rowsPerPage); i++)
             {
+                Dictionaries dictionaries = new Dictionaries();
+                Dictionary<string, string> packageStatus = dictionaries.PackageStatus();
+
                 DataGridViewRow newRow = new DataGridViewRow();
-                newRow.CreateCells(dataGridView, packageData[i].id_interno, packageData[i].id_externo, packageData[i].id_almacen, packageData[i].peso, packageData[i].descripcion, packageData[i].dir_envio, packageData[i].estado);
+                newRow.CreateCells(dataGridView, packageData[i].id_interno, packageData[i].id_externo, packageData[i].id_almacen, packageData[i].peso, packageData[i].descripcion, packageData[i].dir_envio, packageStatus.ContainsKey(packageData[i].estado) ? packageStatus[packageData[i].estado] : packageData[i].estado);
                 dataGridView.Rows.Add(newRow);
             }
         }
@@ -86,6 +95,57 @@ namespace WindowsFormsApp1.Forms
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
             }
+        }
+
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            if (dataLength == 0) return;
+            if (actualPage == 1) return;
+
+            actualPage = actualPage - 1;
+            lblPage.Text = actualPage.ToString() + "/" + lastPage;
+            showRows(actualPage);
+
+            // Disable buttons and unselect actual warehouse
+            selectedPackage = null;
+            btnEdit.Enabled = false;
+            btnDelete.Enabled = false;
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (dataLength == 0) return;
+            if (actualPage == lastPage) return;
+
+            actualPage = actualPage + 1;
+            lblPage.Text = actualPage.ToString() + "/" + lastPage;
+            showRows(actualPage);
+
+            // Disable buttons and unselect actual warehouse
+            selectedPackage = null;
+            btnEdit.Enabled = false;
+            btnDelete.Enabled = false;
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            new Forms.Package.CreatePackage(this).ShowDialog();
+        }
+
+        public void OnCreate(int id_interno, string id_externo, int id_almacen, double peso, string descripcion, string dir_envio, string estado)
+        {
+            PackageModel package = new PackageModel(id_interno, id_externo, id_almacen, peso, descripcion, dir_envio, estado);
+            packageData.Add(package);
+            dataLength += 1;
+            int lastPageRes = (int)Math.Ceiling((double)dataLength / rowsPerPage);
+            lastPage = Convert.ToInt32(lastPageRes);
+            lblPage.Text = actualPage.ToString() + "/" + lastPage;
+            showRows(actualPage);
+
+            // Disable buttons and unselect actual warehouse
+            selectedPackage = null;
+            btnEdit.Enabled = false;
+            btnDelete.Enabled = false;
         }
 
         private void UpdateButtonImage(Button btn, string enabled, string disabled)

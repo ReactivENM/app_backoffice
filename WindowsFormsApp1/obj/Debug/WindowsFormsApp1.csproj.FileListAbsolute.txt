@@ -58,3 +58,4 @@ C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\System.Runtime.Compi
 C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.User.CreateUser.resources
 C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.User.EditUser.resources
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.Package.CreatePackage.resources
