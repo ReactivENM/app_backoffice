@@ -119,5 +119,36 @@ namespace WindowsFormsApp1.Controllers.PackageController
                 connection.Close();
             }
         }
+        public bool Delete(int id_interno)
+        {
+            try
+            {
+                string sql = "DELETE FROM Paquete WHERE id_interno = @id_interno";
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@id_interno", id_interno);
+
+                    int affectedRows = command.ExecuteNonQuery();
+
+                    if (affectedRows > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

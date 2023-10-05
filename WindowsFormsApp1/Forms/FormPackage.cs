@@ -168,6 +168,43 @@ namespace WindowsFormsApp1.Forms
             btnDelete.Enabled = false;
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            PackageController controller = new PackageController();
+            bool res = controller.Delete(selectedPackage.id_interno);
+
+            if (res == true)
+            {
+                packageData.RemoveAll(package => package.id_interno == selectedPackage.id_interno);
+                // Update DataGrid Table
+                dataLength = packageData.Count;
+                int lastPageRes = (int)Math.Ceiling((double)packageData.Count / rowsPerPage);
+                lastPage = Convert.ToInt32(lastPageRes);
+                if ((actualPage - 1) * rowsPerPage == dataLength)
+                {
+                    if (dataLength == 0) return;
+                    if (actualPage == 1) return;
+
+                    actualPage = actualPage - 1;
+                    lblPage.Text = actualPage.ToString() + "/" + lastPage;
+                    showRows(actualPage);
+
+                    // Disable buttons and unselect actual warehouse
+                    selectedPackage = null;
+                    btnEdit.Enabled = false;
+                    btnDelete.Enabled = false;
+                    return;
+                }
+                showRows(actualPage);
+
+                // Disable buttons and unselect actual warehouse
+                selectedPackage = null;
+                btnEdit.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+            else MessageBox.Show("Hubo un error. Refresca la lista de almacenes.");
+        }
+
         private void UpdateButtonImage(Button btn, string enabled, string disabled)
         {
             Image enabledImage = Image.FromFile(enabled);
