@@ -32,15 +32,17 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblCapacity = new System.Windows.Forms.Label();
+            this.inputCapacity = new System.Windows.Forms.TextBox();
+            this.lblPostalCode = new System.Windows.Forms.Label();
+            this.inputPostalCode = new System.Windows.Forms.TextBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.lblNumber = new System.Windows.Forms.Label();
             this.inputNumber = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.inputAddress = new System.Windows.Forms.TextBox();
-            this.lblPostalCode = new System.Windows.Forms.Label();
-            this.inputPostalCode = new System.Windows.Forms.TextBox();
-            this.lblCapacity = new System.Windows.Forms.Label();
-            this.inputCapacity = new System.Windows.Forms.TextBox();
+            this.lblDepartamento = new System.Windows.Forms.Label();
+            this.inputDeparamento = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -74,12 +76,14 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(12, 71);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(345, 308);
+            this.panel2.Size = new System.Drawing.Size(345, 338);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel3.Controls.Add(this.lblDepartamento);
+            this.panel3.Controls.Add(this.inputDeparamento);
             this.panel3.Controls.Add(this.lblCapacity);
             this.panel3.Controls.Add(this.inputCapacity);
             this.panel3.Controls.Add(this.lblPostalCode);
@@ -89,16 +93,48 @@
             this.panel3.Controls.Add(this.inputNumber);
             this.panel3.Controls.Add(this.lblName);
             this.panel3.Controls.Add(this.inputAddress);
-            this.panel3.Location = new System.Drawing.Point(22, 21);
+            this.panel3.Location = new System.Drawing.Point(24, 25);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(296, 261);
+            this.panel3.Size = new System.Drawing.Size(296, 288);
             this.panel3.TabIndex = 0;
+            // 
+            // lblCapacity
+            // 
+            this.lblCapacity.AutoSize = true;
+            this.lblCapacity.Location = new System.Drawing.Point(5, 144);
+            this.lblCapacity.Name = "lblCapacity";
+            this.lblCapacity.Size = new System.Drawing.Size(58, 13);
+            this.lblCapacity.TabIndex = 8;
+            this.lblCapacity.Text = "Capacidad";
+            // 
+            // inputCapacity
+            // 
+            this.inputCapacity.Location = new System.Drawing.Point(5, 160);
+            this.inputCapacity.Name = "inputCapacity";
+            this.inputCapacity.Size = new System.Drawing.Size(288, 20);
+            this.inputCapacity.TabIndex = 7;
+            // 
+            // lblPostalCode
+            // 
+            this.lblPostalCode.AutoSize = true;
+            this.lblPostalCode.Location = new System.Drawing.Point(3, 95);
+            this.lblPostalCode.Name = "lblPostalCode";
+            this.lblPostalCode.Size = new System.Drawing.Size(71, 13);
+            this.lblPostalCode.TabIndex = 6;
+            this.lblPostalCode.Text = "Código postal";
+            // 
+            // inputPostalCode
+            // 
+            this.inputPostalCode.Location = new System.Drawing.Point(3, 111);
+            this.inputPostalCode.Name = "inputPostalCode";
+            this.inputPostalCode.Size = new System.Drawing.Size(288, 20);
+            this.inputPostalCode.TabIndex = 5;
             // 
             // btnSubmit
             // 
             this.btnSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(3, 220);
+            this.btnSubmit.Location = new System.Drawing.Point(3, 247);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(288, 38);
             this.btnSubmit.TabIndex = 4;
@@ -138,47 +174,31 @@
             this.inputAddress.Size = new System.Drawing.Size(288, 20);
             this.inputAddress.TabIndex = 0;
             // 
-            // lblPostalCode
+            // lblDepartamento
             // 
-            this.lblPostalCode.AutoSize = true;
-            this.lblPostalCode.Location = new System.Drawing.Point(3, 95);
-            this.lblPostalCode.Name = "lblPostalCode";
-            this.lblPostalCode.Size = new System.Drawing.Size(71, 13);
-            this.lblPostalCode.TabIndex = 6;
-            this.lblPostalCode.Text = "Código postal";
+            this.lblDepartamento.AutoSize = true;
+            this.lblDepartamento.Location = new System.Drawing.Point(5, 192);
+            this.lblDepartamento.Name = "lblDepartamento";
+            this.lblDepartamento.Size = new System.Drawing.Size(74, 13);
+            this.lblDepartamento.TabIndex = 10;
+            this.lblDepartamento.Text = "Departamento";
             // 
-            // inputPostalCode
+            // inputDeparamento
             // 
-            this.inputPostalCode.Location = new System.Drawing.Point(3, 111);
-            this.inputPostalCode.Name = "inputPostalCode";
-            this.inputPostalCode.Size = new System.Drawing.Size(288, 20);
-            this.inputPostalCode.TabIndex = 5;
-            // 
-            // lblCapacity
-            // 
-            this.lblCapacity.AutoSize = true;
-            this.lblCapacity.Location = new System.Drawing.Point(5, 144);
-            this.lblCapacity.Name = "lblCapacity";
-            this.lblCapacity.Size = new System.Drawing.Size(58, 13);
-            this.lblCapacity.TabIndex = 8;
-            this.lblCapacity.Text = "Capacidad";
-            // 
-            // inputCapacity
-            // 
-            this.inputCapacity.Location = new System.Drawing.Point(5, 160);
-            this.inputCapacity.Name = "inputCapacity";
-            this.inputCapacity.Size = new System.Drawing.Size(288, 20);
-            this.inputCapacity.TabIndex = 7;
+            this.inputDeparamento.Location = new System.Drawing.Point(5, 208);
+            this.inputDeparamento.Name = "inputDeparamento";
+            this.inputDeparamento.Size = new System.Drawing.Size(288, 20);
+            this.inputDeparamento.TabIndex = 9;
             // 
             // CreateWarehouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 391);
+            this.ClientSize = new System.Drawing.Size(369, 421);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.MaximumSize = new System.Drawing.Size(385, 430);
-            this.MinimumSize = new System.Drawing.Size(385, 430);
+            this.MaximumSize = new System.Drawing.Size(385, 460);
+            this.MinimumSize = new System.Drawing.Size(385, 460);
             this.Name = "CreateWarehouse";
             this.Text = "CreateWarehouse";
             this.panel1.ResumeLayout(false);
@@ -204,5 +224,7 @@
         private System.Windows.Forms.TextBox inputCapacity;
         private System.Windows.Forms.Label lblPostalCode;
         private System.Windows.Forms.TextBox inputPostalCode;
+        private System.Windows.Forms.Label lblDepartamento;
+        private System.Windows.Forms.TextBox inputDeparamento;
     }
 }

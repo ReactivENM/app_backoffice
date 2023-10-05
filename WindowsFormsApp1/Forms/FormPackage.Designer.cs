@@ -104,6 +104,7 @@
             this.btnCreate.Size = new System.Drawing.Size(35, 35);
             this.btnCreate.TabIndex = 3;
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnNext
             // 
@@ -115,6 +116,7 @@
             this.btnNext.TabIndex = 2;
             this.btnNext.Text = "Siguiente";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // lblPage
             // 
@@ -136,6 +138,7 @@
             this.btnPrev.TabIndex = 0;
             this.btnPrev.Text = "Anterior";
             this.btnPrev.UseVisualStyleBackColor = true;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
             // dataGridView
             // 
@@ -175,12 +178,12 @@
             this.dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView.EnableHeadersVisualStyles = false;
             this.dataGridView.GridColor = System.Drawing.SystemColors.Control;
-            this.dataGridView.Location = new System.Drawing.Point(12, 6);
+            this.dataGridView.Location = new System.Drawing.Point(12, 12);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(901, 469);
+            this.dataGridView.Size = new System.Drawing.Size(901, 463);
             this.dataGridView.TabIndex = 3;
             // 
             // id_interno
