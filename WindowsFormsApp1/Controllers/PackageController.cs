@@ -49,6 +49,10 @@ namespace WindowsFormsApp1.Controllers.PackageController
                 Console.WriteLine(ex);
                 return data;
             }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public int Create(string id_externo, int id_almacen, double peso, string descripcion, string dir_envio, string estado)
@@ -73,6 +77,10 @@ namespace WindowsFormsApp1.Controllers.PackageController
             catch (Exception ex)
             {
                 return 0;
+            }
+            finally
+            {
+                connection.Close();
             }
         }
     }
