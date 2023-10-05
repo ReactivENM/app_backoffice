@@ -33,11 +33,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormWarehouse));
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nro_puerta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cod_postal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnDeleteWarehouse = new System.Windows.Forms.Button();
             this.btnEditWarehouse = new System.Windows.Forms.Button();
@@ -45,6 +40,12 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.lblPage = new System.Windows.Forms.Label();
             this.btnPrev = new System.Windows.Forms.Button();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nro_puerta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cod_postal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panel2.SuspendLayout();
@@ -83,7 +84,8 @@
             this.calle,
             this.nro_puerta,
             this.cod_postal,
-            this.capacidad});
+            this.capacidad,
+            this.departamento});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -102,38 +104,6 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(824, 508);
             this.dataGridView.TabIndex = 0;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // calle
-            // 
-            this.calle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.calle.HeaderText = "Calle";
-            this.calle.Name = "calle";
-            this.calle.ReadOnly = true;
-            // 
-            // nro_puerta
-            // 
-            this.nro_puerta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nro_puerta.HeaderText = "Número de puerta";
-            this.nro_puerta.Name = "nro_puerta";
-            this.nro_puerta.ReadOnly = true;
-            // 
-            // cod_postal
-            // 
-            this.cod_postal.HeaderText = "Código postal";
-            this.cod_postal.Name = "cod_postal";
-            this.cod_postal.ReadOnly = true;
-            // 
-            // capacidad
-            // 
-            this.capacidad.HeaderText = "Capacidad";
-            this.capacidad.Name = "capacidad";
-            this.capacidad.ReadOnly = true;
             // 
             // panel2
             // 
@@ -227,6 +197,48 @@
             this.btnPrev.UseVisualStyleBackColor = true;
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
+            // id
+            // 
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // calle
+            // 
+            this.calle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.calle.HeaderText = "Calle";
+            this.calle.Name = "calle";
+            this.calle.ReadOnly = true;
+            // 
+            // nro_puerta
+            // 
+            this.nro_puerta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nro_puerta.HeaderText = "Número de puerta";
+            this.nro_puerta.Name = "nro_puerta";
+            this.nro_puerta.ReadOnly = true;
+            // 
+            // cod_postal
+            // 
+            this.cod_postal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cod_postal.HeaderText = "Código postal";
+            this.cod_postal.Name = "cod_postal";
+            this.cod_postal.ReadOnly = true;
+            // 
+            // capacidad
+            // 
+            this.capacidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.capacidad.HeaderText = "Capacidad";
+            this.capacidad.Name = "capacidad";
+            this.capacidad.ReadOnly = true;
+            // 
+            // departamento
+            // 
+            this.departamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.departamento.HeaderText = "Departamento";
+            this.departamento.Name = "departamento";
+            this.departamento.ReadOnly = true;
+            // 
             // FormWarehouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,5 +271,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nro_puerta;
         private System.Windows.Forms.DataGridViewTextBoxColumn cod_postal;
         private System.Windows.Forms.DataGridViewTextBoxColumn capacidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn departamento;
     }
 }

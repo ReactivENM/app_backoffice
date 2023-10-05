@@ -8,13 +8,14 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.Controllers.WarehouseController;
+using WindowsFormsApp1.Dictionary;
 
 namespace WindowsFormsApp1.Forms
 {
     public interface HandleWarehouse
     {
-        void OnCreateWarehouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad);
-        void OnEditWarehouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad);
+        void OnCreateWarehouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad, string departamento);
+        void OnEditWarehouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad, string departamento);
     }
 
     public partial class FormWarehouse : Form, HandleWarehouse
@@ -28,9 +29,12 @@ namespace WindowsFormsApp1.Forms
 
         private bool isRowSelected = false;
         WareHouseModel selectedWarehouse = null;
+        private Dictionary<string, string> departmentsDictionary;
 
         public FormWarehouse()
         {
+            Dictionaries dictionaries = new Dictionaries();
+            departmentsDictionary = dictionaries.Departments();
             initializeFormAsync();
         }
 
@@ -71,7 +75,8 @@ namespace WindowsFormsApp1.Forms
             for (int i = (page - 1) * rowsPerPage; i < (page * rowsPerPage > wareHouseLength ? wareHouseLength : page * rowsPerPage); i++)
             {
                 DataGridViewRow newRow = new DataGridViewRow();
-                newRow.CreateCells(dataGridView, wareHouseData[i].id, wareHouseData[i].calle, wareHouseData[i].nro_puerta, wareHouseData[i].cod_postal, wareHouseData[i].capacidad);
+                string department = departmentsDictionary.ContainsKey(wareHouseData[i].departamento) ? departmentsDictionary[wareHouseData[i].departamento] : wareHouseData[i].departamento;
+                newRow.CreateCells(dataGridView, wareHouseData[i].id, wareHouseData[i].calle, wareHouseData[i].nro_puerta, wareHouseData[i].cod_postal, wareHouseData[i].capacidad, department);
                 dataGridView.Rows.Add(newRow);
             }
         }
@@ -84,11 +89,7 @@ namespace WindowsFormsApp1.Forms
 
                 DataGridViewRow row = dataGridView.Rows[e.RowIndex];
                 object id = row.Cells["id"].Value;
-                object calle = row.Cells["calle"].Value;
-                object nro_puerta = row.Cells["nro_puerta"].Value;
-                object cod_postal = row.Cells["cod_postal"].Value;
-                object capacidad = row.Cells["capacidad"].Value;
-                WareHouseModel wh = new WareHouseModel(Convert.ToInt32(id), calle.ToString(), nro_puerta.ToString(), cod_postal.ToString(), capacidad.ToString());
+                WareHouseModel wh = wareHouseData.Find(d => d.id == Convert.ToInt32(id));
                 selectedWarehouse = wh;
                 btnEditWarehouse.Enabled = true;
                 btnDeleteWarehouse.Enabled = true;
@@ -130,9 +131,9 @@ namespace WindowsFormsApp1.Forms
             new Forms.Warehouse.CreateWarehouse(this).ShowDialog();
         }
 
-        public void OnCreateWarehouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad)
+        public void OnCreateWarehouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad, string departamento)
         {
-            WareHouseModel wh = new WareHouseModel(id, calle, nro_puerta, cod_postal, capacidad);
+            WareHouseModel wh = new WareHouseModel(id, calle, nro_puerta, cod_postal, capacidad, departamento);
             wareHouseData.Add(wh);
             wareHouseLength += 1;
             int lastPageRes = (int)Math.Ceiling((double)wareHouseLength / rowsPerPage);
@@ -148,11 +149,11 @@ namespace WindowsFormsApp1.Forms
 
         private void btnEditWarehouse_Click(object sender, EventArgs e)
         {
-            Form warehouse = new Forms.Warehouse.EditWarehouse(selectedWarehouse.id, selectedWarehouse.calle, selectedWarehouse.nro_puerta, selectedWarehouse.cod_postal, selectedWarehouse.capacidad, this);
+            Form warehouse = new Forms.Warehouse.EditWarehouse(selectedWarehouse.id, selectedWarehouse.calle, selectedWarehouse.nro_puerta, selectedWarehouse.cod_postal, selectedWarehouse.capacidad, selectedWarehouse.departamento, this);
             warehouse.ShowDialog();
         }
 
-        public void OnEditWarehouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad)
+        public void OnEditWarehouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad, string departamento)
         {
             WareHouseModel editedWarehouse = wareHouseData.Find(wh => wh.id == id);
             if (editedWarehouse == null) return;
@@ -160,6 +161,7 @@ namespace WindowsFormsApp1.Forms
             editedWarehouse.nro_puerta = nro_puerta;
             editedWarehouse.cod_postal = cod_postal;
             editedWarehouse.capacidad = capacidad;
+            editedWarehouse.departamento = departamento;
             showRows(actualPage);
 
             // Disable buttons and unselect actual warehouse

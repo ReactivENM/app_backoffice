@@ -28,7 +28,7 @@ namespace WindowsFormsApp1.Forms.Package
         private async Task fetchWarehouse()
         {
             Dictionaries dictionaries = new Dictionaries();
-            Dictionary<string, string> warehouseSelect = dictionaries.WarehouseDepartment();
+            Dictionary<string, string> warehouseSelect = dictionaries.DepartmentByWarehouseID();
             input_almacen.DataSource = new BindingSource(warehouseSelect, null);
             input_almacen.DisplayMember = "Value";
             input_almacen.ValueMember = "Key";
@@ -49,7 +49,7 @@ namespace WindowsFormsApp1.Forms.Package
             string peso = input_peso.Text;
             string descripcion = input_descripcion.Text;
             string dir_envio = input_dir_envio.Text;
-            string estado = input_estado.Text;
+            string estado = input_estado.SelectedValue.ToString();
 
             PackageController controller = new PackageController();
             int id_interno = controller.Create(id_externo, Convert.ToInt32(id_almacen), Convert.ToDouble(peso), descripcion, dir_envio, estado);

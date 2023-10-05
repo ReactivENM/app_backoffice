@@ -10,7 +10,27 @@ namespace WindowsFormsApp1.Dictionary
 {
     class Dictionaries
     {
-        public Dictionary<string, string> WarehouseDepartment()
+        public Dictionary<string, string> Departments()
+        {
+            Dictionary<string, string> departments = new Dictionary<string, string>();
+            departments.Add("montevideo", "Montevideo");
+            departments.Add("canelones", "Canelones");
+            departments.Add("maldonado", "Maldonado");
+            departments.Add("lavalleja", "Lavalleja");
+            departments.Add("florida", "Florida");
+            departments.Add("san_jose", "San José");
+            departments.Add("colonia", "Colonia");
+            departments.Add("flores", "Flores");
+            departments.Add("rio_negro", "Rio Negro");
+            departments.Add("paysandu", "Paysandu");
+            departments.Add("salto", "Salto");
+            departments.Add("tacuarembo", "Tacuarembo");
+            departments.Add("cerro_largo", "Cerro Largo");
+            departments.Add("durazno", "Durazno");
+
+            return departments;
+        }
+        public Dictionary<string, string> DepartmentByWarehouseID()
         {
             Dictionary<string, string> departments = new Dictionary<string, string>();
             departments.Add("montevideo", "Montevideo");

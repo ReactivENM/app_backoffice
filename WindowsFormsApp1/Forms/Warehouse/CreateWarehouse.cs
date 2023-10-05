@@ -34,11 +34,28 @@ namespace WindowsFormsApp1.Forms.Warehouse
 
         private bool validateFields()
         {
-            string name = inputAddress.Text;
-            string address = inputNumber.Text;
-            if(name.Length == 0 || address.Length == 0)
+            string calle = inputAddress.Text;
+            string nro_puerta = inputNumber.Text;
+            string cod_postal = inputPostalCode.Text;
+            string capacidad = inputCapacity.Text;
+            if (calle.Length == 0 || nro_puerta.Length == 0 || cod_postal.Length == 0 || capacidad.Length == 0)
             {
                 MessageBox.Show("Debes llenar todos los campos!", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (calle.Length > 30)
+            {
+                MessageBox.Show("La dirección debe ser menor o igual a 30 caracteres", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (nro_puerta.Length > 4)
+            {
+                MessageBox.Show("Número de puerta debe ser menor o igual a 4 caracteres", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (cod_postal.Length > 5)
+            {
+                MessageBox.Show("El código postal debe ser menor o igual a 5 caracteres", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
