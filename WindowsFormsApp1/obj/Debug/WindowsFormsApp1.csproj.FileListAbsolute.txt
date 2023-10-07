@@ -60,3 +60,13 @@ C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.For
 C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.User.EditUser.resources
 C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.Package.CreatePackage.resources
 C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.Package.EditPackage.resources
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\ComponentFactory.Krypton.Docking.dll
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\ComponentFactory.Krypton.Ribbon.dll
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\ComponentFactory.Krypton.Toolkit.dll
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\ComponentFactory.Krypton.Workspace.dll
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\ComponentFactory.Krypton.Navigator.dll
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\ComponentFactory.Krypton.Docking.pdb
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\ComponentFactory.Krypton.Ribbon.pdb
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\ComponentFactory.Krypton.Toolkit.pdb
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\ComponentFactory.Krypton.Workspace.pdb
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\ComponentFactory.Krypton.Navigator.pdb

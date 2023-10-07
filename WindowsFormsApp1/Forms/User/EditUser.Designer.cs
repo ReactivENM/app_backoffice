@@ -253,7 +253,7 @@
             this.MaximumSize = new System.Drawing.Size(385, 550);
             this.MinimumSize = new System.Drawing.Size(385, 550);
             this.Name = "EditUser";
-            this.Text = "EditWarehouse";
+            this.Text = "Editar usuario";
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

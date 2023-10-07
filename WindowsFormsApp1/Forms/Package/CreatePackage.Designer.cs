@@ -224,7 +224,7 @@
             this.MaximumSize = new System.Drawing.Size(385, 500);
             this.MinimumSize = new System.Drawing.Size(385, 500);
             this.Name = "CreatePackage";
-            this.Text = "CreateWarehouse";
+            this.Text = "Crear paquete";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

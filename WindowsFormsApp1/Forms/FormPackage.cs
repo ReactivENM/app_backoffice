@@ -29,6 +29,7 @@ namespace WindowsFormsApp1.Forms
 
         public FormPackage()
         {
+            this.Resize += new EventHandler(Form_Resize);
             initializeFormAsync();
         }
 
@@ -214,6 +215,15 @@ namespace WindowsFormsApp1.Forms
             {
                 btn.BackgroundImage = btn.Enabled ? enabledImage : disabledImage;
             };
+        }
+
+        private void Form_Resize(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                row.Height = dataGridView.ClientSize.Height / dataGridView.RowCount;
+                row.MinimumHeight = dataGridView.ClientSize.Height / dataGridView.RowCount;
+            }
         }
     }
 }

@@ -72,8 +72,8 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(12, 71);
@@ -214,7 +214,7 @@
             this.input_id_externo.Size = new System.Drawing.Size(288, 20);
             this.input_id_externo.TabIndex = 2;
             // 
-            // CreatePackage
+            // EditPackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -223,8 +223,8 @@
             this.Controls.Add(this.panel1);
             this.MaximumSize = new System.Drawing.Size(385, 500);
             this.MinimumSize = new System.Drawing.Size(385, 500);
-            this.Name = "CreatePackage";
-            this.Text = "CreateWarehouse";
+            this.Name = "EditPackage";
+            this.Text = "Editar paquete";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

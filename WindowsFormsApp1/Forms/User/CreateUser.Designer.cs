@@ -32,6 +32,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.inputNacionalidad = new System.Windows.Forms.ComboBox();
             this.inputRol = new System.Windows.Forms.ComboBox();
             this.lblRol = new System.Windows.Forms.Label();
             this.lblNacionalidad = new System.Windows.Forms.Label();
@@ -46,7 +47,6 @@
             this.inputSNombre = new System.Windows.Forms.TextBox();
             this.lblPNombre = new System.Windows.Forms.Label();
             this.inputPNombre = new System.Windows.Forms.TextBox();
-            this.inputNacionalidad = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -105,6 +105,21 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(296, 384);
             this.panel3.TabIndex = 0;
+            // 
+            // inputNacionalidad
+            // 
+            this.inputNacionalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inputNacionalidad.FormattingEnabled = true;
+            this.inputNacionalidad.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.inputNacionalidad.Items.AddRange(new object[] {
+            "UYU",
+            "ARG",
+            "CHL",
+            "BRA"});
+            this.inputNacionalidad.Location = new System.Drawing.Point(6, 255);
+            this.inputNacionalidad.Name = "inputNacionalidad";
+            this.inputNacionalidad.Size = new System.Drawing.Size(285, 21);
+            this.inputNacionalidad.TabIndex = 15;
             // 
             // inputRol
             // 
@@ -229,21 +244,6 @@
             this.inputPNombre.Size = new System.Drawing.Size(288, 20);
             this.inputPNombre.TabIndex = 0;
             // 
-            // inputNacionalidad
-            // 
-            this.inputNacionalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.inputNacionalidad.FormattingEnabled = true;
-            this.inputNacionalidad.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.inputNacionalidad.Items.AddRange(new object[] {
-            "UYU",
-            "ARG",
-            "CHL",
-            "BRA"});
-            this.inputNacionalidad.Location = new System.Drawing.Point(6, 255);
-            this.inputNacionalidad.Name = "inputNacionalidad";
-            this.inputNacionalidad.Size = new System.Drawing.Size(285, 21);
-            this.inputNacionalidad.TabIndex = 15;
-            // 
             // CreateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,7 +254,7 @@
             this.MaximumSize = new System.Drawing.Size(385, 550);
             this.MinimumSize = new System.Drawing.Size(385, 550);
             this.Name = "CreateUser";
-            this.Text = "CreateWarehouse";
+            this.Text = "Crear usuario";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

@@ -220,7 +220,7 @@
             this.lblTitle.Text = "Inicio";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Form1
+            // Backoffice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -229,7 +229,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMenu);
             this.MinimumSize = new System.Drawing.Size(1000, 600);
-            this.Name = "Form1";
+            this.Name = "Backoffice";
             this.Text = "Quick Carry";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelMenu.ResumeLayout(false);
