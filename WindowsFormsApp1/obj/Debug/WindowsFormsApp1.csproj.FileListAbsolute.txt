@@ -70,3 +70,5 @@ C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\ComponentFactory.Kry
 C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\ComponentFactory.Krypton.Toolkit.pdb
 C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\ComponentFactory.Krypton.Workspace.pdb
 C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\bin\Debug\ComponentFactory.Krypton.Navigator.pdb
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.Lot.CreateLot.resources
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.Lot.EditLot.resources

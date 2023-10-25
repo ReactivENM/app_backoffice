@@ -98,11 +98,30 @@
     <Compile Include="Backoffice.Designer.cs">
       <DependentUpon>Backoffice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\LotController.cs" />
     <Compile Include="Controllers\PackageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WareHouseController.cs" />
     <Compile Include="DB\DBConnection.cs" />
     <Compile Include="Dictionaries\Dictionaries.cs" />
+    <Compile Include="Forms\FormLot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormLot.Designer.cs">
+      <DependentUpon>FormLot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lot\CreateLot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lot\CreateLot.Designer.cs">
+      <DependentUpon>CreateLot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lot\EditLot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lot\EditLot.Designer.cs">
+      <DependentUpon>EditLot.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Package\EditPackage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +146,7 @@
     <Compile Include="Forms\User\EditUser.Designer.cs">
       <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\LotModel.cs" />
     <Compile Include="Models\PackageModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\WareHouseModel.cs" />
@@ -135,12 +155,6 @@
     </Compile>
     <Compile Include="Forms\FormJourney.Designer.cs">
       <DependentUpon>FormJourney.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormLot.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormLot.Designer.cs">
-      <DependentUpon>FormLot.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormPackage.cs">
       <SubType>Form</SubType>
@@ -206,6 +220,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormWarehouse.resx">
       <DependentUpon>FormWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lot\CreateLot.resx">
+      <DependentUpon>CreateLot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lot\EditLot.resx">
+      <DependentUpon>EditLot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Package\EditPackage.resx">
       <DependentUpon>EditPackage.cs</DependentUpon>
