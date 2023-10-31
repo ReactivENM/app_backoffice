@@ -30,15 +30,16 @@ namespace WindowsFormsApp1.Controllers.UserController
                         while (reader.Read())
                         {
                             int id = reader.GetInt32(0);
-                            string p_nombre = reader.GetString(1);
-                            string s_nombre = reader.GetString(2);
-                            string p_apellido = reader.GetString(3);
-                            string s_apellido = reader.GetString(4);
-                            string nro_documento = reader.GetString(5);
-                            string nacionalidad = reader.GetString(6);
-                            int deshabilitado = reader.GetInt32(7);
-                            string rol = reader.GetString(8);
-                            UserModel user = new UserModel(id, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, deshabilitado, rol);
+                            string correo = reader.GetString(1);
+                            string p_nombre = reader.GetString(3);
+                            string s_nombre = reader.GetString(4);
+                            string p_apellido = reader.GetString(5);
+                            string s_apellido = reader.GetString(6);
+                            int nro_documento = reader.GetInt32(7);
+                            string nacionalidad = reader.GetString(8);
+                            int deshabilitado = reader.GetInt32(9);
+                            string rol = reader.GetString(10);
+                            UserModel user = new UserModel(id, correo, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento.ToString(), nacionalidad, deshabilitado, rol);
                             data.Add(user);
                         }
                         return data;
@@ -56,13 +57,15 @@ namespace WindowsFormsApp1.Controllers.UserController
             }
         }
 
-        public int Create(string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, string rol)
+        public int Create(string correo, string contrasena, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, string rol)
         {
             try
             {
-                string sql = "INSERT INTO Usuario(p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, rol) VALUES(@p_nombre, @s_nombre, @p_apellido, @s_apellido, @nro_documento, @nacionalidad, @rol); SELECT LAST_INSERT_ID()";
+                string sql = "INSERT INTO Usuario(correo, contrasena, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, rol) VALUES(@correo, @contrasena, @p_nombre, @s_nombre, @p_apellido, @s_apellido, @nro_documento, @nacionalidad, @rol); SELECT LAST_INSERT_ID()";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
+                    command.Parameters.AddWithValue("@correo", correo);
+                    command.Parameters.AddWithValue("@contrasena", contrasena);
                     command.Parameters.AddWithValue("@p_nombre", p_nombre);
                     command.Parameters.AddWithValue("@s_nombre", s_nombre);
                     command.Parameters.AddWithValue("@p_apellido", p_apellido);
@@ -86,14 +89,15 @@ namespace WindowsFormsApp1.Controllers.UserController
             }
         }
 
-        public bool Edit(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, int deshabilitado, string rol)
+        public bool Edit(int id, string correo, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, int deshabilitado, string rol)
         {
             try
             {
-                string sql = "UPDATE Usuario SET p_nombre = @p_nombre, s_nombre = @s_nombre, p_apellido = @p_apellido, s_apellido = @s_apellido, nro_documento = @nro_documento, nacionalidad = @nacionalidad, deshabilitado = @deshabilitado, rol = @rol  WHERE id = @id";
+                string sql = "UPDATE Usuario SET correo = @correo, p_nombre = @p_nombre, s_nombre = @s_nombre, p_apellido = @p_apellido, s_apellido = @s_apellido, nro_documento = @nro_documento, nacionalidad = @nacionalidad, deshabilitado = @deshabilitado, rol = @rol  WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@correo", correo);
                     command.Parameters.AddWithValue("@p_nombre", p_nombre);
                     command.Parameters.AddWithValue("@s_nombre", s_nombre);
                     command.Parameters.AddWithValue("@p_apellido", p_apellido);

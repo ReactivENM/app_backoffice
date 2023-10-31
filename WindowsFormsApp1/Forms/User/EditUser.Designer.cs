@@ -30,24 +30,28 @@
         {
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.inputNacionalidad = new System.Windows.Forms.ComboBox();
+            this.inputDocumento = new System.Windows.Forms.TextBox();
+            this.inputSApellido = new System.Windows.Forms.TextBox();
+            this.inputPApellido = new System.Windows.Forms.TextBox();
+            this.inputSNombre = new System.Windows.Forms.TextBox();
+            this.inputPNombre = new System.Windows.Forms.TextBox();
             this.checkDisabled = new System.Windows.Forms.CheckBox();
             this.btnSubmit = new System.Windows.Forms.Button();
-            this.inputNacionalidad = new System.Windows.Forms.ComboBox();
             this.inputRol = new System.Windows.Forms.ComboBox();
             this.lblRol = new System.Windows.Forms.Label();
             this.lblNacionalidad = new System.Windows.Forms.Label();
             this.lblDocumento = new System.Windows.Forms.Label();
-            this.inputDocumento = new System.Windows.Forms.TextBox();
             this.lblSApellido = new System.Windows.Forms.Label();
-            this.inputSApellido = new System.Windows.Forms.TextBox();
             this.lblPApellido = new System.Windows.Forms.Label();
-            this.inputPApellido = new System.Windows.Forms.TextBox();
             this.lblSNombre = new System.Windows.Forms.Label();
-            this.inputSNombre = new System.Windows.Forms.TextBox();
             this.lblPNombre = new System.Windows.Forms.Label();
-            this.inputPNombre = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.inputContrasena = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.inputCorreo = new System.Windows.Forms.TextBox();
+            this.input_correo = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -58,12 +62,16 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(12, 71);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(345, 488);
+            this.panel2.Size = new System.Drawing.Size(345, 578);
             this.panel2.TabIndex = 3;
             // 
             // panel3
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel3.Controls.Add(this.inputCorreo);
+            this.panel3.Controls.Add(this.input_correo);
+            this.panel3.Controls.Add(this.inputContrasena);
+            this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.inputNacionalidad);
             this.panel3.Controls.Add(this.inputDocumento);
             this.panel3.Controls.Add(this.inputSApellido);
@@ -80,16 +88,65 @@
             this.panel3.Controls.Add(this.lblPApellido);
             this.panel3.Controls.Add(this.lblSNombre);
             this.panel3.Controls.Add(this.lblPNombre);
-            this.panel3.Location = new System.Drawing.Point(26, 25);
+            this.panel3.Location = new System.Drawing.Point(25, 25);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(296, 437);
+            this.panel3.Size = new System.Drawing.Size(296, 531);
             this.panel3.TabIndex = 1;
+            // 
+            // inputNacionalidad
+            // 
+            this.inputNacionalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inputNacionalidad.FormattingEnabled = true;
+            this.inputNacionalidad.Items.AddRange(new object[] {
+            "UYU",
+            "ARG",
+            "CHL",
+            "BRA"});
+            this.inputNacionalidad.Location = new System.Drawing.Point(6, 351);
+            this.inputNacionalidad.Name = "inputNacionalidad";
+            this.inputNacionalidad.Size = new System.Drawing.Size(285, 21);
+            this.inputNacionalidad.TabIndex = 15;
+            // 
+            // inputDocumento
+            // 
+            this.inputDocumento.Location = new System.Drawing.Point(3, 304);
+            this.inputDocumento.Name = "inputDocumento";
+            this.inputDocumento.Size = new System.Drawing.Size(288, 20);
+            this.inputDocumento.TabIndex = 9;
+            // 
+            // inputSApellido
+            // 
+            this.inputSApellido.Location = new System.Drawing.Point(3, 255);
+            this.inputSApellido.Name = "inputSApellido";
+            this.inputSApellido.Size = new System.Drawing.Size(288, 20);
+            this.inputSApellido.TabIndex = 7;
+            // 
+            // inputPApellido
+            // 
+            this.inputPApellido.Location = new System.Drawing.Point(3, 206);
+            this.inputPApellido.Name = "inputPApellido";
+            this.inputPApellido.Size = new System.Drawing.Size(288, 20);
+            this.inputPApellido.TabIndex = 5;
+            // 
+            // inputSNombre
+            // 
+            this.inputSNombre.Location = new System.Drawing.Point(3, 160);
+            this.inputSNombre.Name = "inputSNombre";
+            this.inputSNombre.Size = new System.Drawing.Size(288, 20);
+            this.inputSNombre.TabIndex = 2;
+            // 
+            // inputPNombre
+            // 
+            this.inputPNombre.Location = new System.Drawing.Point(3, 111);
+            this.inputPNombre.Name = "inputPNombre";
+            this.inputPNombre.Size = new System.Drawing.Size(288, 20);
+            this.inputPNombre.TabIndex = 0;
             // 
             // checkDisabled
             // 
             this.checkDisabled.AutoSize = true;
             this.checkDisabled.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkDisabled.Location = new System.Drawing.Point(6, 340);
+            this.checkDisabled.Location = new System.Drawing.Point(6, 435);
             this.checkDisabled.Name = "checkDisabled";
             this.checkDisabled.Size = new System.Drawing.Size(156, 27);
             this.checkDisabled.TabIndex = 19;
@@ -105,27 +162,13 @@
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(6, 394);
+            this.btnSubmit.Location = new System.Drawing.Point(6, 488);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(285, 38);
             this.btnSubmit.TabIndex = 16;
             this.btnSubmit.Text = "Editar usuario";
             this.btnSubmit.UseVisualStyleBackColor = false;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
-            // inputNacionalidad
-            // 
-            this.inputNacionalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.inputNacionalidad.FormattingEnabled = true;
-            this.inputNacionalidad.Items.AddRange(new object[] {
-            "UYU",
-            "ARG",
-            "CHL",
-            "BRA"});
-            this.inputNacionalidad.Location = new System.Drawing.Point(6, 256);
-            this.inputNacionalidad.Name = "inputNacionalidad";
-            this.inputNacionalidad.Size = new System.Drawing.Size(285, 21);
-            this.inputNacionalidad.TabIndex = 15;
             // 
             // inputRol
             // 
@@ -135,7 +178,7 @@
             "Almacenero",
             "Camionero",
             "Administrador"});
-            this.inputRol.Location = new System.Drawing.Point(6, 304);
+            this.inputRol.Location = new System.Drawing.Point(6, 399);
             this.inputRol.Name = "inputRol";
             this.inputRol.Size = new System.Drawing.Size(285, 21);
             this.inputRol.TabIndex = 14;
@@ -144,7 +187,7 @@
             // 
             this.lblRol.AutoSize = true;
             this.lblRol.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRol.Location = new System.Drawing.Point(3, 285);
+            this.lblRol.Location = new System.Drawing.Point(3, 380);
             this.lblRol.Name = "lblRol";
             this.lblRol.Size = new System.Drawing.Size(28, 22);
             this.lblRol.TabIndex = 13;
@@ -155,7 +198,7 @@
             this.lblNacionalidad.AutoSize = true;
             this.lblNacionalidad.BackColor = System.Drawing.Color.Transparent;
             this.lblNacionalidad.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNacionalidad.Location = new System.Drawing.Point(3, 238);
+            this.lblNacionalidad.Location = new System.Drawing.Point(3, 333);
             this.lblNacionalidad.Name = "lblNacionalidad";
             this.lblNacionalidad.Size = new System.Drawing.Size(90, 22);
             this.lblNacionalidad.TabIndex = 12;
@@ -166,89 +209,54 @@
             this.lblDocumento.AutoSize = true;
             this.lblDocumento.BackColor = System.Drawing.Color.Transparent;
             this.lblDocumento.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDocumento.Location = new System.Drawing.Point(3, 190);
+            this.lblDocumento.Location = new System.Drawing.Point(3, 285);
             this.lblDocumento.Name = "lblDocumento";
             this.lblDocumento.Size = new System.Drawing.Size(96, 22);
             this.lblDocumento.TabIndex = 10;
             this.lblDocumento.Text = "Nº Documento";
             // 
-            // inputDocumento
-            // 
-            this.inputDocumento.Location = new System.Drawing.Point(3, 209);
-            this.inputDocumento.Name = "inputDocumento";
-            this.inputDocumento.Size = new System.Drawing.Size(288, 20);
-            this.inputDocumento.TabIndex = 9;
-            // 
             // lblSApellido
             // 
             this.lblSApellido.AutoSize = true;
             this.lblSApellido.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSApellido.Location = new System.Drawing.Point(3, 141);
+            this.lblSApellido.Location = new System.Drawing.Point(3, 236);
             this.lblSApellido.Name = "lblSApellido";
             this.lblSApellido.Size = new System.Drawing.Size(115, 22);
             this.lblSApellido.TabIndex = 8;
             this.lblSApellido.Text = "Segundo apellido";
-            // 
-            // inputSApellido
-            // 
-            this.inputSApellido.Location = new System.Drawing.Point(3, 160);
-            this.inputSApellido.Name = "inputSApellido";
-            this.inputSApellido.Size = new System.Drawing.Size(288, 20);
-            this.inputSApellido.TabIndex = 7;
             // 
             // lblPApellido
             // 
             this.lblPApellido.AutoSize = true;
             this.lblPApellido.BackColor = System.Drawing.Color.Transparent;
             this.lblPApellido.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPApellido.Location = new System.Drawing.Point(3, 93);
+            this.lblPApellido.Location = new System.Drawing.Point(3, 188);
             this.lblPApellido.Name = "lblPApellido";
             this.lblPApellido.Size = new System.Drawing.Size(98, 22);
             this.lblPApellido.TabIndex = 6;
             this.lblPApellido.Text = "Primer apellido";
-            // 
-            // inputPApellido
-            // 
-            this.inputPApellido.Location = new System.Drawing.Point(3, 111);
-            this.inputPApellido.Name = "inputPApellido";
-            this.inputPApellido.Size = new System.Drawing.Size(288, 20);
-            this.inputPApellido.TabIndex = 5;
             // 
             // lblSNombre
             // 
             this.lblSNombre.AutoSize = true;
             this.lblSNombre.BackColor = System.Drawing.Color.Transparent;
             this.lblSNombre.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSNombre.Location = new System.Drawing.Point(3, 46);
+            this.lblSNombre.Location = new System.Drawing.Point(3, 141);
             this.lblSNombre.Name = "lblSNombre";
             this.lblSNombre.Size = new System.Drawing.Size(114, 22);
             this.lblSNombre.TabIndex = 3;
             this.lblSNombre.Text = "Segundo nombre";
-            // 
-            // inputSNombre
-            // 
-            this.inputSNombre.Location = new System.Drawing.Point(3, 65);
-            this.inputSNombre.Name = "inputSNombre";
-            this.inputSNombre.Size = new System.Drawing.Size(288, 20);
-            this.inputSNombre.TabIndex = 2;
             // 
             // lblPNombre
             // 
             this.lblPNombre.AutoSize = true;
             this.lblPNombre.BackColor = System.Drawing.Color.Transparent;
             this.lblPNombre.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPNombre.Location = new System.Drawing.Point(3, -1);
+            this.lblPNombre.Location = new System.Drawing.Point(3, 94);
             this.lblPNombre.Name = "lblPNombre";
             this.lblPNombre.Size = new System.Drawing.Size(97, 22);
             this.lblPNombre.TabIndex = 1;
             this.lblPNombre.Text = "Primer nombre";
-            // 
-            // inputPNombre
-            // 
-            this.inputPNombre.Location = new System.Drawing.Point(3, 16);
-            this.inputPNombre.Name = "inputPNombre";
-            this.inputPNombre.Size = new System.Drawing.Size(288, 20);
-            this.inputPNombre.TabIndex = 0;
             // 
             // panel1
             // 
@@ -270,15 +278,52 @@
             this.lblTitle.Text = "Editar usuario";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
+            // inputContrasena
+            // 
+            this.inputContrasena.Enabled = false;
+            this.inputContrasena.Location = new System.Drawing.Point(3, 66);
+            this.inputContrasena.Name = "inputContrasena";
+            this.inputContrasena.Size = new System.Drawing.Size(288, 20);
+            this.inputContrasena.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 22);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Contrasena";
+            // 
+            // inputCorreo
+            // 
+            this.inputCorreo.Location = new System.Drawing.Point(3, 20);
+            this.inputCorreo.Name = "inputCorreo";
+            this.inputCorreo.Size = new System.Drawing.Size(288, 20);
+            this.inputCorreo.TabIndex = 22;
+            // 
+            // input_correo
+            // 
+            this.input_correo.AutoSize = true;
+            this.input_correo.BackColor = System.Drawing.Color.Transparent;
+            this.input_correo.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.input_correo.Location = new System.Drawing.Point(3, 3);
+            this.input_correo.Name = "input_correo";
+            this.input_correo.Size = new System.Drawing.Size(50, 22);
+            this.input_correo.TabIndex = 23;
+            this.input_correo.Text = "Correo";
+            // 
             // EditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 571);
+            this.ClientSize = new System.Drawing.Size(369, 661);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.MaximumSize = new System.Drawing.Size(385, 610);
-            this.MinimumSize = new System.Drawing.Size(385, 610);
+            this.MaximumSize = new System.Drawing.Size(385, 700);
+            this.MinimumSize = new System.Drawing.Size(385, 700);
             this.Name = "EditUser";
             this.Text = "Editar usuario";
             this.panel2.ResumeLayout(false);
@@ -311,5 +356,9 @@
         private System.Windows.Forms.CheckBox checkDisabled;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.TextBox inputCorreo;
+        private System.Windows.Forms.Label input_correo;
+        private System.Windows.Forms.TextBox inputContrasena;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -9,11 +9,12 @@ namespace WindowsFormsApp1.Forms.User
         private HandleUser callback;
         private int id;
 
-        public EditUser(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, int deshabilitado, string rol, HandleUser callback)
+        public EditUser(int id, string correo, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, int deshabilitado, string rol, HandleUser callback)
         {
             InitializeComponent();
             this.callback = callback;
             this.id = id;
+            inputCorreo.Text = correo;
             inputPNombre.Text = p_nombre;
             inputSNombre.Text = s_nombre;
             inputPApellido.Text = p_apellido;
@@ -29,6 +30,7 @@ namespace WindowsFormsApp1.Forms.User
             bool fieldsValid = validateFields();
             if (!fieldsValid) return;
 
+            string correo = inputCorreo.Text;
             string p_nombre = inputPNombre.Text;
             string s_nombre = inputSNombre.Text;
             string p_apellido = inputPApellido.Text;
@@ -39,14 +41,15 @@ namespace WindowsFormsApp1.Forms.User
             string rol = inputRol.Text;
 
             UserController controller = new UserController();
-            controller.Edit(id, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, deshabilitado, rol);
-            callback.OnEdit(id, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, deshabilitado, rol);
+            controller.Edit(id, correo, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, deshabilitado, rol);
+            callback.OnEdit(id, correo, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, deshabilitado, rol);
 
             this.Close();
         }
 
         private bool validateFields()
         {
+            string correo = inputCorreo.Text;
             string p_nombre = inputPNombre.Text;
             string s_nombre = inputSNombre.Text;
             string p_apellido = inputPApellido.Text;
@@ -54,7 +57,7 @@ namespace WindowsFormsApp1.Forms.User
             string nro_documento = inputDocumento.Text;
             string nacionalidad = inputNacionalidad.Text;
             string rol = inputRol.Text;
-            if (p_nombre.Length == 0 || p_apellido.Length == 0 || nacionalidad.Length == 0 || rol.Length == 0)
+            if (correo.Length == 0 || p_nombre.Length == 0 || p_apellido.Length == 0 || nacionalidad.Length == 0 || rol.Length == 0)
             {
                 MessageBox.Show("Debes llenar todos los campos!", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
