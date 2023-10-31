@@ -13,8 +13,8 @@ namespace WindowsFormsApp1.Forms
 {
     public interface HandleUser
     {
-        void OnCreate(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, string rol);
-        void OnEdit(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, string rol);
+        void OnCreate(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, int deshabilitado, string rol);
+        void OnEdit(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, int deshabilitado, string rol);
     }
 
     public partial class FormUser : Form, HandleUser
@@ -84,14 +84,7 @@ namespace WindowsFormsApp1.Forms
 
                 DataGridViewRow row = dataGridView.Rows[e.RowIndex];
                 object id = row.Cells["id_usuario"].Value;
-                object p_nombre = row.Cells["p_nombre"].Value;
-                object s_nombre = row.Cells["s_nombre"].Value;
-                object p_apellido = row.Cells["p_apellido"].Value;
-                object s_apellido = row.Cells["s_apellido"].Value;
-                object nro_documento = row.Cells["nro_documento"].Value;
-                object nacionalidad = row.Cells["nacionalidad"].Value;
-                object rol = row.Cells["rol"].Value;
-                UserModel user = new UserModel(Convert.ToInt32(id), p_nombre.ToString(), s_nombre.ToString(), p_apellido.ToString(), s_apellido.ToString(), nro_documento.ToString(), nacionalidad.ToString(), rol.ToString());
+                UserModel user = userData.Find(u => u.id == Convert.ToInt32(id));
                 selectedUser = user;
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
@@ -133,9 +126,9 @@ namespace WindowsFormsApp1.Forms
             new Forms.User.CreateUser(this).ShowDialog();
         }
 
-        public void OnCreate(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, string rol)
+        public void OnCreate(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, int deshabilitado, string rol)
         {
-            UserModel user = new UserModel(id, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, rol);
+            UserModel user = new UserModel(id, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, deshabilitado, rol);
             userData.Add(user);
             dataLength += 1;
             int lastPageRes = (int)Math.Ceiling((double)dataLength / rowsPerPage);
@@ -151,11 +144,11 @@ namespace WindowsFormsApp1.Forms
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Form editUser = new Forms.User.EditUser(selectedUser.id, selectedUser.p_nombre, selectedUser.s_nombre, selectedUser.p_apellido, selectedUser.s_apellido, selectedUser.nro_documento, selectedUser.nacionalidad, selectedUser.rol, this);
+            Form editUser = new Forms.User.EditUser(selectedUser.id, selectedUser.p_nombre, selectedUser.s_nombre, selectedUser.p_apellido, selectedUser.s_apellido, selectedUser.nro_documento, selectedUser.nacionalidad, selectedUser.deshabilitado, selectedUser.rol, this);
             editUser.ShowDialog();
         }
 
-        public void OnEdit(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, string rol)
+        public void OnEdit(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, int deshabilitado, string rol)
         {
             UserModel editedUser = userData.Find(user => user.id == id);
             if (editedUser == null) return;
@@ -165,6 +158,7 @@ namespace WindowsFormsApp1.Forms
             editedUser.s_apellido = s_apellido;
             editedUser.nro_documento = nro_documento;
             editedUser.nacionalidad = nacionalidad;
+            editedUser.deshabilitado = deshabilitado;
             editedUser.rol = rol;
             showRows(actualPage);
 

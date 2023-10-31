@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Controllers.PackageController;
-using WindowsFormsApp1.Controllers.WarehouseController;
-using WindowsFormsApp1.Models;
+using WindowsFormsApp1.Controllers.PackageLotController;
 using WindowsFormsApp1.Dictionary;
 
 namespace WindowsFormsApp1.Forms.Package
@@ -14,31 +13,30 @@ namespace WindowsFormsApp1.Forms.Package
         private HandlePackage callback;
         private int id;
 
-        public EditPackage(int id_interno, string id_externo, int id_almacen, double peso, string descripcion, string dir_envio, string estado, HandlePackage callback)
+        public EditPackage(int id_interno, string id_externo, int id_cliente, double peso, string dir_envio, string estado, HandlePackage callback)
         {
             this.callback = callback;
             this.id = id_interno;
             InitializeComponent();
             input_id_externo.Text = id_externo;
             input_peso.Text = peso.ToString();
-            input_descripcion.Text = descripcion;
             input_dir_envio.Text = dir_envio;
-            initializeFormAsync(id_almacen, estado);
+            initializeFormAsync(id_cliente, estado);
         }
 
-        private async void initializeFormAsync(int id_almacen, string estado)
+        private async void initializeFormAsync(int id_cliente, string estado)
         {
-            await fetchWarehouse(id_almacen, estado);
+            await fetchData(id_cliente, estado);
         }
 
-        private async Task fetchWarehouse(int id_almacen, string estado)
+        private async Task fetchData(int id_cliente, string estado)
         {
             Dictionaries dictionaries = new Dictionaries();
-            Dictionary<string, string> warehouseSelect = dictionaries.DepartmentByWarehouseID();
-            input_almacen.DataSource = new BindingSource(warehouseSelect, null);
-            input_almacen.DisplayMember = "Value";
-            input_almacen.ValueMember = "Key";
-            input_almacen.SelectedValue = id_almacen.ToString();
+            Dictionary<string, string> clientSelect = dictionaries.ClientName();
+            input_cliente.DataSource = new BindingSource(clientSelect, null);
+            input_cliente.DisplayMember = "Value";
+            input_cliente.ValueMember = "Key";
+            input_cliente.SelectedValue = id_cliente.ToString();
 
             Dictionary<string, string> statusSelect = dictionaries.PackageStatus();
             input_estado.DataSource = new BindingSource(statusSelect, null);
@@ -53,15 +51,14 @@ namespace WindowsFormsApp1.Forms.Package
             if (!fieldsValid) return;
 
             string id_externo = input_id_externo.Text;
-            string id_almacen = input_almacen.SelectedValue.ToString();
+            string id_cliente = input_cliente.SelectedValue.ToString();
             string peso = input_peso.Text;
-            string descripcion = input_descripcion.Text;
             string dir_envio = input_dir_envio.Text;
             string estado = input_estado.SelectedValue.ToString();
 
-            PackageController controller = new PackageController();
-            controller.Edit(id, id_externo, Convert.ToInt32(id_almacen), Convert.ToDouble(peso), descripcion, dir_envio, estado);
-            callback.OnEdit(id, id_externo, Convert.ToInt32(id_almacen), Convert.ToDouble(peso), descripcion, dir_envio, estado);
+            PackageController packageController = new PackageController();
+            packageController.Edit(id, id_externo, Convert.ToInt32(id_cliente), Convert.ToDouble(peso), dir_envio, estado);
+            callback.OnEdit(id, id_externo, Convert.ToInt32(id_cliente), Convert.ToDouble(peso), dir_envio, estado);
 
             this.Close();
         }
@@ -69,12 +66,11 @@ namespace WindowsFormsApp1.Forms.Package
         private bool validateFields()
         {
             string id_externo = input_id_externo.Text;
-            string id_almacen = input_almacen.SelectedValue.ToString();
+            string id_cliente = input_cliente.SelectedValue.ToString();
             string peso = input_peso.Text;
-            string descripcion = input_descripcion.Text;
             string dir_envio = input_dir_envio.Text;
             string estado = input_estado.Text;
-            if (id_externo.Length == 0 || id_almacen.Length == 0 || peso.Length == 0 || descripcion.Length == 0 || dir_envio.Length == 0 || estado.Length == 0)
+            if (id_externo.Length == 0 || id_cliente.Length == 0 || peso.Length == 0 || dir_envio.Length == 0 || estado.Length == 0)
             {
                 MessageBox.Show("Debes llenar todos los campos!", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

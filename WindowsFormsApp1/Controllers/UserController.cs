@@ -36,8 +36,9 @@ namespace WindowsFormsApp1.Controllers.UserController
                             string s_apellido = reader.GetString(4);
                             string nro_documento = reader.GetString(5);
                             string nacionalidad = reader.GetString(6);
-                            string rol = reader.GetString(7);
-                            UserModel user = new UserModel(id, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, rol);
+                            int deshabilitado = reader.GetInt32(7);
+                            string rol = reader.GetString(8);
+                            UserModel user = new UserModel(id, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, deshabilitado, rol);
                             data.Add(user);
                         }
                         return data;
@@ -46,6 +47,7 @@ namespace WindowsFormsApp1.Controllers.UserController
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return data;
             }
             finally
@@ -84,11 +86,11 @@ namespace WindowsFormsApp1.Controllers.UserController
             }
         }
 
-        public bool Edit(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, string rol)
+        public bool Edit(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, int deshabilitado, string rol)
         {
             try
             {
-                string sql = "UPDATE Usuario SET p_nombre = @p_nombre, s_nombre = @s_nombre, p_apellido = @p_apellido, s_apellido = @s_apellido, nro_documento = @nro_documento, nacionalidad = @nacionalidad, rol = @rol  WHERE id = @id";
+                string sql = "UPDATE Usuario SET p_nombre = @p_nombre, s_nombre = @s_nombre, p_apellido = @p_apellido, s_apellido = @s_apellido, nro_documento = @nro_documento, nacionalidad = @nacionalidad, deshabilitado = @deshabilitado, rol = @rol  WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
@@ -98,6 +100,7 @@ namespace WindowsFormsApp1.Controllers.UserController
                     command.Parameters.AddWithValue("@s_apellido", s_apellido);
                     command.Parameters.AddWithValue("@nro_documento", nro_documento);
                     command.Parameters.AddWithValue("@nacionalidad", nacionalidad);
+                    command.Parameters.AddWithValue("@deshabilitado", deshabilitado);
                     command.Parameters.AddWithValue("@rol", rol);
 
                     int affectedRows = command.ExecuteNonQuery();

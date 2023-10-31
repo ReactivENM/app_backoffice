@@ -32,6 +32,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.inputNacionalidad = new System.Windows.Forms.ComboBox();
             this.inputRol = new System.Windows.Forms.ComboBox();
             this.lblRol = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.inputSApellido = new System.Windows.Forms.TextBox();
             this.lblPApellido = new System.Windows.Forms.Label();
             this.inputPApellido = new System.Windows.Forms.TextBox();
-            this.btnSubmit = new System.Windows.Forms.Button();
             this.lblSNombre = new System.Windows.Forms.Label();
             this.inputSNombre = new System.Windows.Forms.TextBox();
             this.lblPNombre = new System.Windows.Forms.Label();
@@ -64,13 +64,13 @@
             // lblTitle
             // 
             this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Poppins SemiBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(369, 65);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Crear usuario";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // panel2
             // 
@@ -86,6 +86,7 @@
             // panel3
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel3.Controls.Add(this.btnSubmit);
             this.panel3.Controls.Add(this.inputNacionalidad);
             this.panel3.Controls.Add(this.inputRol);
             this.panel3.Controls.Add(this.lblRol);
@@ -96,7 +97,6 @@
             this.panel3.Controls.Add(this.inputSApellido);
             this.panel3.Controls.Add(this.lblPApellido);
             this.panel3.Controls.Add(this.inputPApellido);
-            this.panel3.Controls.Add(this.btnSubmit);
             this.panel3.Controls.Add(this.lblSNombre);
             this.panel3.Controls.Add(this.inputSNombre);
             this.panel3.Controls.Add(this.lblPNombre);
@@ -105,6 +105,23 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(296, 384);
             this.panel3.TabIndex = 0;
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
+            this.btnSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
+            this.btnSubmit.FlatAppearance.BorderSize = 0;
+            this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubmit.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.ForeColor = System.Drawing.Color.White;
+            this.btnSubmit.Location = new System.Drawing.Point(6, 340);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(285, 38);
+            this.btnSubmit.TabIndex = 5;
+            this.btnSubmit.Text = "Crear usuario";
+            this.btnSubmit.UseVisualStyleBackColor = false;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // inputNacionalidad
             // 
@@ -126,9 +143,9 @@
             this.inputRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.inputRol.FormattingEnabled = true;
             this.inputRol.Items.AddRange(new object[] {
-            "almacenero",
-            "camionero",
-            "administrador"});
+            "Almacenero",
+            "Camionero",
+            "Administrador"});
             this.inputRol.Location = new System.Drawing.Point(6, 304);
             this.inputRol.Name = "inputRol";
             this.inputRol.Size = new System.Drawing.Size(285, 21);
@@ -200,18 +217,6 @@
             this.inputPApellido.Size = new System.Drawing.Size(288, 20);
             this.inputPApellido.TabIndex = 5;
             // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(3, 343);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(288, 38);
-            this.btnSubmit.TabIndex = 4;
-            this.btnSubmit.Text = "Crear usuario";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
             // lblSNombre
             // 
             this.lblSNombre.AutoSize = true;
@@ -273,7 +278,6 @@
         private System.Windows.Forms.TextBox inputSNombre;
         private System.Windows.Forms.Label lblPNombre;
         private System.Windows.Forms.TextBox inputPNombre;
-        private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label lblSApellido;
         private System.Windows.Forms.TextBox inputSApellido;
         private System.Windows.Forms.Label lblPApellido;
@@ -284,5 +288,6 @@
         private System.Windows.Forms.Label lblDocumento;
         private System.Windows.Forms.TextBox inputDocumento;
         private System.Windows.Forms.ComboBox inputNacionalidad;
+        private System.Windows.Forms.Button btnSubmit;
     }
 }

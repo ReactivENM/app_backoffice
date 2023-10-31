@@ -29,7 +29,7 @@ namespace WindowsFormsApp1.Forms.User
 
             UserController controller = new UserController();
             int id = controller.Create(p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, rol);
-            callback.OnCreate(id, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, rol);
+            callback.OnCreate(id, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, 0, rol);
 
             this.Close();
         }
@@ -43,7 +43,7 @@ namespace WindowsFormsApp1.Forms.User
             string nro_documento = inputDocumento.Text;
             string nacionalidad = inputNacionalidad.Text;
             string rol = inputRol.Text;
-            if (p_nombre.Length == 0 || s_nombre.Length == 0 || p_apellido.Length == 0 || s_apellido.Length == 0 || nacionalidad.Length == 0 || rol.Length == 0)
+            if (p_nombre.Length == 0 || p_apellido.Length == 0 || nacionalidad.Length == 0 || rol.Length == 0)
             {
                 MessageBox.Show("Debes llenar todos los campos!", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

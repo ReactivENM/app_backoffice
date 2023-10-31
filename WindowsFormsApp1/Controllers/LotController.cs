@@ -30,9 +30,9 @@ namespace WindowsFormsApp1.Controllers.LotController
                         while (reader.Read())
                         {
                             int id = reader.GetInt32(0);
-                            int id_camion = reader.GetInt32(1);
-                            int almacen_destino = reader.GetInt32(2);
-                            LotModel lot = new LotModel(id, id_camion, almacen_destino);
+                            int almacen_destino = reader.GetInt32(1);
+                            string estado = reader.GetString(2);
+                            LotModel lot = new LotModel(id, almacen_destino, estado);
                             data.Add(lot);
                         }
                         return data;
@@ -49,15 +49,15 @@ namespace WindowsFormsApp1.Controllers.LotController
             }
         }
 
-        public int Create(int id_camion, int almacen_destino)
+        public int Create(int id_almacen, string estado)
         {
             try
             {
-                string sql = "INSERT INTO Lote(id_camion, almacen_destino) VALUES(@id_camion, @almacen_destino); SELECT LAST_INSERT_ID()";
+                string sql = "INSERT INTO Lote(id_almacen, estado) VALUES(@id_almacen, @estado); SELECT LAST_INSERT_ID()";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@id_camion", id_camion);
-                    command.Parameters.AddWithValue("@almacen_destino", almacen_destino);
+                    command.Parameters.AddWithValue("@id_almacen", id_almacen);
+                    command.Parameters.AddWithValue("@estado", estado);
 
                     int id = Convert.ToInt32(command.ExecuteScalar());
                     Console.WriteLine($"Lote agregado exitosamente con ID: {id}");
@@ -74,16 +74,16 @@ namespace WindowsFormsApp1.Controllers.LotController
             }
         }
 
-        public bool Edit(int id, int id_camion, int almacen_destino)
+        public bool Edit(int id, int id_almacen, string estado)
         {
             try
             {
-                string sql = "UPDATE Lote SET id_camion = @id_camion, almacen_destino = @almacen_destino  WHERE id = @id";
+                string sql = "UPDATE Lote SET id_almacen = @id_almacen, estado = @estado  WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
-                    command.Parameters.AddWithValue("@id_camion", id_camion);
-                    command.Parameters.AddWithValue("@almacen_destino", almacen_destino);
+                    command.Parameters.AddWithValue("@id_almacen", id_almacen);
+                    command.Parameters.AddWithValue("@estado", estado);
 
                     int affectedRows = command.ExecuteNonQuery();
 
@@ -99,6 +99,7 @@ namespace WindowsFormsApp1.Controllers.LotController
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return false;
             }
             finally

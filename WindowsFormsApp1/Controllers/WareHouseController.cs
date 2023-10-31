@@ -31,12 +31,13 @@ namespace WindowsFormsApp1.Controllers.WarehouseController
                         while (reader.Read())
                         {
                             int id = reader.GetInt32(0);
-                            string calle = reader.GetString(1);
-                            string nro_puerta = reader.GetString(2);
-                            string cod_postal = reader.GetString(3);
-                            string capacidad = reader.GetInt32(4).ToString();
-                            string departamento = reader.GetString(5);
-                            WareHouseModel wh = new WareHouseModel(id, calle, nro_puerta, cod_postal, capacidad, departamento);
+                            string descripcion = reader.GetString(1);
+                            string calle = reader.GetString(2);
+                            string nro_puerta = reader.GetString(3);
+                            string cod_postal = reader.GetString(4);
+                            string capacidad = reader.GetInt32(5).ToString();
+                            string departamento = reader.GetString(6);
+                            WareHouseModel wh = new WareHouseModel(id, descripcion, calle, nro_puerta, cod_postal, capacidad, departamento);
                             data.Add(wh);
                         }
                         return data;
@@ -45,6 +46,7 @@ namespace WindowsFormsApp1.Controllers.WarehouseController
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return data;
             }
             finally
@@ -53,13 +55,14 @@ namespace WindowsFormsApp1.Controllers.WarehouseController
             }
         }
 
-        public int Create(string calle, string nro_puerta, string cod_postal, int capacidad, string departamento)
+        public int Create(string descripcion, string calle, string nro_puerta, string cod_postal, int capacidad, string departamento)
         {
             try
             {
-                string sql = "INSERT INTO Almacen(calle, nro_puerta, cod_postal, capacidad, departamento) VALUES(@calle, @nro_puerta, @cod_postal, @capacidad, @departamento); SELECT LAST_INSERT_ID()";
+                string sql = "INSERT INTO Almacen(descripcion, calle, nro_puerta, cod_postal, capacidad, departamento) VALUES(@descripcion, @calle, @nro_puerta, @cod_postal, @capacidad, @departamento); SELECT LAST_INSERT_ID()";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
+                    command.Parameters.AddWithValue("@descripcion", descripcion);
                     command.Parameters.AddWithValue("@calle", calle);
                     command.Parameters.AddWithValue("@nro_puerta", nro_puerta);
                     command.Parameters.AddWithValue("@cod_postal", cod_postal);
@@ -82,14 +85,15 @@ namespace WindowsFormsApp1.Controllers.WarehouseController
             }
         }
 
-        public bool Edit(int id, string calle, string nro_puerta, string cod_postal, int capacidad, string departamento)
+        public bool Edit(int id, string descripcion, string calle, string nro_puerta, string cod_postal, int capacidad, string departamento)
         {
             try
             {
-                string sql = "UPDATE Almacen SET calle = @calle, nro_puerta = @nro_puerta, cod_postal = @cod_postal, capacidad = @capacidad, departamento = @departamento WHERE id = @id";
+                string sql = "UPDATE Almacen SET descripcion = @descripcion, calle = @calle, nro_puerta = @nro_puerta, cod_postal = @cod_postal, capacidad = @capacidad, departamento = @departamento WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@descripcion", descripcion);
                     command.Parameters.AddWithValue("@calle", calle);
                     command.Parameters.AddWithValue("@nro_puerta", nro_puerta);
                     command.Parameters.AddWithValue("@cod_postal", cod_postal);

@@ -32,17 +32,15 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.input_almacen = new System.Windows.Forms.ComboBox();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.input_cliente = new System.Windows.Forms.ComboBox();
             this.input_dir_envio = new System.Windows.Forms.TextBox();
             this.input_estado = new System.Windows.Forms.ComboBox();
             this.lbl_estado = new System.Windows.Forms.Label();
             this.lbl_dir_envio = new System.Windows.Forms.Label();
-            this.lbl_descripcion = new System.Windows.Forms.Label();
-            this.input_descripcion = new System.Windows.Forms.TextBox();
             this.lbl_peso = new System.Windows.Forms.Label();
             this.input_peso = new System.Windows.Forms.TextBox();
             this.lbl_id_almacen = new System.Windows.Forms.Label();
-            this.btnSubmit = new System.Windows.Forms.Button();
             this.lbl_id_externo = new System.Windows.Forms.Label();
             this.input_id_externo = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
@@ -62,7 +60,7 @@
             // lblTitle
             // 
             this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Poppins SemiBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(369, 65);
@@ -78,42 +76,57 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(12, 71);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(345, 378);
+            this.panel2.Size = new System.Drawing.Size(345, 338);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel3.Controls.Add(this.input_almacen);
+            this.panel3.Controls.Add(this.btnSubmit);
+            this.panel3.Controls.Add(this.input_cliente);
             this.panel3.Controls.Add(this.input_dir_envio);
             this.panel3.Controls.Add(this.input_estado);
             this.panel3.Controls.Add(this.lbl_estado);
             this.panel3.Controls.Add(this.lbl_dir_envio);
-            this.panel3.Controls.Add(this.lbl_descripcion);
-            this.panel3.Controls.Add(this.input_descripcion);
             this.panel3.Controls.Add(this.lbl_peso);
             this.panel3.Controls.Add(this.input_peso);
             this.panel3.Controls.Add(this.lbl_id_almacen);
-            this.panel3.Controls.Add(this.btnSubmit);
             this.panel3.Controls.Add(this.lbl_id_externo);
             this.panel3.Controls.Add(this.input_id_externo);
-            this.panel3.Location = new System.Drawing.Point(23, 22);
+            this.panel3.Location = new System.Drawing.Point(23, 24);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(296, 337);
+            this.panel3.Size = new System.Drawing.Size(296, 290);
             this.panel3.TabIndex = 0;
             // 
-            // input_almacen
+            // btnSubmit
             // 
-            this.input_almacen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.input_almacen.FormattingEnabled = true;
-            this.input_almacen.Location = new System.Drawing.Point(5, 64);
-            this.input_almacen.Name = "input_almacen";
-            this.input_almacen.Size = new System.Drawing.Size(285, 21);
-            this.input_almacen.TabIndex = 17;
+            this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
+            this.btnSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
+            this.btnSubmit.FlatAppearance.BorderSize = 0;
+            this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubmit.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.ForeColor = System.Drawing.Color.White;
+            this.btnSubmit.Location = new System.Drawing.Point(6, 245);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(285, 38);
+            this.btnSubmit.TabIndex = 18;
+            this.btnSubmit.Text = "Crear paquete";
+            this.btnSubmit.UseVisualStyleBackColor = false;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // input_cliente
+            // 
+            this.input_cliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.input_cliente.FormattingEnabled = true;
+            this.input_cliente.Location = new System.Drawing.Point(5, 64);
+            this.input_cliente.Name = "input_cliente";
+            this.input_cliente.Size = new System.Drawing.Size(285, 21);
+            this.input_cliente.TabIndex = 17;
             // 
             // input_dir_envio
             // 
-            this.input_dir_envio.Location = new System.Drawing.Point(3, 208);
+            this.input_dir_envio.Location = new System.Drawing.Point(3, 160);
             this.input_dir_envio.Name = "input_dir_envio";
             this.input_dir_envio.Size = new System.Drawing.Size(288, 20);
             this.input_dir_envio.TabIndex = 16;
@@ -122,7 +135,7 @@
             // 
             this.input_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.input_estado.FormattingEnabled = true;
-            this.input_estado.Location = new System.Drawing.Point(6, 257);
+            this.input_estado.Location = new System.Drawing.Point(6, 209);
             this.input_estado.Name = "input_estado";
             this.input_estado.Size = new System.Drawing.Size(285, 21);
             this.input_estado.TabIndex = 14;
@@ -130,7 +143,7 @@
             // lbl_estado
             // 
             this.lbl_estado.AutoSize = true;
-            this.lbl_estado.Location = new System.Drawing.Point(3, 241);
+            this.lbl_estado.Location = new System.Drawing.Point(3, 193);
             this.lbl_estado.Name = "lbl_estado";
             this.lbl_estado.Size = new System.Drawing.Size(40, 13);
             this.lbl_estado.TabIndex = 13;
@@ -139,27 +152,11 @@
             // lbl_dir_envio
             // 
             this.lbl_dir_envio.AutoSize = true;
-            this.lbl_dir_envio.Location = new System.Drawing.Point(3, 192);
+            this.lbl_dir_envio.Location = new System.Drawing.Point(3, 144);
             this.lbl_dir_envio.Name = "lbl_dir_envio";
             this.lbl_dir_envio.Size = new System.Drawing.Size(83, 13);
             this.lbl_dir_envio.TabIndex = 12;
             this.lbl_dir_envio.Text = "Dirección envío";
-            // 
-            // lbl_descripcion
-            // 
-            this.lbl_descripcion.AutoSize = true;
-            this.lbl_descripcion.Location = new System.Drawing.Point(3, 144);
-            this.lbl_descripcion.Name = "lbl_descripcion";
-            this.lbl_descripcion.Size = new System.Drawing.Size(63, 13);
-            this.lbl_descripcion.TabIndex = 10;
-            this.lbl_descripcion.Text = "Descripcion";
-            // 
-            // input_descripcion
-            // 
-            this.input_descripcion.Location = new System.Drawing.Point(3, 160);
-            this.input_descripcion.Name = "input_descripcion";
-            this.input_descripcion.Size = new System.Drawing.Size(288, 20);
-            this.input_descripcion.TabIndex = 9;
             // 
             // lbl_peso
             // 
@@ -182,21 +179,9 @@
             this.lbl_id_almacen.AutoSize = true;
             this.lbl_id_almacen.Location = new System.Drawing.Point(3, 48);
             this.lbl_id_almacen.Name = "lbl_id_almacen";
-            this.lbl_id_almacen.Size = new System.Drawing.Size(48, 13);
+            this.lbl_id_almacen.Size = new System.Drawing.Size(39, 13);
             this.lbl_id_almacen.TabIndex = 6;
-            this.lbl_id_almacen.Text = "Almacen";
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(5, 295);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(288, 38);
-            this.btnSubmit.TabIndex = 4;
-            this.btnSubmit.Text = "Crear paquete";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            this.lbl_id_almacen.Text = "Cliente";
             // 
             // lbl_id_externo
             // 
@@ -218,11 +203,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 461);
+            this.ClientSize = new System.Drawing.Size(369, 421);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.MaximumSize = new System.Drawing.Size(385, 500);
-            this.MinimumSize = new System.Drawing.Size(385, 500);
+            this.MaximumSize = new System.Drawing.Size(385, 460);
+            this.MinimumSize = new System.Drawing.Size(385, 460);
             this.Name = "CreatePackage";
             this.Text = "Crear paquete";
             this.panel1.ResumeLayout(false);
@@ -241,16 +226,14 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lbl_id_externo;
         private System.Windows.Forms.TextBox input_id_externo;
-        private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label lbl_peso;
         private System.Windows.Forms.TextBox input_peso;
         private System.Windows.Forms.Label lbl_id_almacen;
         private System.Windows.Forms.ComboBox input_estado;
         private System.Windows.Forms.Label lbl_estado;
         private System.Windows.Forms.Label lbl_dir_envio;
-        private System.Windows.Forms.Label lbl_descripcion;
-        private System.Windows.Forms.TextBox input_descripcion;
         private System.Windows.Forms.TextBox input_dir_envio;
-        private System.Windows.Forms.ComboBox input_almacen;
+        private System.Windows.Forms.ComboBox input_cliente;
+        private System.Windows.Forms.Button btnSubmit;
     }
 }

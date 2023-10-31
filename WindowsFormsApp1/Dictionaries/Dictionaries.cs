@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.Controllers.WarehouseController;
+using WindowsFormsApp1.Controllers.ClientController;
 
 namespace WindowsFormsApp1.Dictionary
 {
@@ -64,6 +65,19 @@ namespace WindowsFormsApp1.Dictionary
             dictionary.Add("en_espera", "En espera");
             dictionary.Add("en_viaje", "En viaje");
             dictionary.Add("entregado", "Entregado");
+
+            return dictionary;
+        }
+        public Dictionary<string, string> ClientName()
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            ClientController controller = new ClientController();
+            List<ClientModel> clients = controller.GetAll();
+            dictionary.Add("", "Sin seleccionar");
+            foreach (ClientModel client in clients)
+            {
+                dictionary.Add(client.id.ToString(), client.nombre);
+            }
 
             return dictionary;
         }

@@ -11,8 +11,8 @@ namespace WindowsFormsApp1.Forms
 {
     public interface HandlePackage
     {
-        void OnCreate(int id_interno, string id_externo, int id_almacen, double peso, string descripcion, string dir_envio, string estado);
-        void OnEdit(int id_interno, string id_externo, int id_almacen, double peso, string descripcion, string dir_envio, string estado);
+        void OnCreate(int id_interno, string id_externo, int id_cliente, double peso, string dir_envio, string estado);
+        void OnEdit(int id_interno, string id_externo, int id_cliente, double peso, string dir_envio, string estado);
     }
 
     public partial class FormPackage : Form, HandlePackage
@@ -29,7 +29,6 @@ namespace WindowsFormsApp1.Forms
 
         public FormPackage()
         {
-            this.Resize += new EventHandler(Form_Resize);
             initializeFormAsync();
         }
 
@@ -71,9 +70,10 @@ namespace WindowsFormsApp1.Forms
             {
                 Dictionaries dictionaries = new Dictionaries();
                 Dictionary<string, string> packageStatus = dictionaries.PackageStatus();
+                Dictionary<string, string> clientNames = dictionaries.ClientName();
 
                 DataGridViewRow newRow = new DataGridViewRow();
-                newRow.CreateCells(dataGridView, packageData[i].id_interno, packageData[i].id_externo, packageData[i].id_almacen, packageData[i].peso, packageData[i].descripcion, packageData[i].dir_envio, packageStatus.ContainsKey(packageData[i].estado) ? packageStatus[packageData[i].estado] : packageData[i].estado);
+                newRow.CreateCells(dataGridView, packageData[i].id_interno, packageData[i].id_externo, clientNames[packageData[i].id_cliente.ToString()], packageData[i].peso, packageData[i].dir_envio, packageStatus.ContainsKey(packageData[i].estado) ? packageStatus[packageData[i].estado] : packageData[i].estado);
                 dataGridView.Rows.Add(newRow);
             }
         }
@@ -128,9 +128,9 @@ namespace WindowsFormsApp1.Forms
             new Forms.Package.CreatePackage(this).ShowDialog();
         }
 
-        public void OnCreate(int id_interno, string id_externo, int id_almacen, double peso, string descripcion, string dir_envio, string estado)
+        public void OnCreate(int id_interno, string id_externo, int id_cliente, double peso, string dir_envio, string estado)
         {
-            PackageModel package = new PackageModel(id_interno, id_externo, id_almacen, peso, descripcion, dir_envio, estado);
+            PackageModel package = new PackageModel(id_interno, id_externo, id_cliente, peso, dir_envio, estado);
             packageData.Add(package);
             dataLength += 1;
             int lastPageRes = (int)Math.Ceiling((double)dataLength / rowsPerPage);
@@ -146,19 +146,18 @@ namespace WindowsFormsApp1.Forms
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Form editPackage = new Forms.Package.EditPackage(selectedPackage.id_interno, selectedPackage.id_externo, selectedPackage.id_almacen, selectedPackage.peso, selectedPackage.descripcion, selectedPackage.dir_envio, selectedPackage.estado, this);
+            Form editPackage = new Forms.Package.EditPackage(selectedPackage.id_interno, selectedPackage.id_externo, selectedPackage.id_cliente, selectedPackage.peso, selectedPackage.dir_envio, selectedPackage.estado, this);
             editPackage.ShowDialog();
         }
 
-        public void OnEdit(int id_interno, string id_externo, int id_almacen, double peso, string descripcion, string dir_envio, string estado)
+        public void OnEdit(int id_interno, string id_externo, int id_cliente, double peso, string dir_envio, string estado)
         {
             PackageModel editedPackage = packageData.Find(package => package.id_interno == id_interno);
             if (editedPackage == null) return;
             editedPackage.id_interno = id_interno;
             editedPackage.id_externo = id_externo;
-            editedPackage.id_almacen = id_almacen;
+            editedPackage.id_cliente = id_cliente;
             editedPackage.peso = peso;
-            editedPackage.descripcion = descripcion;
             editedPackage.dir_envio = dir_envio;
             editedPackage.estado = estado;
             showRows(actualPage);

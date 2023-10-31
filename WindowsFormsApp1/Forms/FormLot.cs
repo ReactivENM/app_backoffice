@@ -11,8 +11,8 @@ namespace WindowsFormsApp1.Forms
 {
     public interface HandleLot
     {
-        void OnCreate(int id, int id_camion, int almacen_destino);
-        void OnEdit(int id, int id_camion, int almacen_destino);
+        void OnCreate(int id, int almacen_destino, string estado);
+        void OnEdit(int id, int almacen_destino, string estado);
     }
 
     public partial class FormLot : Form, HandleLot
@@ -29,7 +29,6 @@ namespace WindowsFormsApp1.Forms
 
         public FormLot()
         {
-            this.Resize += new EventHandler(Form_Resize);
             initializeFormAsync();
         }
 
@@ -70,10 +69,11 @@ namespace WindowsFormsApp1.Forms
             for (int i = (page - 1) * rowsPerPage; i < (page * rowsPerPage > dataLength ? dataLength : page * rowsPerPage); i++)
             {
                 Dictionaries dictionaries = new Dictionaries();
+                Dictionary<string, string> warehouseSelect = dictionaries.DepartmentByWarehouseID();
                 Dictionary<string, string> packageStatus = dictionaries.PackageStatus();
 
                 DataGridViewRow newRow = new DataGridViewRow();
-                newRow.CreateCells(dataGridView, lotData[i].id, lotData[i].id_camion, lotData[i].almacen_destino);
+                newRow.CreateCells(dataGridView, lotData[i].id, warehouseSelect[lotData[i].almacen_destino.ToString()], packageStatus.ContainsKey(lotData[i].estado) ? packageStatus[lotData[i].estado] : lotData[i].estado);
                 dataGridView.Rows.Add(newRow);
             }
         }
@@ -88,6 +88,7 @@ namespace WindowsFormsApp1.Forms
                 object id_lot = row.Cells["id_lot"].Value;
                 LotModel lot = lotData.Find(p => p.id == Convert.ToInt32(id_lot));
                 selectedLot = lot;
+                btnPackages.Enabled = true;
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
             }
@@ -104,6 +105,7 @@ namespace WindowsFormsApp1.Forms
 
             // Disable buttons and unselect actual warehouse
             selectedLot = null;
+            btnPackages.Enabled = false;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
         }
@@ -119,6 +121,7 @@ namespace WindowsFormsApp1.Forms
 
             // Disable buttons and unselect actual warehouse
             selectedLot = null;
+            btnPackages.Enabled = false;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
         }
@@ -128,9 +131,9 @@ namespace WindowsFormsApp1.Forms
             new Forms.Lot.CreateLot(this).ShowDialog();
         }
 
-        public void OnCreate(int id_lot, int id_camion, int almacen_destino)
+        public void OnCreate(int id_lot, int almacen_destino, string estado)
         {
-            LotModel package = new LotModel(id_lot, id_camion, almacen_destino);
+            LotModel package = new LotModel(id_lot, almacen_destino, estado);
             lotData.Add(package);
             dataLength += 1;
             int lastPageRes = (int)Math.Ceiling((double)dataLength / rowsPerPage);
@@ -138,29 +141,31 @@ namespace WindowsFormsApp1.Forms
             lblPage.Text = actualPage.ToString() + "/" + lastPage;
             showRows(actualPage);
 
-            // Disable buttons and unselect actual warehouse
+            // Disable buttons and unselect actual lot
             selectedLot = null;
+            btnPackages.Enabled = false;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Form editLot = new Forms.Lot.EditLot(selectedLot.id, selectedLot.id_camion, selectedLot.almacen_destino, this);
+            Form editLot = new Forms.Lot.EditLot(selectedLot.id, selectedLot.almacen_destino, selectedLot.estado, this);
             editLot.ShowDialog();
         }
 
-        public void OnEdit(int id_lot, int id_camion, int almacen_destino)
+        public void OnEdit(int id_lot, int almacen_destino, string estado)
         {
             LotModel editedLot = lotData.Find(lot => lot.id == id_lot);
             if (editedLot == null) return;
             editedLot.id = id_lot;
-            editedLot.id_camion = id_camion;
             editedLot.almacen_destino = almacen_destino;
+            editedLot.estado = estado;
             showRows(actualPage);
 
             // Disable buttons and unselect actual warehouse
             selectedLot = null;
+            btnPackages.Enabled = false;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
         }
@@ -196,10 +201,16 @@ namespace WindowsFormsApp1.Forms
 
                 // Disable buttons and unselect actual warehouse
                 selectedLot = null;
+                btnPackages.Enabled = false;
                 btnEdit.Enabled = false;
                 btnDelete.Enabled = false;
             }
             else MessageBox.Show("Hubo un error. Refresca la lista de almacenes.");
+        }
+
+        private void btnPackages_Click(object sender, EventArgs e)
+        {
+            new Forms.Lot.PackageLot(selectedLot.id).ShowDialog();
         }
 
         private void UpdateButtonImage(Button btn, string enabled, string disabled)

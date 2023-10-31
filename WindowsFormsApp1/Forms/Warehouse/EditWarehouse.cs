@@ -11,11 +11,12 @@ namespace WindowsFormsApp1.Forms.Warehouse
         private HandleWarehouse callback;
         private int id;
 
-        public EditWarehouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad, string departamento, HandleWarehouse callback)
+        public EditWarehouse(int id, string descripcion, string calle, string nro_puerta, string cod_postal, string capacidad, string departamento, HandleWarehouse callback)
         {
             InitializeComponent();
             this.callback = callback;
             this.id = id;
+            inputDescripcion.Text = descripcion;
             inputAddress.Text = calle;
             inputNumber.Text = nro_puerta;
             inputPostalCode.Text = cod_postal;
@@ -34,6 +35,7 @@ namespace WindowsFormsApp1.Forms.Warehouse
             bool fieldsValid = validateFields();
             if (!fieldsValid) return;
 
+            string descripcion = inputDescripcion.Text;
             string calle = inputAddress.Text;
             string nro_puerta = inputNumber.Text;
             string cod_postal = inputPostalCode.Text;
@@ -41,8 +43,8 @@ namespace WindowsFormsApp1.Forms.Warehouse
             string departamento = inputDepartamento.SelectedValue.ToString();
 
             WareHouseController controller = new WareHouseController();
-            controller.Edit(id, calle, nro_puerta, cod_postal, capacidad, departamento);
-            callback.OnEditWarehouse(id, calle, nro_puerta, cod_postal, capacidad.ToString(), departamento);
+            controller.Edit(id, descripcion, calle, nro_puerta, cod_postal, capacidad, departamento);
+            callback.OnEdit(id, descripcion, calle, nro_puerta, cod_postal, capacidad.ToString(), departamento);
 
             this.Close();
         }

@@ -10,9 +10,10 @@ namespace WindowsFormsApp1.Models
         public string s_apellido { get; set; }
         public string nro_documento { get; set; }
         public string nacionalidad { get; set; }
+        public int deshabilitado { get; set; }
         public string rol { get; set; }
 
-        public UserModel(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, string rol)
+        public UserModel(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, int deshabilitado, string rol)
         {
             this.id = id;
             this.p_nombre = p_nombre;
@@ -21,6 +22,7 @@ namespace WindowsFormsApp1.Models
             this.s_apellido = s_apellido;
             this.nro_documento = nro_documento;
             this.nacionalidad = nacionalidad;
+            this.deshabilitado = deshabilitado;
             this.rol = rol;
         }
     }

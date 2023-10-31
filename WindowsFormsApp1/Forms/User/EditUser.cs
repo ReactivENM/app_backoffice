@@ -9,7 +9,7 @@ namespace WindowsFormsApp1.Forms.User
         private HandleUser callback;
         private int id;
 
-        public EditUser(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, string rol, HandleUser callback)
+        public EditUser(int id, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, int deshabilitado, string rol, HandleUser callback)
         {
             InitializeComponent();
             this.callback = callback;
@@ -20,6 +20,7 @@ namespace WindowsFormsApp1.Forms.User
             inputSApellido.Text = s_apellido;
             inputDocumento.Text = nro_documento;
             inputNacionalidad.Text = nacionalidad;
+            checkDisabled.Checked = deshabilitado == 0 ? false : true;
             inputRol.Text = rol;
         }
 
@@ -34,13 +35,12 @@ namespace WindowsFormsApp1.Forms.User
             string s_apellido = inputSApellido.Text;
             string nro_documento = inputDocumento.Text;
             string nacionalidad = inputNacionalidad.Text;
+            int deshabilitado = checkDisabled.Checked ? 1 : 0;
             string rol = inputRol.Text;
 
             UserController controller = new UserController();
-            Console.WriteLine("start");
-            controller.Edit(id, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, rol);
-            callback.OnEdit(id, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, rol);
-            Console.WriteLine("end");
+            controller.Edit(id, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, deshabilitado, rol);
+            callback.OnEdit(id, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, deshabilitado, rol);
 
             this.Close();
         }
@@ -54,7 +54,7 @@ namespace WindowsFormsApp1.Forms.User
             string nro_documento = inputDocumento.Text;
             string nacionalidad = inputNacionalidad.Text;
             string rol = inputRol.Text;
-            if (p_nombre.Length == 0 || s_nombre.Length == 0 || p_apellido.Length == 0 || s_apellido.Length == 0 || nacionalidad.Length == 0 || rol.Length == 0)
+            if (p_nombre.Length == 0 || p_apellido.Length == 0 || nacionalidad.Length == 0 || rol.Length == 0)
             {
                 MessageBox.Show("Debes llenar todos los campos!", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

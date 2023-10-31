@@ -19,6 +19,7 @@ namespace WindowsFormsApp1.Forms.Warehouse
             bool fieldsValid = validateFields();
             if (!fieldsValid) return;
 
+            string descripcion = inputDescripcion.Text;
             string calle = inputAddress.Text;
             string nro_puerta = inputNumber.Text;
             string cod_postal = inputPostalCode.Text;
@@ -26,8 +27,8 @@ namespace WindowsFormsApp1.Forms.Warehouse
             string departamento = inputDeparamento.Text;
 
             WareHouseController controller = new WareHouseController();
-            int id = controller.Create(calle, nro_puerta, cod_postal, int.Parse(capacidad), departamento);
-            callback.OnCreateWarehouse(id, calle, nro_puerta, cod_postal, capacidad.ToString(), departamento);
+            int id = controller.Create(descripcion, calle, nro_puerta, cod_postal, int.Parse(capacidad), departamento);
+            callback.OnCreate(id, descripcion, calle, nro_puerta, cod_postal, capacidad.ToString(), departamento);
 
             this.Close();
         }

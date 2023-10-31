@@ -13,20 +13,20 @@ namespace WindowsFormsApp1.Forms.Lot
         private HandleLot callback;
         private int id;
 
-        public EditLot(int id, int id_camion, int almacen_destino, HandleLot callback)
+        public EditLot(int id, int almacen_destino, string estado, HandleLot callback)
         {
             this.callback = callback;
             this.id = id;
-            initializeFormAsync(id_camion, almacen_destino);
+            initializeFormAsync(almacen_destino, estado);
         }
 
-        private async void initializeFormAsync(int id_camion, int almacen_destino)
+        private async void initializeFormAsync(int almacen_destino, string estado)
         {
             InitializeComponent();
-            await fetchData(id_camion, almacen_destino);
+            await fetchData(almacen_destino, estado);
         }
 
-        private async Task fetchData(int id_camion, int almacen_destino)
+        private async Task fetchData(int almacen_destino, string estado)
         {
             Dictionaries dictionaries = new Dictionaries();
             Dictionary<string, string> warehouseSelect = dictionaries.DepartmentByWarehouseID();
@@ -35,7 +35,11 @@ namespace WindowsFormsApp1.Forms.Lot
             input_almacen.ValueMember = "Key";
             input_almacen.SelectedValue = almacen_destino.ToString();
 
-            input_id_camion.Text = id_camion.ToString();
+            Dictionary<string, string> statusSelect = dictionaries.PackageStatus();
+            input_estado.DataSource = new BindingSource(statusSelect, null);
+            input_estado.DisplayMember = "Value";
+            input_estado.ValueMember = "Key";
+            input_estado.SelectedValue = estado;
         }
 
         private async void btnSubmit_Click(object sender, EventArgs e)
@@ -43,21 +47,21 @@ namespace WindowsFormsApp1.Forms.Lot
             bool fieldsValid = validateFields();
             if (!fieldsValid) return;
 
-            string id_camion = input_id_camion.SelectedValue.ToString();
-            string almacen_destino = input_almacen.Text;
+            string almacen_destino = input_almacen.SelectedValue.ToString();
+            string estado = input_estado.SelectedValue.ToString();
 
             LotController controller = new LotController();
-            controller.Edit(id, Convert.ToInt32(id_camion), Convert.ToInt32(almacen_destino));
-            callback.OnEdit(id, Convert.ToInt32(id_camion), Convert.ToInt32(almacen_destino));
+            controller.Edit(id, Convert.ToInt32(almacen_destino), estado);
+            callback.OnEdit(id, Convert.ToInt32(almacen_destino), estado);
 
             this.Close();
         }
 
         private bool validateFields()
         {
-            string id_camion = input_id_camion.SelectedValue.ToString();
-            string almacen_destino = input_almacen.Text;
-            if (id_camion.Length == 0 || almacen_destino.Length == 0)
+            string almacen_destino = input_almacen.SelectedValue.ToString();
+            string estado = input_almacen.Text;
+            if (almacen_destino.Length == 0 || estado.Length == 0)
             {
                 MessageBox.Show("Debes llenar todos los campos!", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

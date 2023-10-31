@@ -14,8 +14,8 @@ namespace WindowsFormsApp1.Forms
 {
     public interface HandleWarehouse
     {
-        void OnCreateWarehouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad, string departamento);
-        void OnEditWarehouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad, string departamento);
+        void OnCreate(int id, string descripcion, string calle, string nro_puerta, string cod_postal, string capacidad, string departamento);
+        void OnEdit(int id, string descripcion, string calle, string nro_puerta, string cod_postal, string capacidad, string departamento);
     }
 
     public partial class FormWarehouse : Form, HandleWarehouse
@@ -60,13 +60,21 @@ namespace WindowsFormsApp1.Forms
 
         public async Task fetchWareHouseData()
         {
-            WareHouseController wh = new WareHouseController();
-            List<WareHouseModel> warehouses = wh.GetAll();
-            foreach (WareHouseModel warehouse in warehouses)
+            try
             {
-                wareHouseData.Add(warehouse);
+                WareHouseController wh = new WareHouseController();
+                List<WareHouseModel> warehouses = wh.GetAll();
+                foreach (WareHouseModel warehouse in warehouses)
+                {
+                    wareHouseData.Add(warehouse);
+                }
+                wareHouseLength = warehouses.Count;
             }
-            wareHouseLength = warehouses.Count;
+            catch(Exception err)
+            {
+                Console.WriteLine(err);
+            }
+            
         }
 
         private void showRows(int page)
@@ -76,7 +84,7 @@ namespace WindowsFormsApp1.Forms
             {
                 DataGridViewRow newRow = new DataGridViewRow();
                 string department = departmentsDictionary.ContainsKey(wareHouseData[i].departamento) ? departmentsDictionary[wareHouseData[i].departamento] : wareHouseData[i].departamento;
-                newRow.CreateCells(dataGridView, wareHouseData[i].id, wareHouseData[i].calle, wareHouseData[i].nro_puerta, wareHouseData[i].cod_postal, wareHouseData[i].capacidad, department);
+                newRow.CreateCells(dataGridView, wareHouseData[i].id, wareHouseData[i].descripcion, wareHouseData[i].calle, wareHouseData[i].nro_puerta, wareHouseData[i].cod_postal, wareHouseData[i].capacidad, department);
                 dataGridView.Rows.Add(newRow);
             }
         }
@@ -131,9 +139,9 @@ namespace WindowsFormsApp1.Forms
             new Forms.Warehouse.CreateWarehouse(this).ShowDialog();
         }
 
-        public void OnCreateWarehouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad, string departamento)
+        public void OnCreate(int id, string descripcion, string calle, string nro_puerta, string cod_postal, string capacidad, string departamento)
         {
-            WareHouseModel wh = new WareHouseModel(id, calle, nro_puerta, cod_postal, capacidad, departamento);
+            WareHouseModel wh = new WareHouseModel(id, descripcion, calle, nro_puerta, cod_postal, capacidad, departamento);
             wareHouseData.Add(wh);
             wareHouseLength += 1;
             int lastPageRes = (int)Math.Ceiling((double)wareHouseLength / rowsPerPage);
@@ -149,14 +157,15 @@ namespace WindowsFormsApp1.Forms
 
         private void btnEditWarehouse_Click(object sender, EventArgs e)
         {
-            Form warehouse = new Forms.Warehouse.EditWarehouse(selectedWarehouse.id, selectedWarehouse.calle, selectedWarehouse.nro_puerta, selectedWarehouse.cod_postal, selectedWarehouse.capacidad, selectedWarehouse.departamento, this);
+            Form warehouse = new Forms.Warehouse.EditWarehouse(selectedWarehouse.id, selectedWarehouse.descripcion, selectedWarehouse.calle, selectedWarehouse.nro_puerta, selectedWarehouse.cod_postal, selectedWarehouse.capacidad, selectedWarehouse.departamento, this);
             warehouse.ShowDialog();
         }
 
-        public void OnEditWarehouse(int id, string calle, string nro_puerta, string cod_postal, string capacidad, string departamento)
+        public void OnEdit(int id, string descripcion, string calle, string nro_puerta, string cod_postal, string capacidad, string departamento)
         {
             WareHouseModel editedWarehouse = wareHouseData.Find(wh => wh.id == id);
             if (editedWarehouse == null) return;
+            editedWarehouse.descripcion = descripcion;
             editedWarehouse.calle = calle;
             editedWarehouse.nro_puerta = nro_puerta;
             editedWarehouse.cod_postal = cod_postal;
