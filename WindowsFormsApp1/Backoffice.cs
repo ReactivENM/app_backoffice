@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
     public partial class Backoffice : Form
     {
         // Fields
+        private Button currentButton;
         private Form activeForm;
 
         public Backoffice()
@@ -30,6 +31,31 @@ namespace WindowsFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormWarehouse(), sender);
+        }
+
+        private void ActivateButton(object btnSender)
+        {
+            if (btnSender != null)
+            {
+                if (currentButton != (Button)btnSender)
+                {
+                    DisableButton();
+                    Color color = ColorTranslator.FromHtml("#D8D8D8");
+                    currentButton = (Button)btnSender;
+                    currentButton.BackColor = color;
+                }
+            }
+        }
+
+        private void DisableButton()
+        {
+            foreach(Control previousBtn in panelMenu.Controls)
+            {
+                if(previousBtn.GetType() == typeof(Button))
+                {
+                    previousBtn.BackColor = Color.Transparent;
+                }
+            }
         }
 
         private void OpenChildForm(Form childForm, object btnSender)
@@ -52,31 +78,31 @@ namespace WindowsFormsApp1
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormUser(), sender);
+            ActivateButton(sender);
         }
 
         private void btnAlmacen_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormWarehouse(), sender);
+            ActivateButton(sender);
         }
 
         private void btnCamiones_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormTruck(), sender);
+            ActivateButton(sender);
         }
 
         private void btnLotes_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormLot(), sender);
+            ActivateButton(sender);
         }
 
         private void btnPaquetes_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormPackage(), sender);
-        }
-
-        private void btnTrayectos_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.FormJourney(), sender);
+            ActivateButton(sender);
         }
     }
 }
