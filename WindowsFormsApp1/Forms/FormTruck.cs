@@ -87,6 +87,7 @@ namespace WindowsFormsApp1.Forms
                 object id = row.Cells["id"].Value;
                 TruckModel wh = truckData.Find(d => d.id == Convert.ToInt32(id));
                 selectedTruck = wh;
+                btnLot.Enabled = true;
                 btnEditTruck.Enabled = true;
                 btnDeleteTruck.Enabled = true;
             }
@@ -103,6 +104,7 @@ namespace WindowsFormsApp1.Forms
 
             // Disable buttons and unselect actual warehouse
             selectedTruck = null;
+            btnLot.Enabled = false;
             btnEditTruck.Enabled = false;
             btnDeleteTruck.Enabled = false;
         }
@@ -118,6 +120,7 @@ namespace WindowsFormsApp1.Forms
 
             // Disable buttons and unselect actual warehouse
             selectedTruck = null;
+            btnLot.Enabled = false;
             btnEditTruck.Enabled = false;
             btnDeleteTruck.Enabled = false;
         }
@@ -139,6 +142,7 @@ namespace WindowsFormsApp1.Forms
 
             // Disable buttons and unselect actual warehouse
             selectedTruck = null;
+            btnLot.Enabled = false;
             btnEditTruck.Enabled = false;
             btnDeleteTruck.Enabled = false;
         }
@@ -161,8 +165,14 @@ namespace WindowsFormsApp1.Forms
 
             // Disable buttons and unselect actual warehouse
             selectedTruck = null;
+            btnLot.Enabled = false;
             btnEditTruck.Enabled = false;
             btnDeleteTruck.Enabled = false;
+        }
+
+        private void btnLot_Click(object sender, EventArgs e)
+        {
+            new Forms.Truck.TruckLot(selectedTruck.id).ShowDialog();
         }
 
         private void btnDeleteTruck_Click(object sender, EventArgs e)
@@ -190,6 +200,7 @@ namespace WindowsFormsApp1.Forms
 
                         // Disable buttons and unselect actual warehouse
                         selectedTruck = null;
+                        btnLot.Enabled = false;
                         btnEditTruck.Enabled = false;
                         btnDeleteTruck.Enabled = false;
                         return;
@@ -198,6 +209,7 @@ namespace WindowsFormsApp1.Forms
 
                     // Disable buttons and unselect actual warehouse
                     selectedTruck = null;
+                    btnLot.Enabled = false;
                     btnEditTruck.Enabled = false;
                     btnDeleteTruck.Enabled = false;
                 }

@@ -4,21 +4,21 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
-using WindowsFormsApp1.Controllers.PackageLotController;
+using WindowsFormsApp1.Controllers.TruckLotController;
 using WindowsFormsApp1.Dictionary;
 
-namespace WindowsFormsApp1.Forms.Lot
+namespace WindowsFormsApp1.Forms.Truck
 {
-    public interface HandlePackageLot
+    public interface HandleTruckLot
     {
-        void OnCreate(int id_interno_paquete, int id_lote, int id_usuario, string fecha_hora);
-        void OnEdit(int id_interno_paquete, int id_lote, int id_usuario, string fecha_hora);
+        void OnCreate(int id, int id_camion, int id_lote);
+        void OnEdit(int id, int id_camion, int id_lote);
     }
 
-    public partial class PackageLot : Form, HandlePackageLot
+    public partial class TruckLot : Form, HandleTruckLot
     {
-        List<PackageLotModel> packageLotData = new List<PackageLotModel>();
-        private int lote;
+        List<TruckLotModel> truckLot = new List<TruckLotModel>();
+        private int truck;
         private int dataLength = 0;
         private const int rowsPerPage = 10;
 
@@ -26,11 +26,11 @@ namespace WindowsFormsApp1.Forms.Lot
         private int actualPage = 1;
 
         private bool isRowSelected = false;
-        PackageLotModel selectedPackageLot = null;
+        TruckLotModel selectedTruckLot = null;
 
-        public PackageLot(int lote)
+        public TruckLot(int truck)
         {
-            this.lote = lote;
+            this.truck = truck;
             initializeFormAsync();
         }
 
@@ -56,13 +56,13 @@ namespace WindowsFormsApp1.Forms.Lot
 
         public async Task fetchData()
         {
-            PackageLotController controller = new PackageLotController();
-            List<PackageLotModel> packages = controller.GetAllByLotId(lote);
-            foreach (PackageLotModel package in packages)
+            TruckLotController controller = new TruckLotController();
+            List<TruckLotModel> lots = controller.GetAllByTruckId(truck);
+            foreach (TruckLotModel lot in lots)
             {
-                packageLotData.Add(package);
+                truckLot.Add(lot);
             }
-            dataLength = packages.Count;
+            dataLength = lots.Count;
         }
 
         private void showRows(int page)
@@ -70,13 +70,14 @@ namespace WindowsFormsApp1.Forms.Lot
             dataGridView.Rows.Clear();
             for (int i = (page - 1) * rowsPerPage; i < (page * rowsPerPage > dataLength ? dataLength : page * rowsPerPage); i++)
             {
-                if(packageLotData[i].id_lote != lote)
+                if(truckLot[i].id_camion != truck)
                 {
                     return;
                 }
+                Console.WriteLine(truckLot[i].id_camion + ", " + truck);
 
                 DataGridViewRow newRow = new DataGridViewRow();
-                newRow.CreateCells(dataGridView, packageLotData[i].id_interno_paquete, packageLotData[i].id_lote, packageLotData[i].id_usuario, packageLotData[i].fecha_hora);
+                newRow.CreateCells(dataGridView, truckLot[i].id, truckLot[i].id_camion, truckLot[i].id_lote);
                 dataGridView.Rows.Add(newRow);
             }
         }
@@ -88,9 +89,9 @@ namespace WindowsFormsApp1.Forms.Lot
                 isRowSelected = true;
 
                 DataGridViewRow row = dataGridView.Rows[e.RowIndex];
-                object id_interno_paquete = row.Cells["id_interno_paquete"].Value;
-                PackageLotModel package = packageLotData.Find(p => p.id_interno_paquete == Convert.ToInt32(id_interno_paquete));
-                selectedPackageLot = package;
+                object id_trucklot = row.Cells["id"].Value;
+                TruckLotModel truck = truckLot.Find(p => p.id == Convert.ToInt32(id_trucklot));
+                selectedTruckLot = truck;
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
             }
@@ -106,7 +107,7 @@ namespace WindowsFormsApp1.Forms.Lot
             showRows(actualPage);
 
             // Disable buttons and unselect actual warehouse
-            selectedPackageLot = null;
+            selectedTruckLot = null;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
         }
@@ -121,20 +122,20 @@ namespace WindowsFormsApp1.Forms.Lot
             showRows(actualPage);
 
             // Disable buttons and unselect actual warehouse
-            selectedPackageLot = null;
+            selectedTruckLot = null;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            new Forms.Lot.AddPackageToLot(lote, this).ShowDialog();
+            new Forms.Truck.AddTruckToLot(truck, this).ShowDialog();
         }
 
-        public void OnCreate(int id_interno_paquete, int id_lote, int id_usuario, string fecha_hora)
+        public void OnCreate(int id, int id_camion, int id_lote)
         {
-            PackageLotModel packageLot = new PackageLotModel(id_interno_paquete, id_lote, id_usuario, fecha_hora);
-            packageLotData.Add(packageLot);
+            TruckLotModel packageLot = new TruckLotModel(id, id_camion, id_lote);
+            truckLot.Add(packageLot);
             dataLength += 1;
             int lastPageRes = (int)Math.Ceiling((double)dataLength / rowsPerPage);
             lastPage = Convert.ToInt32(lastPageRes);
@@ -142,44 +143,42 @@ namespace WindowsFormsApp1.Forms.Lot
             showRows(actualPage);
 
             // Disable buttons and unselect actual warehouse
-            selectedPackageLot = null;
+            selectedTruckLot = null;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Form editPackage = new Forms.Lot.EditPackageToLot(selectedPackageLot.id_interno_paquete, selectedPackageLot.id_lote, this);
+            Form editPackage = new Forms.Truck.EditTruckToLot(selectedTruckLot.id, selectedTruckLot.id_camion, selectedTruckLot.id_lote, this);
             editPackage.ShowDialog();
         }
 
-        public void OnEdit(int id_interno_paquete, int id_lote, int id_usuario, string fecha_hora)
+        public void OnEdit(int id, int id_camion, int id_lote)
         {
-            PackageLotModel editedPackage = packageLotData.Find(package => package.id_interno_paquete == id_interno_paquete);
-            if (editedPackage == null) return;
-            editedPackage.id_interno_paquete = id_interno_paquete;
-            editedPackage.id_lote = id_lote;
-            editedPackage.id_usuario = id_usuario;
-            editedPackage.fecha_hora = fecha_hora;
+            TruckLotModel editedLot = truckLot.Find(truckLot => truckLot.id == id);
+            if (editedLot == null) return;
+            editedLot.id_camion = id_camion;
+            editedLot.id_lote = id_lote;
             showRows(actualPage);
 
             // Disable buttons and unselect actual warehouse
-            selectedPackageLot = null;
+            selectedTruckLot = null;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            PackageLotController controller = new PackageLotController();
-            bool res = controller.Delete(selectedPackageLot.id_interno_paquete);
+            TruckLotController controller = new TruckLotController();
+            bool res = controller.Delete(selectedTruckLot.id);
 
             if (res == true)
             {
-                packageLotData.RemoveAll(package => package.id_interno_paquete == selectedPackageLot.id_interno_paquete);
+                truckLot.RemoveAll(package => package.id == selectedTruckLot.id);
                 // Update DataGrid Table
-                dataLength = packageLotData.Count;
-                int lastPageRes = (int)Math.Ceiling((double)packageLotData.Count / rowsPerPage);
+                dataLength = truckLot.Count;
+                int lastPageRes = (int)Math.Ceiling((double)truckLot.Count / rowsPerPage);
                 lastPage = Convert.ToInt32(lastPageRes);
                 if ((actualPage - 1) * rowsPerPage == dataLength)
                 {
@@ -191,7 +190,7 @@ namespace WindowsFormsApp1.Forms.Lot
                     showRows(actualPage);
 
                     // Disable buttons and unselect actual warehouse
-                    selectedPackageLot = null;
+                    selectedTruckLot = null;
                     btnEdit.Enabled = false;
                     btnDelete.Enabled = false;
                     return;
@@ -199,7 +198,7 @@ namespace WindowsFormsApp1.Forms.Lot
                 showRows(actualPage);
 
                 // Disable buttons and unselect actual warehouse
-                selectedPackageLot = null;
+                selectedTruckLot = null;
                 btnEdit.Enabled = false;
                 btnDelete.Enabled = false;
             }

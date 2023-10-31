@@ -187,6 +187,7 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\LotController.cs" />
     <Compile Include="Controllers\PackageController.cs" />
+    <Compile Include="Controllers\TruckLotController.cs" />
     <Compile Include="Controllers\PackageLotController.cs" />
     <Compile Include="Controllers\TruckController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -241,6 +242,24 @@
     <Compile Include="Forms\Package\CreatePackage.Designer.cs">
       <DependentUpon>CreatePackage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Truck\AddTruckToLot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Truck\AddTruckToLot.Designer.cs">
+      <DependentUpon>AddTruckToLot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Truck\EditTruckToLot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Truck\EditTruckToLot.Designer.cs">
+      <DependentUpon>EditTruckToLot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Truck\TruckLot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Truck\TruckLot.Designer.cs">
+      <DependentUpon>TruckLot.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\User\CreateUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +288,7 @@
     <Compile Include="Models\LotModel.cs" />
     <Compile Include="Models\PackageLotModel.cs" />
     <Compile Include="Models\PackageModel.cs" />
+    <Compile Include="Models\TruckLotModel.cs" />
     <Compile Include="Models\TruckModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\WareHouseModel.cs" />
@@ -355,6 +375,15 @@
     <EmbeddedResource Include="Forms\Package\CreatePackage.resx">
       <DependentUpon>CreatePackage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Truck\AddTruckToLot.resx">
+      <DependentUpon>AddTruckToLot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Truck\EditTruckToLot.resx">
+      <DependentUpon>EditTruckToLot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Truck\TruckLot.resx">
+      <DependentUpon>TruckLot.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\CreateUser.resx">
       <DependentUpon>CreateUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -386,6 +415,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="MockData\Warehouse.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

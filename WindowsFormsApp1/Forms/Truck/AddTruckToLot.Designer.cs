@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApp1.Forms.Lot
+﻿namespace WindowsFormsApp1.Forms.Truck
 {
-    partial class EditPackageToLot
+    partial class AddTruckToLot
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.input_lote = new System.Windows.Forms.TextBox();
-            this.input_paquete = new System.Windows.Forms.TextBox();
+            this.input_camion = new System.Windows.Forms.TextBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.lbl_id_almacen = new System.Windows.Forms.Label();
             this.lbl_id_externo = new System.Windows.Forms.Label();
@@ -59,14 +59,14 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(369, 65);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Editar paquete";
+            this.lblTitle.Text = "Agregar lote";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel3
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel3.Controls.Add(this.input_lote);
-            this.panel3.Controls.Add(this.input_paquete);
+            this.panel3.Controls.Add(this.input_camion);
             this.panel3.Controls.Add(this.btnSubmit);
             this.panel3.Controls.Add(this.lbl_id_almacen);
             this.panel3.Controls.Add(this.lbl_id_externo);
@@ -82,12 +82,12 @@
             this.input_lote.Size = new System.Drawing.Size(285, 20);
             this.input_lote.TabIndex = 20;
             // 
-            // input_paquete
+            // input_camion
             // 
-            this.input_paquete.Location = new System.Drawing.Point(5, 17);
-            this.input_paquete.Name = "input_paquete";
-            this.input_paquete.Size = new System.Drawing.Size(285, 20);
-            this.input_paquete.TabIndex = 1;
+            this.input_camion.Location = new System.Drawing.Point(5, 17);
+            this.input_camion.Name = "input_camion";
+            this.input_camion.Size = new System.Drawing.Size(285, 20);
+            this.input_camion.TabIndex = 1;
             // 
             // btnSubmit
             // 
@@ -102,7 +102,7 @@
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(285, 38);
             this.btnSubmit.TabIndex = 19;
-            this.btnSubmit.Text = "Editar paquete";
+            this.btnSubmit.Text = "Agregar lote";
             this.btnSubmit.UseVisualStyleBackColor = false;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
@@ -121,9 +121,9 @@
             this.lbl_id_externo.AutoSize = true;
             this.lbl_id_externo.Location = new System.Drawing.Point(3, 1);
             this.lbl_id_externo.Name = "lbl_id_externo";
-            this.lbl_id_externo.Size = new System.Drawing.Size(61, 13);
+            this.lbl_id_externo.Size = new System.Drawing.Size(56, 13);
             this.lbl_id_externo.TabIndex = 3;
-            this.lbl_id_externo.Text = "ID Paquete";
+            this.lbl_id_externo.Text = "ID Camión";
             // 
             // panel2
             // 
@@ -136,7 +136,7 @@
             this.panel2.Size = new System.Drawing.Size(345, 213);
             this.panel2.TabIndex = 1;
             // 
-            // EditPackageToLot
+            // AddTruckToLot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -145,8 +145,8 @@
             this.Controls.Add(this.panel1);
             this.MaximumSize = new System.Drawing.Size(385, 335);
             this.MinimumSize = new System.Drawing.Size(385, 335);
-            this.Name = "EditPackageToLot";
-            this.Text = "Editar paquete";
+            this.Name = "AddTruckToLot";
+            this.Text = "Agregar lote";
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -165,6 +165,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.TextBox input_lote;
-        private System.Windows.Forms.TextBox input_paquete;
+        private System.Windows.Forms.TextBox input_camion;
     }
 }

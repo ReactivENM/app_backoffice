@@ -98,3 +98,6 @@ C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.app
 C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.Lot.PackageLot.resources
 C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.Lot.AddPackageToLot.resources
 C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.Lot.EditPackageToLot.resources
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.Truck.AddTruckToLot.resources
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.Truck.EditTruckToLot.resources
+C:\Dev\quickcarry\app\backoffice\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.Truck.TruckLot.resources
