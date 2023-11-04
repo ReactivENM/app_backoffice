@@ -80,6 +80,7 @@ namespace WindowsFormsApp1.Forms.Truck
                 newRow.CreateCells(dataGridView, truckLot[i].id, truckLot[i].id_camion, truckLot[i].id_lote);
                 dataGridView.Rows.Add(newRow);
             }
+            dataGridView.DefaultCellStyle.SelectionBackColor = dataGridView.DefaultCellStyle.BackColor;
         }
 
         private void handleClickRow(object sender, DataGridViewCellEventArgs e)
@@ -94,6 +95,7 @@ namespace WindowsFormsApp1.Forms.Truck
                 selectedTruckLot = truck;
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
+                dataGridView.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
             }
         }
 

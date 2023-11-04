@@ -76,6 +76,7 @@ namespace WindowsFormsApp1.Forms
                 newRow.CreateCells(dataGridView, packageData[i].id_interno, packageData[i].id_externo, clientNames[packageData[i].id_cliente.ToString()], packageData[i].peso, packageData[i].dir_envio, packageStatus.ContainsKey(packageData[i].estado) ? packageStatus[packageData[i].estado] : packageData[i].estado);
                 dataGridView.Rows.Add(newRow);
             }
+            dataGridView.DefaultCellStyle.SelectionBackColor = dataGridView.DefaultCellStyle.BackColor;
         }
 
         private void handleClickRow(object sender, DataGridViewCellEventArgs e)
@@ -90,6 +91,7 @@ namespace WindowsFormsApp1.Forms
                 selectedPackage = package;
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
+                dataGridView.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
             }
         }
 

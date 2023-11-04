@@ -79,6 +79,7 @@ namespace WindowsFormsApp1.Forms.Lot
                 newRow.CreateCells(dataGridView, packageLotData[i].id_interno_paquete, packageLotData[i].id_lote, packageLotData[i].id_usuario, packageLotData[i].fecha_hora);
                 dataGridView.Rows.Add(newRow);
             }
+            dataGridView.DefaultCellStyle.SelectionBackColor = dataGridView.DefaultCellStyle.BackColor;
         }
 
         private void handleClickRow(object sender, DataGridViewCellEventArgs e)
@@ -93,6 +94,7 @@ namespace WindowsFormsApp1.Forms.Lot
                 selectedPackageLot = package;
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
+                dataGridView.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
             }
         }
 

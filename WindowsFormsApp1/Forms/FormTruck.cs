@@ -75,6 +75,7 @@ namespace WindowsFormsApp1.Forms
                 newRow.CreateCells(dataGridView, truckData[i].id, truckData[i].matricula, truckData[i].marca, truckData[i].modelo, truckData[i].capacidad);
                 dataGridView.Rows.Add(newRow);
             }
+            dataGridView.DefaultCellStyle.SelectionBackColor = dataGridView.DefaultCellStyle.BackColor;
         }
 
         private void handleClickRow(object sender, DataGridViewCellEventArgs e)
@@ -90,6 +91,7 @@ namespace WindowsFormsApp1.Forms
                 btnLot.Enabled = true;
                 btnEditTruck.Enabled = true;
                 btnDeleteTruck.Enabled = true;
+                dataGridView.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
             }
         }
 

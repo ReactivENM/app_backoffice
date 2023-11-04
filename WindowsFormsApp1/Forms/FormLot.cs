@@ -76,6 +76,7 @@ namespace WindowsFormsApp1.Forms
                 newRow.CreateCells(dataGridView, lotData[i].id, warehouseSelect[lotData[i].almacen_destino.ToString()], packageStatus.ContainsKey(lotData[i].estado) ? packageStatus[lotData[i].estado] : lotData[i].estado);
                 dataGridView.Rows.Add(newRow);
             }
+            dataGridView.DefaultCellStyle.SelectionBackColor = dataGridView.DefaultCellStyle.BackColor;
         }
 
         private void handleClickRow(object sender, DataGridViewCellEventArgs e)
@@ -91,6 +92,7 @@ namespace WindowsFormsApp1.Forms
                 btnPackages.Enabled = true;
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
+                dataGridView.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
             }
         }
 

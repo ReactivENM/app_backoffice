@@ -74,6 +74,7 @@ namespace WindowsFormsApp1.Forms
                 newRow.CreateCells(dataGridView, userData[i].id, userData[i].correo, userData[i].nro_documento, userData[i].p_nombre, userData[i].s_nombre, userData[i].p_apellido, userData[i].s_apellido, userData[i].nacionalidad, userData[i].rol);
                 dataGridView.Rows.Add(newRow);
             }
+            dataGridView.DefaultCellStyle.SelectionBackColor = dataGridView.DefaultCellStyle.BackColor;
         }
 
         private void handleClickRow(object sender, DataGridViewCellEventArgs e)
@@ -88,6 +89,7 @@ namespace WindowsFormsApp1.Forms
                 selectedUser = user;
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
+                dataGridView.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
             }
         }
 

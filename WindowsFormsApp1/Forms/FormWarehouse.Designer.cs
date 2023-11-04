@@ -30,17 +30,10 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormWarehouse));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormWarehouse));
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnDeleteWarehouse = new System.Windows.Forms.Button();
-            this.btnEditWarehouse = new System.Windows.Forms.Button();
-            this.btnCreateWarehouse = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.lblPage = new System.Windows.Forms.Label();
-            this.btnPrev = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +41,13 @@
             this.cod_posta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnDeleteWarehouse = new System.Windows.Forms.Button();
+            this.btnEditWarehouse = new System.Windows.Forms.Button();
+            this.btnCreateWarehouse = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.lblPage = new System.Windows.Forms.Label();
+            this.btnPrev = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panel2.SuspendLayout();
@@ -118,6 +118,56 @@
             this.dataGridView.StateTracking.HeaderColumn.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(159)))), ((int)(((byte)(35)))));
             this.dataGridView.StateTracking.HeaderColumn.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(159)))), ((int)(((byte)(35)))));
             this.dataGridView.TabIndex = 1;
+            // 
+            // id
+            // 
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.id.DefaultCellStyle = dataGridViewCellStyle2;
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // descripcion
+            // 
+            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descripcion.HeaderText = "Descripción";
+            this.descripcion.Name = "descripcion";
+            // 
+            // calle
+            // 
+            this.calle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.calle.HeaderText = "Calle";
+            this.calle.Name = "calle";
+            this.calle.ReadOnly = true;
+            // 
+            // nro_puerta
+            // 
+            this.nro_puerta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nro_puerta.HeaderText = "Nº Puerta";
+            this.nro_puerta.Name = "nro_puerta";
+            this.nro_puerta.ReadOnly = true;
+            // 
+            // cod_posta
+            // 
+            this.cod_posta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cod_posta.HeaderText = "Código postal";
+            this.cod_posta.Name = "cod_posta";
+            this.cod_posta.ReadOnly = true;
+            // 
+            // capacidad
+            // 
+            this.capacidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.capacidad.HeaderText = "Capacidad(m²)";
+            this.capacidad.Name = "capacidad";
+            this.capacidad.ReadOnly = true;
+            // 
+            // departamento
+            // 
+            this.departamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.departamento.HeaderText = "Departamento";
+            this.departamento.Name = "departamento";
+            this.departamento.ReadOnly = true;
             // 
             // panel2
             // 
@@ -214,56 +264,6 @@
             this.btnPrev.Text = "Anterior";
             this.btnPrev.UseVisualStyleBackColor = true;
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
-            // 
-            // id
-            // 
-            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.id.DefaultCellStyle = dataGridViewCellStyle2;
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // descripcion
-            // 
-            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descripcion.HeaderText = "Descripción";
-            this.descripcion.Name = "descripcion";
-            // 
-            // calle
-            // 
-            this.calle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.calle.HeaderText = "Calle";
-            this.calle.Name = "calle";
-            this.calle.ReadOnly = true;
-            // 
-            // nro_puerta
-            // 
-            this.nro_puerta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nro_puerta.HeaderText = "Nº Puerta";
-            this.nro_puerta.Name = "nro_puerta";
-            this.nro_puerta.ReadOnly = true;
-            // 
-            // cod_posta
-            // 
-            this.cod_posta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cod_posta.HeaderText = "Código postal";
-            this.cod_posta.Name = "cod_posta";
-            this.cod_posta.ReadOnly = true;
-            // 
-            // capacidad
-            // 
-            this.capacidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.capacidad.HeaderText = "Capacidad(m²)";
-            this.capacidad.Name = "capacidad";
-            this.capacidad.ReadOnly = true;
-            // 
-            // departamento
-            // 
-            this.departamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.departamento.HeaderText = "Departamento";
-            this.departamento.Name = "departamento";
-            this.departamento.ReadOnly = true;
             // 
             // FormWarehouse
             // 

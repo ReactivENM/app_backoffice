@@ -41,6 +41,7 @@ namespace WindowsFormsApp1.Forms
         public async void initializeFormAsync()
         {
             InitializeComponent();
+            dataGridView.AllowUserToAddRows = false;
 
             await fetchWareHouseData();
 
@@ -87,6 +88,7 @@ namespace WindowsFormsApp1.Forms
                 newRow.CreateCells(dataGridView, wareHouseData[i].id, wareHouseData[i].descripcion, wareHouseData[i].calle, wareHouseData[i].nro_puerta, wareHouseData[i].cod_postal, wareHouseData[i].capacidad, department);
                 dataGridView.Rows.Add(newRow);
             }
+            dataGridView.DefaultCellStyle.SelectionBackColor = dataGridView.DefaultCellStyle.BackColor;
         }
 
         private void handleClickRow(object sender, DataGridViewCellEventArgs e)
@@ -101,6 +103,7 @@ namespace WindowsFormsApp1.Forms
                 selectedWarehouse = wh;
                 btnEditWarehouse.Enabled = true;
                 btnDeleteWarehouse.Enabled = true;
+                dataGridView.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
             }
         }
 
