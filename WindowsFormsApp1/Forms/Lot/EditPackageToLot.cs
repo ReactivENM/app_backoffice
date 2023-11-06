@@ -22,6 +22,9 @@ namespace WindowsFormsApp1.Forms.Lot
             InitializeComponent();
             input_paquete.Text = id_interno_paquete.ToString();
             input_lote.Text = id_lote.ToString();
+
+            input_paquete.KeyPress += new KeyPressEventHandler(input_paquete_KeyPress);
+            input_lote.KeyPress += new KeyPressEventHandler(input_lote_KeyPress);
         }
 
         private async void btnSubmit_Click(object sender, EventArgs e)
@@ -49,6 +52,22 @@ namespace WindowsFormsApp1.Forms.Lot
                 return false;
             }
             return true;
+        }
+
+        private void input_paquete_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void input_lote_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

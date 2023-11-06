@@ -18,6 +18,8 @@ namespace WindowsFormsApp1.Forms.Truck
             this.callback = callback;
             this.id_camion = id_camion;
             InitializeComponent();
+            input_camion.KeyPress += new KeyPressEventHandler(input_camion_KeyPress);
+            input_lote.KeyPress += new KeyPressEventHandler(input_lote_KeyPress);
             input_camion.Text = id_camion.ToString();
             input_camion.Enabled = false;
         }
@@ -45,6 +47,22 @@ namespace WindowsFormsApp1.Forms.Truck
                 return false;
             }
             return true;
+        }
+
+        private void input_camion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void input_lote_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

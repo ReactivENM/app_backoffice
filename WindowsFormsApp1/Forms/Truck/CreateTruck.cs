@@ -11,6 +11,7 @@ namespace WindowsFormsApp1.Forms.Truck
         public CreateTruck(HandleTruck callback)
         {
             InitializeComponent();
+            inputCapacity.KeyPress += new KeyPressEventHandler(inputCapacity_KeyPress);
             this.callback = callback;
         }
 
@@ -58,6 +59,14 @@ namespace WindowsFormsApp1.Forms.Truck
                 return false;
             }
             return true;
+        }
+
+        private void inputCapacity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Evita que se ingrese el carácter
+            }
         }
     }
 }

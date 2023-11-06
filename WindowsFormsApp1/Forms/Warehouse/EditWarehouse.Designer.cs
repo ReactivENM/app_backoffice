@@ -30,21 +30,21 @@
         {
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnSubmit = new System.Windows.Forms.Button();
             this.inputDepartamento = new System.Windows.Forms.ComboBox();
+            this.inputCapacity = new System.Windows.Forms.TextBox();
+            this.inputPostalCode = new System.Windows.Forms.TextBox();
+            this.inputNumber = new System.Windows.Forms.TextBox();
+            this.inputAddress = new System.Windows.Forms.TextBox();
+            this.inputDescripcion = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.lblDepartamento = new System.Windows.Forms.Label();
             this.labelCapacity = new System.Windows.Forms.Label();
-            this.inputCapacity = new System.Windows.Forms.TextBox();
             this.labelPostalCode = new System.Windows.Forms.Label();
-            this.inputPostalCode = new System.Windows.Forms.TextBox();
             this.lblNumber = new System.Windows.Forms.Label();
-            this.inputNumber = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
-            this.inputAddress = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.inputDescripcion = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -82,6 +82,60 @@
             this.panel3.Size = new System.Drawing.Size(294, 352);
             this.panel3.TabIndex = 0;
             // 
+            // inputDepartamento
+            // 
+            this.inputDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inputDepartamento.FormattingEnabled = true;
+            this.inputDepartamento.Location = new System.Drawing.Point(3, 263);
+            this.inputDepartamento.Name = "inputDepartamento";
+            this.inputDepartamento.Size = new System.Drawing.Size(288, 21);
+            this.inputDepartamento.TabIndex = 11;
+            // 
+            // inputCapacity
+            // 
+            this.inputCapacity.Location = new System.Drawing.Point(3, 215);
+            this.inputCapacity.Name = "inputCapacity";
+            this.inputCapacity.Size = new System.Drawing.Size(288, 20);
+            this.inputCapacity.TabIndex = 7;
+            // 
+            // inputPostalCode
+            // 
+            this.inputPostalCode.Location = new System.Drawing.Point(3, 165);
+            this.inputPostalCode.Name = "inputPostalCode";
+            this.inputPostalCode.Size = new System.Drawing.Size(288, 20);
+            this.inputPostalCode.TabIndex = 5;
+            // 
+            // inputNumber
+            // 
+            this.inputNumber.Location = new System.Drawing.Point(3, 117);
+            this.inputNumber.Name = "inputNumber";
+            this.inputNumber.Size = new System.Drawing.Size(288, 20);
+            this.inputNumber.TabIndex = 2;
+            // 
+            // inputAddress
+            // 
+            this.inputAddress.Location = new System.Drawing.Point(3, 68);
+            this.inputAddress.Name = "inputAddress";
+            this.inputAddress.Size = new System.Drawing.Size(288, 20);
+            this.inputAddress.TabIndex = 0;
+            // 
+            // inputDescripcion
+            // 
+            this.inputDescripcion.Location = new System.Drawing.Point(3, 23);
+            this.inputDescripcion.Name = "inputDescripcion";
+            this.inputDescripcion.Size = new System.Drawing.Size(288, 20);
+            this.inputDescripcion.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 22);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Descripcion";
+            // 
             // btnSubmit
             // 
             this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
@@ -98,15 +152,6 @@
             this.btnSubmit.Text = "Editar almacen";
             this.btnSubmit.UseVisualStyleBackColor = false;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
-            // inputDepartamento
-            // 
-            this.inputDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.inputDepartamento.FormattingEnabled = true;
-            this.inputDepartamento.Location = new System.Drawing.Point(3, 263);
-            this.inputDepartamento.Name = "inputDepartamento";
-            this.inputDepartamento.Size = new System.Drawing.Size(288, 21);
-            this.inputDepartamento.TabIndex = 11;
             // 
             // lblDepartamento
             // 
@@ -128,13 +173,6 @@
             this.labelCapacity.TabIndex = 8;
             this.labelCapacity.Text = "Capacidad";
             // 
-            // inputCapacity
-            // 
-            this.inputCapacity.Location = new System.Drawing.Point(3, 215);
-            this.inputCapacity.Name = "inputCapacity";
-            this.inputCapacity.Size = new System.Drawing.Size(288, 20);
-            this.inputCapacity.TabIndex = 7;
-            // 
             // labelPostalCode
             // 
             this.labelPostalCode.AutoSize = true;
@@ -144,13 +182,6 @@
             this.labelPostalCode.Size = new System.Drawing.Size(94, 22);
             this.labelPostalCode.TabIndex = 6;
             this.labelPostalCode.Text = "Código postal";
-            // 
-            // inputPostalCode
-            // 
-            this.inputPostalCode.Location = new System.Drawing.Point(3, 165);
-            this.inputPostalCode.Name = "inputPostalCode";
-            this.inputPostalCode.Size = new System.Drawing.Size(288, 20);
-            this.inputPostalCode.TabIndex = 5;
             // 
             // lblNumber
             // 
@@ -162,13 +193,6 @@
             this.lblNumber.TabIndex = 3;
             this.lblNumber.Text = "Número de puerta";
             // 
-            // inputNumber
-            // 
-            this.inputNumber.Location = new System.Drawing.Point(3, 117);
-            this.inputNumber.Name = "inputNumber";
-            this.inputNumber.Size = new System.Drawing.Size(288, 20);
-            this.inputNumber.TabIndex = 2;
-            // 
             // lblName
             // 
             this.lblName.AutoSize = true;
@@ -178,13 +202,6 @@
             this.lblName.Size = new System.Drawing.Size(40, 22);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "Calle";
-            // 
-            // inputAddress
-            // 
-            this.inputAddress.Location = new System.Drawing.Point(3, 68);
-            this.inputAddress.Name = "inputAddress";
-            this.inputAddress.Size = new System.Drawing.Size(288, 20);
-            this.inputAddress.TabIndex = 0;
             // 
             // panel1
             // 
@@ -205,23 +222,6 @@
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Editar almacen";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 22);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Descripcion";
-            // 
-            // inputDescripcion
-            // 
-            this.inputDescripcion.Location = new System.Drawing.Point(3, 23);
-            this.inputDescripcion.Name = "inputDescripcion";
-            this.inputDescripcion.Size = new System.Drawing.Size(288, 20);
-            this.inputDescripcion.TabIndex = 12;
             // 
             // EditWarehouse
             // 
