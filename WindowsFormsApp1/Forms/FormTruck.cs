@@ -189,7 +189,7 @@ namespace WindowsFormsApp1.Forms
                     truckLength = truckData.Count;
                     int lastPageRes = (int)Math.Ceiling((double)truckData.Count / rowsPerPage);
                     lastPage = Convert.ToInt32(lastPageRes);
-                    if ((actualPage - 1) * rowsPerPage == truckLength)
+                    /*if ((actualPage - 1) * rowsPerPage == truckLength)
                     {
                         if (truckLength == 0) return;
                         if (actualPage == 1) return;
@@ -204,7 +204,7 @@ namespace WindowsFormsApp1.Forms
                         btnEditTruck.Enabled = false;
                         btnDeleteTruck.Enabled = false;
                         return;
-                    }
+                    }*/
                     showRows(actualPage);
 
                     // Disable buttons and unselect actual warehouse
