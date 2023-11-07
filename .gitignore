@@ -23,11 +23,11 @@ WindowsFormsApp1/obj
 # Archivos de respaldo y carpetas de respaldo
 *[Bb]ackup/
 [Oo]bj/
+[Bb]in64/
+[Oo]bj64/
 [Bb]ackups/
 [Ll]og/
 [Ll]ogs/
-[Dd]ebug/
-[Rr]elease/
 [Bb]in[Bb]ackup/
 [Oo]bj[Bb]ackup/
 
