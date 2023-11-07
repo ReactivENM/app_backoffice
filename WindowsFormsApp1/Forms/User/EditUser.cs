@@ -32,6 +32,7 @@ namespace WindowsFormsApp1.Forms.User
             if (!fieldsValid) return;
 
             string correo = inputCorreo.Text;
+            string contrasena = inputContrasena.Text;
             string p_nombre = inputPNombre.Text;
             string s_nombre = inputSNombre.Text;
             string p_apellido = inputPApellido.Text;
@@ -42,7 +43,7 @@ namespace WindowsFormsApp1.Forms.User
             string rol = inputRol.Text;
 
             UserController controller = new UserController();
-            controller.Edit(id, correo, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, deshabilitado, rol);
+            controller.Edit(id, correo, contrasena, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, deshabilitado, rol);
             callback.OnEdit(id, correo, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, deshabilitado, rol);
 
             this.Close();

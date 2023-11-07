@@ -30,6 +30,10 @@
         {
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.inputCorreo = new System.Windows.Forms.TextBox();
+            this.input_correo = new System.Windows.Forms.Label();
+            this.inputContrasena = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.inputNacionalidad = new System.Windows.Forms.ComboBox();
             this.inputDocumento = new System.Windows.Forms.TextBox();
             this.inputSApellido = new System.Windows.Forms.TextBox();
@@ -48,10 +52,6 @@
             this.lblPNombre = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.inputContrasena = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.inputCorreo = new System.Windows.Forms.TextBox();
-            this.input_correo = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -92,6 +92,42 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(296, 531);
             this.panel3.TabIndex = 1;
+            // 
+            // inputCorreo
+            // 
+            this.inputCorreo.Location = new System.Drawing.Point(3, 20);
+            this.inputCorreo.Name = "inputCorreo";
+            this.inputCorreo.Size = new System.Drawing.Size(288, 20);
+            this.inputCorreo.TabIndex = 22;
+            // 
+            // input_correo
+            // 
+            this.input_correo.AutoSize = true;
+            this.input_correo.BackColor = System.Drawing.Color.Transparent;
+            this.input_correo.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.input_correo.Location = new System.Drawing.Point(3, 3);
+            this.input_correo.Name = "input_correo";
+            this.input_correo.Size = new System.Drawing.Size(50, 22);
+            this.input_correo.TabIndex = 23;
+            this.input_correo.Text = "Correo";
+            // 
+            // inputContrasena
+            // 
+            this.inputContrasena.Location = new System.Drawing.Point(3, 66);
+            this.inputContrasena.Name = "inputContrasena";
+            this.inputContrasena.Size = new System.Drawing.Size(288, 20);
+            this.inputContrasena.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 22);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Contrasena";
             // 
             // inputNacionalidad
             // 
@@ -277,43 +313,6 @@
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Editar usuario";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // inputContrasena
-            // 
-            this.inputContrasena.Enabled = false;
-            this.inputContrasena.Location = new System.Drawing.Point(3, 66);
-            this.inputContrasena.Name = "inputContrasena";
-            this.inputContrasena.Size = new System.Drawing.Size(288, 20);
-            this.inputContrasena.TabIndex = 20;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 22);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Contrasena";
-            // 
-            // inputCorreo
-            // 
-            this.inputCorreo.Location = new System.Drawing.Point(3, 20);
-            this.inputCorreo.Name = "inputCorreo";
-            this.inputCorreo.Size = new System.Drawing.Size(288, 20);
-            this.inputCorreo.TabIndex = 22;
-            // 
-            // input_correo
-            // 
-            this.input_correo.AutoSize = true;
-            this.input_correo.BackColor = System.Drawing.Color.Transparent;
-            this.input_correo.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.input_correo.Location = new System.Drawing.Point(3, 3);
-            this.input_correo.Name = "input_correo";
-            this.input_correo.Size = new System.Drawing.Size(50, 22);
-            this.input_correo.TabIndex = 23;
-            this.input_correo.Text = "Correo";
             // 
             // EditUser
             // 

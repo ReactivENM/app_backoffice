@@ -24,9 +24,9 @@ namespace Controllers.UserController
             return model.Create(correo, contrasena, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, rol);
         }
 
-        public bool Edit(int id, string correo, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, int deshabilitado, string rol)
+        public bool Edit(int id, string correo, string contrasena, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, int deshabilitado, string rol)
         {
-            return model.Edit(id, correo, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, deshabilitado, rol);
+            return model.Edit(id, correo, contrasena, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, deshabilitado, rol);
         }
 
         public bool Delete(int id)

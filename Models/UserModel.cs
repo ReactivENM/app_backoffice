@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MySqlConnector;
 using Models.DB;
+using MD5Hash;
 
 namespace Models.UserModel
 {
@@ -84,13 +85,14 @@ namespace Models.UserModel
 
         public int Create(string correo, string contrasena, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, string rol)
         {
+            string hashedPassword = contrasena.GetMD5();
             try
             {
                 string sql = "INSERT INTO Usuario(correo, contrasena, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, rol) VALUES(@correo, @contrasena, @p_nombre, @s_nombre, @p_apellido, @s_apellido, @nro_documento, @nacionalidad, @rol); SELECT LAST_INSERT_ID()";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@correo", correo);
-                    command.Parameters.AddWithValue("@contrasena", contrasena);
+                    command.Parameters.AddWithValue("@contrasena", hashedPassword);
                     command.Parameters.AddWithValue("@p_nombre", p_nombre);
                     command.Parameters.AddWithValue("@s_nombre", s_nombre);
                     command.Parameters.AddWithValue("@p_apellido", p_apellido);
@@ -114,15 +116,25 @@ namespace Models.UserModel
             }
         }
 
-        public bool Edit(int id, string correo, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, int deshabilitado, string rol)
+        public bool Edit(int id, string correo, string contrasena, string p_nombre, string s_nombre, string p_apellido, string s_apellido, string nro_documento, string nacionalidad, int deshabilitado, string rol)
         {
+            string hashedPassword = contrasena.GetMD5();
             try
             {
-                string sql = "UPDATE Usuario SET correo = @correo, p_nombre = @p_nombre, s_nombre = @s_nombre, p_apellido = @p_apellido, s_apellido = @s_apellido, nro_documento = @nro_documento, nacionalidad = @nacionalidad, deshabilitado = @deshabilitado, rol = @rol  WHERE id = @id";
+                string sql = "";
+                if(contrasena.Length == 0)
+                {
+                    sql = "UPDATE Usuario SET correo = @correo, p_nombre = @p_nombre, s_nombre = @s_nombre, p_apellido = @p_apellido, s_apellido = @s_apellido, nro_documento = @nro_documento, nacionalidad = @nacionalidad, deshabilitado = @deshabilitado, rol = @rol  WHERE id = @id";
+                } else
+                {
+                    sql = "UPDATE Usuario SET correo = @correo, contrasena = @contrasena, p_nombre = @p_nombre, s_nombre = @s_nombre, p_apellido = @p_apellido, s_apellido = @s_apellido, nro_documento = @nro_documento, nacionalidad = @nacionalidad, deshabilitado = @deshabilitado, rol = @rol  WHERE id = @id";
+                }
+                        
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
                     command.Parameters.AddWithValue("@correo", correo);
+                    command.Parameters.AddWithValue("@contrasena", hashedPassword);
                     command.Parameters.AddWithValue("@p_nombre", p_nombre);
                     command.Parameters.AddWithValue("@s_nombre", s_nombre);
                     command.Parameters.AddWithValue("@p_apellido", p_apellido);
