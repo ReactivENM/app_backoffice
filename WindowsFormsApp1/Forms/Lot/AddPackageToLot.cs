@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Controllers.PackageLotController;
+using Models.PackageLotModel;
 
 namespace WindowsFormsApp1.Forms.Lot
 {
@@ -26,11 +27,11 @@ namespace WindowsFormsApp1.Forms.Lot
             bool fieldsValid = validateFields();
             if (!fieldsValid) return;
 
-            string id_interno_paquete = input_paquete.Text;
+            string id_externo_paquete = input_paquete.Text;
 
             PackageLotController controller = new PackageLotController();
-            controller.Create(Convert.ToInt32(id_interno_paquete), id_lote);
-            callback.OnCreate(Convert.ToInt32(id_interno_paquete), id_lote, 3, DateTime.Now.ToString());
+            PackageLotModel newRow = controller.Create(id_externo_paquete, id_lote);
+            callback.OnCreate(newRow);
 
             this.Close();
         }

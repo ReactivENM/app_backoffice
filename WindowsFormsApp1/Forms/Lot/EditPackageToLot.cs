@@ -7,16 +7,16 @@ namespace WindowsFormsApp1.Forms.Lot
     public partial class EditPackageToLot : Form
     {
         private HandlePackageLot callback;
-        private int id_interno_paquete;
+        private string id_externo_paquete;
         private int id_lote;
 
-        public EditPackageToLot(int id_interno_paquete, int id_lote, HandlePackageLot callback)
+        public EditPackageToLot(string id_externo_paquete, int id_lote, HandlePackageLot callback)
         {
             this.callback = callback;
-            this.id_interno_paquete = id_interno_paquete;
+            this.id_externo_paquete = id_externo_paquete;
             this.id_lote = id_lote;
             InitializeComponent();
-            input_paquete.Text = id_interno_paquete.ToString();
+            input_paquete.Text = id_externo_paquete;
             input_lote.Text = id_lote.ToString();
 
             input_paquete.KeyPress += new KeyPressEventHandler(input_paquete_KeyPress);
@@ -28,12 +28,12 @@ namespace WindowsFormsApp1.Forms.Lot
             bool fieldsValid = validateFields();
             if (!fieldsValid) return;
 
-            string id_interno_paquete = input_paquete.Text;
+            string id_externo_paquete = input_paquete.Text;
             string id_lote = input_lote.Text;
 
             PackageLotController controller = new PackageLotController();
-            controller.Edit(Convert.ToInt32(id_interno_paquete), Convert.ToInt32(id_lote), 3, DateTime.Now);
-            callback.OnEdit(Convert.ToInt32(id_interno_paquete), Convert.ToInt32(id_lote), 3, DateTime.Now.ToString());
+            controller.Edit(id_externo_paquete, Convert.ToInt32(id_lote), 3, DateTime.Now);
+            callback.OnEdit(id_externo_paquete, Convert.ToInt32(id_lote), 3, DateTime.Now.ToString());
 
             this.Close();
         }

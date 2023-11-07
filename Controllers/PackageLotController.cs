@@ -13,28 +13,28 @@ namespace Controllers.PackageLotController
             model = packageLotModel;
         }
 
-        public PackageLotModel GetOneByPackageId(int id_interno_paquete)
+        /*public PackageLotModel GetOneByPackageId(int id_interno_paquete)
         {
             return model.GetOneByPackageId(id_interno_paquete);
-        }
+        }*/
 
         public List<PackageLotModel> GetAllByLotId(int id_lote)
         {
             return model.GetAllByLotId(id_lote);
         }
 
-        public int Create(int id_interno_paquete, int id_lote, int id_usuario = 3)
+        public PackageLotModel Create(string id_externo_paquete, int id_lote, int id_usuario = 3)
         {
-            return model.Create(id_interno_paquete, id_lote, id_usuario);
+            return model.Create(id_externo_paquete, id_lote, id_usuario);
         }
 
-        public bool Edit(int id_interno_paquete, int id_lote, int id_usuario, System.DateTime fecha_hora)
+        public bool Edit(string id_externo_paquete, int id_lote, int id_usuario, System.DateTime fecha_hora)
         {
-            return model.Edit(id_interno_paquete, id_lote, id_usuario, fecha_hora);
+            return model.Edit(id_externo_paquete, id_lote, id_usuario, fecha_hora);
         }
-        public bool Delete(int id_interno_paquete)
+        public bool Delete(string id_externo_paquete)
         {
-            return model.Delete(id_interno_paquete);
+            return model.Delete(id_externo_paquete);
         }
     }
 }

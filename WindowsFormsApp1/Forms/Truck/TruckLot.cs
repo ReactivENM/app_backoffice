@@ -73,10 +73,9 @@ namespace WindowsFormsApp1.Forms.Truck
                 {
                     return;
                 }
-                Console.WriteLine(truckLot[i].id_camion + ", " + truck);
 
                 DataGridViewRow newRow = new DataGridViewRow();
-                newRow.CreateCells(dataGridView, truckLot[i].id, truckLot[i].id_camion, truckLot[i].id_lote);
+                newRow.CreateCells(dataGridView, truckLot[i].id, truckLot[i].id_lote);
                 dataGridView.Rows.Add(newRow);
             }
         }

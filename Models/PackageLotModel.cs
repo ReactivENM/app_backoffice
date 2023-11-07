@@ -7,9 +7,9 @@ namespace Models.PackageLotModel
 {
     public class PackageLotModel
     {
-        public int id_interno_paquete { get; set; }
+        public string id_externo_paquete { get; set; }
         public int id_lote { get; set; }
-        public int id_usuario { get; set; }
+        public string usuario { get; set; }
         public string fecha_hora { get; set; }
 
         MySqlConnection connection;
@@ -21,15 +21,15 @@ namespace Models.PackageLotModel
             connection = conn.GetConnection();
         }
 
-        public PackageLotModel(int id_interno_paquete, int id_lote, int id_usuario, string fecha_hora): this()
+        public PackageLotModel(string id_externo_paquete, int id_lote, string usuario, string fecha_hora): this()
         {
-            this.id_interno_paquete = id_interno_paquete;
+            this.id_externo_paquete = id_externo_paquete;
             this.id_lote = id_lote;
-            this.id_usuario = id_usuario;
+            this.usuario = usuario;
             this.fecha_hora = fecha_hora;
         }
 
-        public PackageLotModel GetOneByPackageId(int id_interno_paquete)
+        /* public PackageLotModel GetOneByPackageId(int id_interno_paquete)
         {
             PackageLotModel data = new PackageLotModel(0, 0, 0, "");
 
@@ -63,7 +63,7 @@ namespace Models.PackageLotModel
             {
                 connection.Close();
             }
-        }
+        }*/
 
         public List<PackageLotModel> GetAllByLotId(int id_lote)
         {
@@ -71,7 +71,7 @@ namespace Models.PackageLotModel
 
             try
             {
-                string sql = "SELECT * FROM PaqueteLote WHERE id_lote = @id_lote";
+                string sql = "SELECT p.id_externo, u.p_nombre, u.p_apellido, fecha_hora FROM PaqueteLote pq JOIN Paquete p ON p.id_externo = pq.id_externo_paquete JOIN Usuario u ON u.id = pq.id_usuario WHERE id_lote = @id_lote;";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id_lote", id_lote);
@@ -79,10 +79,10 @@ namespace Models.PackageLotModel
                     {
                         while (reader.Read())
                         {
-                            int id_interno_paquete = reader.GetInt32(0);
-                            int id_usuario = reader.GetInt32(2);
+                            string id_externo_paquete = reader.GetString(0);
+                            string usuario = $"{reader.GetString(1)} {reader.GetString(2)}";
                             System.DateTime fecha_hora = reader.GetDateTime(3);
-                            PackageLotModel packageLot = new PackageLotModel(id_interno_paquete, id_lote, id_usuario, fecha_hora.ToString());
+                            PackageLotModel packageLot = new PackageLotModel(id_externo_paquete, id_lote, usuario, fecha_hora.ToString());
                             data.Add(packageLot);
                         }
                         return data;
@@ -100,26 +100,39 @@ namespace Models.PackageLotModel
             }
         }
 
-        public int Create(int id_interno_paquete, int id_lote, int id_usuario = 3)
+        public PackageLotModel Create(string id_externo_paquete, int id_lote, int id_usuario = 3)
         {
+
+            PackageLotModel packageLot = new PackageLotModel("", 0, "", ""); ;
+
             try
             {
-                string sql = "INSERT INTO PaqueteLote(id_interno_paquete, id_lote, id_usuario) VALUES(@id_interno_paquete, @id_lote, @id_usuario); SELECT LAST_INSERT_ID()";
+                string sql = "INSERT INTO PaqueteLote(id_externo_paquete, id_lote, id_usuario) VALUES(@id_externo_paquete, @id_lote, @id_usuario); SELECT p.id_externo, u.p_nombre, u.p_apellido, fecha_hora FROM PaqueteLote pq JOIN Paquete p ON p.id_externo = pq.id_externo_paquete JOIN Usuario u ON u.id = pq.id_usuario WHERE id_externo_paquete = @id_externo_paquete;";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@id_interno_paquete", id_interno_paquete);
+                    command.Parameters.AddWithValue("@id_externo_paquete", id_externo_paquete);
                     command.Parameters.AddWithValue("@id_lote", id_lote);
                     command.Parameters.AddWithValue("@id_usuario", id_usuario);
 
-                    int id = Convert.ToInt32(command.ExecuteScalar());
-                    Console.WriteLine($"Paquete agregado exitosamente a lote con ID: {id_lote}");
-                    return id;
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string usuario = $"{reader.GetString(1)} {reader.GetString(2)}";
+                            System.DateTime fecha_hora = reader.GetDateTime(3);
+                            packageLot.id_externo_paquete = id_externo_paquete;
+                            packageLot.id_lote = id_lote;
+                            packageLot.usuario = usuario;
+                            packageLot.fecha_hora = fecha_hora.ToString();
+                        }
+                        return packageLot;
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                return 0;
+                return packageLot;
             }
             finally
             {
@@ -127,14 +140,14 @@ namespace Models.PackageLotModel
             }
         }
 
-        public bool Edit(int id_interno_paquete, int id_lote, int id_usuario, System.DateTime fecha_hora)
+        public bool Edit(string id_externo_paquete, int id_lote, int id_usuario, System.DateTime fecha_hora)
         {
             try
             {
-                string sql = "UPDATE PaqueteLote SET id_lote = @id_lote, id_usuario = @id_usuario, fecha_hora = @fecha_hora WHERE id_interno_paquete = @id_interno_paquete";
+                string sql = "UPDATE PaqueteLote SET id_lote = @id_lote, id_usuario = @id_usuario, fecha_hora = @fecha_hora WHERE id_externo_paquete = @id_externo_paquete";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@id_interno_paquete", id_interno_paquete);
+                    command.Parameters.AddWithValue("@id_externo_paquete", id_externo_paquete);
                     command.Parameters.AddWithValue("@id_lote", id_lote);
                     command.Parameters.AddWithValue("@id_usuario", id_usuario);
                     command.Parameters.AddWithValue("@fecha_hora", fecha_hora);
@@ -161,14 +174,14 @@ namespace Models.PackageLotModel
                 connection.Close();
             }
         }
-        public bool Delete(int id_interno_paquete)
+        public bool Delete(string id_externo_paquete)
         {
             try
             {
-                string sql = "DELETE FROM PaqueteLote WHERE id_interno_paquete = @id_interno_paquete";
+                string sql = "DELETE FROM PaqueteLote WHERE id_externo_paquete = @id_externo_paquete";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@id_interno_paquete", id_interno_paquete);
+                    command.Parameters.AddWithValue("@id_externo_paquete", id_externo_paquete);
 
                     int affectedRows = command.ExecuteNonQuery();
 

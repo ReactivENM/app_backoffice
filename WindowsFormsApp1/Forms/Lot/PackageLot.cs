@@ -10,8 +10,8 @@ namespace WindowsFormsApp1.Forms.Lot
 {
     public interface HandlePackageLot
     {
-        void OnCreate(int id_interno_paquete, int id_lote, int id_usuario, string fecha_hora);
-        void OnEdit(int id_interno_paquete, int id_lote, int id_usuario, string fecha_hora);
+        void OnCreate(PackageLotModel packageLot);
+        void OnEdit(string id_externo_paquete, int id_lote, int id_usuario, string fecha_hora);
     }
 
     public partial class PackageLot : Form, HandlePackageLot
@@ -75,7 +75,7 @@ namespace WindowsFormsApp1.Forms.Lot
                 }
 
                 DataGridViewRow newRow = new DataGridViewRow();
-                newRow.CreateCells(dataGridView, packageLotData[i].id_interno_paquete, packageLotData[i].id_lote, packageLotData[i].id_usuario, packageLotData[i].fecha_hora);
+                newRow.CreateCells(dataGridView, packageLotData[i].id_externo_paquete, packageLotData[i].usuario, packageLotData[i].fecha_hora);
                 dataGridView.Rows.Add(newRow);
             }
         }
@@ -87,8 +87,8 @@ namespace WindowsFormsApp1.Forms.Lot
                 isRowSelected = true;
 
                 DataGridViewRow row = dataGridView.Rows[e.RowIndex];
-                object id_interno_paquete = row.Cells["id_interno_paquete"].Value;
-                PackageLotModel package = packageLotData.Find(p => p.id_interno_paquete == Convert.ToInt32(id_interno_paquete));
+                object id_externo_paquete = row.Cells["id_externo_paquete"].Value;
+                PackageLotModel package = packageLotData.Find(p => p.id_externo_paquete == id_externo_paquete);
                 selectedPackageLot = package;
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
@@ -130,9 +130,8 @@ namespace WindowsFormsApp1.Forms.Lot
             new Forms.Lot.AddPackageToLot(lote, this).ShowDialog();
         }
 
-        public void OnCreate(int id_interno_paquete, int id_lote, int id_usuario, string fecha_hora)
+        public void OnCreate(PackageLotModel packageLot)
         {
-            PackageLotModel packageLot = new PackageLotModel(id_interno_paquete, id_lote, id_usuario, fecha_hora);
             packageLotData.Add(packageLot);
             dataLength += 1;
             int lastPageRes = (int)Math.Ceiling((double)dataLength / rowsPerPage);
@@ -148,17 +147,17 @@ namespace WindowsFormsApp1.Forms.Lot
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Form editPackage = new Forms.Lot.EditPackageToLot(selectedPackageLot.id_interno_paquete, selectedPackageLot.id_lote, this);
+            Form editPackage = new Forms.Lot.EditPackageToLot(selectedPackageLot.id_externo_paquete, selectedPackageLot.id_lote, this);
             editPackage.ShowDialog();
         }
 
-        public void OnEdit(int id_interno_paquete, int id_lote, int id_usuario, string fecha_hora)
+        public void OnEdit(string id_externo_paquete, int id_lote, int id_usuario, string fecha_hora)
         {
-            PackageLotModel editedPackage = packageLotData.Find(package => package.id_interno_paquete == id_interno_paquete);
+            PackageLotModel editedPackage = packageLotData.Find(package => package.id_externo_paquete == id_externo_paquete);
             if (editedPackage == null) return;
-            editedPackage.id_interno_paquete = id_interno_paquete;
+            editedPackage.id_externo_paquete = id_externo_paquete;
             editedPackage.id_lote = id_lote;
-            editedPackage.id_usuario = id_usuario;
+            editedPackage.usuario = id_usuario.ToString();
             editedPackage.fecha_hora = fecha_hora;
             showRows(actualPage);
 
@@ -171,11 +170,11 @@ namespace WindowsFormsApp1.Forms.Lot
         private void btnDelete_Click(object sender, EventArgs e)
         {
             PackageLotController controller = new PackageLotController();
-            bool res = controller.Delete(selectedPackageLot.id_interno_paquete);
+            bool res = controller.Delete(selectedPackageLot.id_externo_paquete);
 
             if (res == true)
             {
-                packageLotData.RemoveAll(package => package.id_interno_paquete == selectedPackageLot.id_interno_paquete);
+                packageLotData.RemoveAll(package => package.id_externo_paquete == selectedPackageLot.id_externo_paquete);
                 // Update DataGrid Table
                 dataLength = packageLotData.Count;
                 int lastPageRes = (int)Math.Ceiling((double)packageLotData.Count / rowsPerPage);
