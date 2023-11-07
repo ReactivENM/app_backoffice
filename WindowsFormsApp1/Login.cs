@@ -1,14 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using Controllers.UserController;
 
 namespace WindowsFormsApp1
 {
@@ -24,52 +16,31 @@ namespace WindowsFormsApp1
             bool passedValidation = validateFields();
             if (!passedValidation) return;
 
-            //bool validCredentials = await validateCredentialsAsync();
-            //if(!validCredentials)
-            //{
-            //     ThrowErrorMessage("Las credenciales que ingresaste son incorrectas!", "Error de validación");
-            //     return;
-            //}
-
+            bool validCredentials = validateCredentials();
+            if(!validCredentials)
+            {
+                 ThrowErrorMessage("Las credenciales que ingresaste son incorrectas!", "Error de validación");
+                 return;
+            }
+            
             Hide();
             new Backoffice().Show();  
         }
 
-        public class AuthResponse
+        private bool validateCredentials()
         {
-            [JsonProperty("code")]
-            public string Code { get; set; }
+            string correo = inputEmail.Text;
+            string contrasena = inputPassword.Text;
 
-            [JsonProperty("token")]
-            public string Token { get; set; }
-        }
+            UserController controller = new UserController();
+            bool res = controller.Login(correo, contrasena);
 
-        private async Task<bool> validateCredentialsAsync()
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://localhost:63375/");
-
-                Dictionary<string, string> jsonContent = new Dictionary<string, string>();
-                jsonContent.Add("username", inputUser.Text);
-                jsonContent.Add("password", inputPassword.Text);
-                StringContent bodyContent = new StringContent(JsonConvert.SerializeObject(jsonContent), UnicodeEncoding.UTF8, "application/json");
-
-                HttpResponseMessage response = await client.PostAsync("api/v1/auth/login", bodyContent);
-
-                string jsonString = await response.Content.ReadAsStringAsync();
-
-                AuthResponse authResponse = JsonConvert.DeserializeObject<AuthResponse>(JsonConvert.DeserializeObject<string>(jsonString));
-
-                string code = authResponse.Code;
-                if (code == "LOGIN_SUCCESS") return true;
-            }
-            return false;
+            return res;
         }
 
         private bool validateFields()
         {
-            if (inputUser.Text.Length == 0)
+            if (inputEmail.Text.Length == 0)
             {
                 ThrowErrorMessage("Debes escribir un nombre de usuario!", "Error de validación");
                 return false;

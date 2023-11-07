@@ -42,6 +42,42 @@ namespace Models.UserModel
             this.rol = rol;
         }
 
+        public bool Login(string correo, string contrasena)
+        {
+            Dictionary<string, string> auth = new Dictionary<string, string>();
+
+            string hashedPassword = contrasena.GetMD5();
+            try
+            {
+                string sql = "SELECT contrasena FROM Usuario WHERE correo = @correo";
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@correo", correo);
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string resContrasena = reader.GetString(0);
+                            if(resContrasena == hashedPassword)
+                            {
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
         public List<UserModel> GetAll()
         {
             List<UserModel> data = new List<UserModel>();

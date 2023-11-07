@@ -14,6 +14,11 @@ namespace Controllers.UserController
             model = userModel;
         }
 
+        public bool Login(string correo, string contrasena)
+        {
+            return model.Login(correo, contrasena);
+        }
+
         public List<UserModel> GetAll()
         {
             return model.GetAll();
