@@ -18,15 +18,11 @@ WindowsFormsApp1/obj
 *.sqlite
 *.nupkg
 **/packages/
-**/bin/
 **/obj/
 
 # Archivos de respaldo y carpetas de respaldo
 *[Bb]ackup/
-[Bb]in/
 [Oo]bj/
-[Bb]in64/
-[Oo]bj64/
 [Bb]ackups/
 [Ll]og/
 [Ll]ogs/
