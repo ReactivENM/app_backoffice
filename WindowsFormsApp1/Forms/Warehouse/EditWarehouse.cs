@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using WindowsFormsApp1.Controllers.WarehouseController;
+using Controllers.WarehouseController;
 using WindowsFormsApp1.Dictionary;
 
 namespace WindowsFormsApp1.Forms.Warehouse
@@ -14,6 +14,7 @@ namespace WindowsFormsApp1.Forms.Warehouse
         public EditWarehouse(int id, string descripcion, string calle, string nro_puerta, string cod_postal, string capacidad, string departamento, HandleWarehouse callback)
         {
             InitializeComponent();
+            inputCapacity.KeyPress += new KeyPressEventHandler(inputCapacity_KeyPress);
             this.callback = callback;
             this.id = id;
             inputDescripcion.Text = descripcion;
@@ -76,6 +77,14 @@ namespace WindowsFormsApp1.Forms.Warehouse
                 return false;
             }
             return true;
+        }
+
+        private void inputCapacity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using WindowsFormsApp1.Controllers.UserController;
+using Controllers.UserController;
 
 namespace WindowsFormsApp1.Forms.User
 {
@@ -11,6 +11,7 @@ namespace WindowsFormsApp1.Forms.User
         public CreateUser(HandleUser callback)
         {
             InitializeComponent();
+            inputDocumento.KeyPress += new KeyPressEventHandler(inputDocumento_KeyPress);
             this.callback = callback;
         }
 
@@ -58,6 +59,14 @@ namespace WindowsFormsApp1.Forms.User
                 return false;
             }
             return true;
+        }
+
+        private void inputDocumento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

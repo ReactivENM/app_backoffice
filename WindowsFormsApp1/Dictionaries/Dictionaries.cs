@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WindowsFormsApp1.Models;
-using WindowsFormsApp1.Controllers.WarehouseController;
-using WindowsFormsApp1.Controllers.ClientController;
+﻿using System.Collections.Generic;
+using Models.WareHouseModel;
+using Models.ClientModel;
+using Controllers.WarehouseController;
+using Controllers.ClientController;
+
 
 namespace WindowsFormsApp1.Dictionary
 {

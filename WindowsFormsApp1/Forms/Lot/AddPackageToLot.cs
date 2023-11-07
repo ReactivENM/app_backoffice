@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Controllers.PackageLotController;
-using WindowsFormsApp1.Models;
-using WindowsFormsApp1.Dictionary;
+using Controllers.PackageLotController;
 
 namespace WindowsFormsApp1.Forms.Lot
 {
@@ -20,6 +16,9 @@ namespace WindowsFormsApp1.Forms.Lot
             InitializeComponent();
             input_lote.Text = id_lote.ToString();
             input_lote.Enabled = false;
+
+            input_paquete.KeyPress += new KeyPressEventHandler(input_paquete_KeyPress);
+            input_lote.KeyPress += new KeyPressEventHandler(input_lote_KeyPress);
         }
 
         private async void btnSubmit_Click(object sender, EventArgs e)
@@ -45,6 +44,22 @@ namespace WindowsFormsApp1.Forms.Lot
                 return false;
             }
             return true;
+        }
+
+        private void input_paquete_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void input_lote_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

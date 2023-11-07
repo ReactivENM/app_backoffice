@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
-using WindowsFormsApp1.Controllers.TruckController;
-using WindowsFormsApp1.Dictionary;
+using Controllers.TruckController;
 
 namespace WindowsFormsApp1.Forms.Truck
 {
@@ -14,6 +12,7 @@ namespace WindowsFormsApp1.Forms.Truck
         public EditTruck(int id, string matricula, string marca, string modelo, double capacidad, HandleTruck callback)
         {
             InitializeComponent();
+            inputCapacity.KeyPress += new KeyPressEventHandler(inputCapacity_KeyPress);
             this.callback = callback;
             this.id = id;
             inputMatricula.Text = matricula;
@@ -66,6 +65,14 @@ namespace WindowsFormsApp1.Forms.Truck
                 return false;
             }
             return true;
+        }
+
+        private void inputCapacity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Evita que se ingrese el carácter
+            }
         }
     }
 }

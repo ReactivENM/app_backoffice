@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using System.Net.Http;
-using WindowsFormsApp1.Models;
-using WindowsFormsApp1.Controllers.WarehouseController;
+using Models.WareHouseModel;
+using Controllers.WarehouseController;
 using WindowsFormsApp1.Dictionary;
 
 namespace WindowsFormsApp1.Forms
@@ -193,7 +191,7 @@ namespace WindowsFormsApp1.Forms
                     wareHouseLength = wareHouseData.Count;
                     int lastPageRes = (int)Math.Ceiling((double)wareHouseData.Count / rowsPerPage);
                     lastPage = Convert.ToInt32(lastPageRes);
-                    if ((actualPage - 1) * rowsPerPage == wareHouseLength)
+                    /*if ((actualPage - 1) * rowsPerPage == wareHouseLength)
                     {
                         if (wareHouseLength == 0) return;
                         if (actualPage == 1) return;
@@ -207,7 +205,7 @@ namespace WindowsFormsApp1.Forms
                         btnEditWarehouse.Enabled = false;
                         btnDeleteWarehouse.Enabled = false;
                         return;
-                    }
+                    }*/
                     showRows(actualPage);
 
                     // Disable buttons and unselect actual warehouse

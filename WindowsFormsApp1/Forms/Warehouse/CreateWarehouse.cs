@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using WindowsFormsApp1.Controllers.WarehouseController;
+using Controllers.WarehouseController;
 
 namespace WindowsFormsApp1.Forms.Warehouse
 {
@@ -11,6 +11,7 @@ namespace WindowsFormsApp1.Forms.Warehouse
         public CreateWarehouse(HandleWarehouse callback)
         {
             InitializeComponent();
+            inputCapacity.KeyPress += new KeyPressEventHandler(inputCapacity_KeyPress);
             this.callback = callback;
         }
 
@@ -60,6 +61,14 @@ namespace WindowsFormsApp1.Forms.Warehouse
                 return false;
             }
             return true;
+        }
+
+        private void inputCapacity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using System.Net.Http;
-using WindowsFormsApp1.Models;
-using WindowsFormsApp1.Controllers.TruckController;
-using WindowsFormsApp1.Dictionary;
+using Models.TruckModel;
+using Controllers.TruckController;
 
 namespace WindowsFormsApp1.Forms
 {
@@ -189,7 +186,7 @@ namespace WindowsFormsApp1.Forms
                     truckLength = truckData.Count;
                     int lastPageRes = (int)Math.Ceiling((double)truckData.Count / rowsPerPage);
                     lastPage = Convert.ToInt32(lastPageRes);
-                    if ((actualPage - 1) * rowsPerPage == truckLength)
+                    /*if ((actualPage - 1) * rowsPerPage == truckLength)
                     {
                         if (truckLength == 0) return;
                         if (actualPage == 1) return;
@@ -204,7 +201,7 @@ namespace WindowsFormsApp1.Forms
                         btnEditTruck.Enabled = false;
                         btnDeleteTruck.Enabled = false;
                         return;
-                    }
+                    }*/
                     showRows(actualPage);
 
                     // Disable buttons and unselect actual warehouse

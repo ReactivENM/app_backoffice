@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using WindowsFormsApp1.Controllers.UserController;
+using Controllers.UserController;
 
 namespace WindowsFormsApp1.Forms.User
 {
@@ -14,6 +14,7 @@ namespace WindowsFormsApp1.Forms.User
             InitializeComponent();
             this.callback = callback;
             this.id = id;
+            inputDocumento.KeyPress += new KeyPressEventHandler(inputDocumento_KeyPress);
             inputCorreo.Text = correo;
             inputPNombre.Text = p_nombre;
             inputSNombre.Text = s_nombre;
@@ -68,6 +69,14 @@ namespace WindowsFormsApp1.Forms.User
                 return false;
             }
             return true;
+        }
+        
+        private void inputDocumento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
-using WindowsFormsApp1.Models;
-using WindowsFormsApp1.Controllers.PackageController;
+using Models.PackageModel;
+using Controllers.PackageController;
 using WindowsFormsApp1.Dictionary;
 
 namespace WindowsFormsApp1.Forms
@@ -180,7 +180,7 @@ namespace WindowsFormsApp1.Forms
                 dataLength = packageData.Count;
                 int lastPageRes = (int)Math.Ceiling((double)packageData.Count / rowsPerPage);
                 lastPage = Convert.ToInt32(lastPageRes);
-                if ((actualPage - 1) * rowsPerPage == dataLength)
+                /*if ((actualPage - 1) * rowsPerPage == dataLength)
                 {
                     if (dataLength == 0) return;
                     if (actualPage == 1) return;
@@ -194,7 +194,7 @@ namespace WindowsFormsApp1.Forms
                     btnEdit.Enabled = false;
                     btnDelete.Enabled = false;
                     return;
-                }
+                }*/
                 showRows(actualPage);
 
                 // Disable buttons and unselect actual warehouse

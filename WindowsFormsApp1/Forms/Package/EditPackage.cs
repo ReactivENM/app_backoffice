@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Controllers.PackageController;
-using WindowsFormsApp1.Controllers.PackageLotController;
+using Controllers.PackageController;
 using WindowsFormsApp1.Dictionary;
 
 namespace WindowsFormsApp1.Forms.Package
@@ -18,6 +17,7 @@ namespace WindowsFormsApp1.Forms.Package
             this.callback = callback;
             this.id = id_interno;
             InitializeComponent();
+            input_peso.KeyPress += new KeyPressEventHandler(input_peso_KeyPress);
             input_id_externo.Text = id_externo;
             input_peso.Text = peso.ToString();
             input_dir_envio.Text = dir_envio;
@@ -76,6 +76,14 @@ namespace WindowsFormsApp1.Forms.Package
                 return false;
             }
             return true;
+        }
+
+        private void input_peso_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
