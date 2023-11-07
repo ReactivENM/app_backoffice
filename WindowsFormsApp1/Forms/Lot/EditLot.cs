@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Controllers.LotController;
-using WindowsFormsApp1.Models;
+using Controllers.LotController;
 using WindowsFormsApp1.Dictionary;
 
 namespace WindowsFormsApp1.Forms.Lot

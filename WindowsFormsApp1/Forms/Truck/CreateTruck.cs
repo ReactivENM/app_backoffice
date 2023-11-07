@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using WindowsFormsApp1.Controllers.TruckController;
+using Controllers.TruckController;
 
 namespace WindowsFormsApp1.Forms.Truck
 {

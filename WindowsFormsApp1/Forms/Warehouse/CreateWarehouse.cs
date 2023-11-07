@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using WindowsFormsApp1.Controllers.WarehouseController;
+using Controllers.WarehouseController;
 
 namespace WindowsFormsApp1.Forms.Warehouse
 {

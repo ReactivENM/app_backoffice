@@ -1,28 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
-using WindowsFormsApp1.Models;
 using MySqlConnector;
-using WindowsFormsApp1.DB;
+using Models.DB;
 
-namespace WindowsFormsApp1.Controllers.LotController
+namespace Models.TruckModel
 {
-    class LotController
+    public class TruckModel
     {
+        public int id { get; set; }
+        public string matricula { get; set; }
+        public string marca { get; set; }
+        public string modelo { get; set; }
+        public double capacidad { get; set; }
+
         MySqlConnection connection;
-        public LotController()
+
+        public TruckModel()
         {
             DBConnection conn = new DBConnection();
             conn.OpenConnection();
             connection = conn.GetConnection();
         }
 
-        public List<LotModel> GetAll()
+        public TruckModel(int id, string matricula, string marca, string modelo, double capacidad): this()
         {
-            List<LotModel> data = new List<LotModel>();
+            this.id = id;
+            this.matricula = matricula;
+            this.marca = marca;
+            this.modelo = modelo;
+            this.capacidad = capacidad;
+        }
+
+        public List<TruckModel> GetAll()
+        {
+            List<TruckModel> data = new List<TruckModel>();
 
             try
             {
-                string sql = "SELECT * FROM Lote";
+                string sql = "SELECT * FROM Camion";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -30,10 +45,12 @@ namespace WindowsFormsApp1.Controllers.LotController
                         while (reader.Read())
                         {
                             int id = reader.GetInt32(0);
-                            int almacen_destino = reader.GetInt32(1);
-                            string estado = reader.GetString(2);
-                            LotModel lot = new LotModel(id, almacen_destino, estado);
-                            data.Add(lot);
+                            string matricula = reader.GetString(1);
+                            string marca = reader.GetString(2);
+                            string modelo = reader.GetString(3);
+                            double capacidad = reader.GetDouble(4);
+                            TruckModel truck = new TruckModel(id, matricula, marca, modelo, capacidad);
+                            data.Add(truck);
                         }
                         return data;
                     }
@@ -49,23 +66,26 @@ namespace WindowsFormsApp1.Controllers.LotController
             }
         }
 
-        public int Create(int id_almacen, string estado)
+        public int Create(string matricula, string marca, string modelo, double capacidad)
         {
             try
             {
-                string sql = "INSERT INTO Lote(id_almacen, estado) VALUES(@id_almacen, @estado); SELECT LAST_INSERT_ID()";
+                string sql = "INSERT INTO Camion(matricula, marca, modelo, capacidad) VALUES(@matricula, @marca, @modelo, @capacidad); SELECT LAST_INSERT_ID()";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@id_almacen", id_almacen);
-                    command.Parameters.AddWithValue("@estado", estado);
+                    command.Parameters.AddWithValue("@matricula", matricula);
+                    command.Parameters.AddWithValue("@marca", marca);
+                    command.Parameters.AddWithValue("@modelo", modelo);
+                    command.Parameters.AddWithValue("@capacidad", capacidad);
 
                     int id = Convert.ToInt32(command.ExecuteScalar());
-                    Console.WriteLine($"Lote agregado exitosamente con ID: {id}");
+                    Console.WriteLine($"Camion agregado exitosamente con ID: {id}");
                     return id;
                 }
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return 0;
             }
             finally
@@ -74,16 +94,18 @@ namespace WindowsFormsApp1.Controllers.LotController
             }
         }
 
-        public bool Edit(int id, int id_almacen, string estado)
+        public bool Edit(int id, string matricula, string marca, string modelo, double capacidad)
         {
             try
             {
-                string sql = "UPDATE Lote SET id_almacen = @id_almacen, estado = @estado  WHERE id = @id";
+                string sql = "UPDATE Camion SET matricula = @matricula, marca = @marca, modelo = @modelo, capacidad = @capacidad WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
-                    command.Parameters.AddWithValue("@id_almacen", id_almacen);
-                    command.Parameters.AddWithValue("@estado", estado);
+                    command.Parameters.AddWithValue("@matricula", matricula);
+                    command.Parameters.AddWithValue("@marca", marca);
+                    command.Parameters.AddWithValue("@modelo", modelo);
+                    command.Parameters.AddWithValue("@capacidad", capacidad);
 
                     int affectedRows = command.ExecuteNonQuery();
 
@@ -99,7 +121,6 @@ namespace WindowsFormsApp1.Controllers.LotController
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
                 return false;
             }
             finally
@@ -112,7 +133,7 @@ namespace WindowsFormsApp1.Controllers.LotController
         {
             try
             {
-                string sql = "DELETE FROM Lote WHERE id = @id";
+                string sql = "DELETE FROM Camion WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);

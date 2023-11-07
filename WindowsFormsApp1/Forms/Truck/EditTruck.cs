@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
-using WindowsFormsApp1.Controllers.TruckController;
-using WindowsFormsApp1.Dictionary;
+using Controllers.TruckController;
 
 namespace WindowsFormsApp1.Forms.Truck
 {

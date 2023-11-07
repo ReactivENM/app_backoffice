@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Controllers.PackageController;
-using WindowsFormsApp1.Controllers.PackageLotController;
+using Controllers.PackageController;
 using WindowsFormsApp1.Dictionary;
 
 namespace WindowsFormsApp1.Forms.Package

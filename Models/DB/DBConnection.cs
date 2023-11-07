@@ -4,7 +4,7 @@ using System.Data;
 using MySqlConnector;
 using System.Configuration;
 
-namespace WindowsFormsApp1.DB
+namespace Models.DB
 {
     class DBConnection
     {

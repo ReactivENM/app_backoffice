@@ -1,19 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using WindowsFormsApp1.Models;
 using MySqlConnector;
-using WindowsFormsApp1.DB;
+using Models.DB;
 
-namespace WindowsFormsApp1.Controllers.ClientController
+namespace Models.ClientModel
 {
-    class ClientController
+    public class ClientModel
     {
+        public int id { get; set; }
+        public string nombre { get; set; }
+        public string calle { get; set; }
+        public string telefono { get; set; }
+
         MySqlConnection connection;
-        public ClientController()
+
+        public ClientModel()
         {
             DBConnection conn = new DBConnection();
             conn.OpenConnection();
             connection = conn.GetConnection();
+        }
+
+        public ClientModel(int id, string nombre, string calle, string telefono): this()
+        {
+            this.id = id;
+            this.nombre = nombre;
+            this.calle = calle;
+            this.telefono = telefono;
         }
 
         public List<ClientModel> GetAll()

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
-using WindowsFormsApp1.Models;
-using WindowsFormsApp1.Controllers.TruckLotController;
-using WindowsFormsApp1.Dictionary;
+using Models.TruckLotModel;
+using Controllers.TruckLotController;
 
 namespace WindowsFormsApp1.Forms.Truck
 {

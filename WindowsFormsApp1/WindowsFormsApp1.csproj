@@ -184,15 +184,6 @@
     <Compile Include="Backoffice.Designer.cs">
       <DependentUpon>Backoffice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\ClientController.cs" />
-    <Compile Include="Controllers\LotController.cs" />
-    <Compile Include="Controllers\PackageController.cs" />
-    <Compile Include="Controllers\TruckLotController.cs" />
-    <Compile Include="Controllers\PackageLotController.cs" />
-    <Compile Include="Controllers\TruckController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\WareHouseController.cs" />
-    <Compile Include="DB\DBConnection.cs" />
     <Compile Include="Dictionaries\Dictionaries.cs" />
     <Compile Include="Forms\FormLot.cs">
       <SubType>Form</SubType>
@@ -284,14 +275,6 @@
     <Compile Include="Forms\Truck\EditTruck.Designer.cs">
       <DependentUpon>EditTruck.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\ClientModel.cs" />
-    <Compile Include="Models\LotModel.cs" />
-    <Compile Include="Models\PackageLotModel.cs" />
-    <Compile Include="Models\PackageModel.cs" />
-    <Compile Include="Models\TruckLotModel.cs" />
-    <Compile Include="Models\TruckModel.cs" />
-    <Compile Include="Models\UserModel.cs" />
-    <Compile Include="Models\WareHouseModel.cs" />
     <Compile Include="Forms\FormPackage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -458,6 +441,16 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Controllers\Controllers.csproj">
+      <Project>{38856a57-0b4a-4649-9da7-b5e4c642740a}</Project>
+      <Name>Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{5e49a3c2-8aee-495c-aba4-09627082766b}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using WindowsFormsApp1.Controllers.WarehouseController;
+using Controllers.WarehouseController;
 using WindowsFormsApp1.Dictionary;
 
 namespace WindowsFormsApp1.Forms.Warehouse
