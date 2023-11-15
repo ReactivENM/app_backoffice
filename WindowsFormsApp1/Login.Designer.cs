@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.inputPassword = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.inputEmail = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.inputEmail = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.inputPassword = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +50,17 @@
             this.panel1.Size = new System.Drawing.Size(600, 424);
             this.panel1.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Poppins Medium", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(0, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(600, 86);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Iniciar sesión";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel3
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -62,6 +73,42 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(327, 174);
             this.panel3.TabIndex = 5;
+            // 
+            // inputPassword
+            // 
+            this.inputPassword.Location = new System.Drawing.Point(3, 83);
+            this.inputPassword.Name = "inputPassword";
+            this.inputPassword.PasswordChar = '●';
+            this.inputPassword.Size = new System.Drawing.Size(320, 34);
+            this.inputPassword.StateCommon.Back.Color1 = System.Drawing.Color.White;
+            this.inputPassword.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
+            this.inputPassword.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
+            this.inputPassword.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.inputPassword.StateCommon.Border.Rounding = 4;
+            this.inputPassword.StateCommon.Border.Width = 1;
+            this.inputPassword.StateCommon.Content.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputPassword.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
+            this.inputPassword.TabIndex = 7;
+            this.inputPassword.UseSystemPasswordChar = true;
+            // 
+            // inputEmail
+            // 
+            this.inputEmail.Location = new System.Drawing.Point(3, 24);
+            this.inputEmail.Name = "inputEmail";
+            this.inputEmail.Size = new System.Drawing.Size(320, 34);
+            this.inputEmail.StateCommon.Back.Color1 = System.Drawing.Color.White;
+            this.inputEmail.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
+            this.inputEmail.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
+            this.inputEmail.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.inputEmail.StateCommon.Border.Rounding = 4;
+            this.inputEmail.StateCommon.Border.Width = 1;
+            this.inputEmail.StateCommon.Content.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputEmail.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
+            this.inputEmail.TabIndex = 6;
             // 
             // btnLogin
             // 
@@ -99,55 +146,6 @@
             this.lblPassword.TabIndex = 3;
             this.lblPassword.Text = "Contraseña";
             // 
-            // inputEmail
-            // 
-            this.inputEmail.Location = new System.Drawing.Point(3, 24);
-            this.inputEmail.Name = "inputEmail";
-            this.inputEmail.Size = new System.Drawing.Size(320, 34);
-            this.inputEmail.StateCommon.Back.Color1 = System.Drawing.Color.White;
-            this.inputEmail.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
-            this.inputEmail.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
-            this.inputEmail.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.inputEmail.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
-            this.inputEmail.StateCommon.Border.Rounding = 4;
-            this.inputEmail.StateCommon.Border.Width = 1;
-            this.inputEmail.StateCommon.Content.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputEmail.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
-            this.inputEmail.TabIndex = 6;
-            // 
-            // inputPassword
-            // 
-            this.inputPassword.Location = new System.Drawing.Point(3, 83);
-            this.inputPassword.Name = "inputPassword";
-            this.inputPassword.PasswordChar = '●';
-            this.inputPassword.Size = new System.Drawing.Size(320, 34);
-            this.inputPassword.StateCommon.Back.Color1 = System.Drawing.Color.White;
-            this.inputPassword.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
-            this.inputPassword.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
-            this.inputPassword.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.inputPassword.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
-            this.inputPassword.StateCommon.Border.Rounding = 4;
-            this.inputPassword.StateCommon.Border.Width = 1;
-            this.inputPassword.StateCommon.Content.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputPassword.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
-            this.inputPassword.TabIndex = 7;
-            this.inputPassword.UseSystemPasswordChar = true;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Poppins Medium", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(0, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(600, 86);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Iniciar sesión";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,6 +153,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(600, 424);
             this.Controls.Add(this.panel1);
+            this.MaximumSize = new System.Drawing.Size(616, 463);
+            this.MinimumSize = new System.Drawing.Size(616, 463);
             this.Name = "Login";
             this.Text = "Quick Carry - Login";
             this.panel1.ResumeLayout(false);
