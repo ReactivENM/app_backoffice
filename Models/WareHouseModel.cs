@@ -41,7 +41,7 @@ namespace Models.WareHouseModel
 
             try
             {
-                string sql = "SELECT * FROM Almacen";
+                string sql = "SELECT * FROM almacen";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -77,7 +77,7 @@ namespace Models.WareHouseModel
         {
             try
             {
-                string sql = "INSERT INTO Almacen(descripcion, calle, nro_puerta, cod_postal, capacidad, departamento) VALUES(@descripcion, @calle, @nro_puerta, @cod_postal, @capacidad, @departamento); SELECT LAST_INSERT_ID()";
+                string sql = "INSERT INTO almacen(descripcion, calle, nro_puerta, cod_postal, capacidad, departamento) VALUES(@descripcion, @calle, @nro_puerta, @cod_postal, @capacidad, @departamento); SELECT LAST_INSERT_ID()";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@descripcion", descripcion);
@@ -107,7 +107,7 @@ namespace Models.WareHouseModel
         {
             try
             {
-                string sql = "UPDATE Almacen SET descripcion = @descripcion, calle = @calle, nro_puerta = @nro_puerta, cod_postal = @cod_postal, capacidad = @capacidad, departamento = @departamento WHERE id = @id";
+                string sql = "UPDATE almacen SET descripcion = @descripcion, calle = @calle, nro_puerta = @nro_puerta, cod_postal = @cod_postal, capacidad = @capacidad, departamento = @departamento WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
@@ -144,7 +144,7 @@ namespace Models.WareHouseModel
         {
             try
             {
-                string sql = "DELETE FROM Almacen WHERE id = @id";
+                string sql = "DELETE FROM almacen WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);

@@ -69,7 +69,7 @@ namespace Models.TruckLotModel
 
             try
             {
-                string sql = "SELECT * FROM CamionLote WHERE id_camion = @id_camion";
+                string sql = "SELECT * FROM camionlote WHERE id_camion = @id_camion";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id_camion", id_camion);
@@ -101,7 +101,7 @@ namespace Models.TruckLotModel
         {
             try
             {
-                string sql = "INSERT INTO CamionLote(id_camion, id_lote) VALUES@id_camion, @id_lote); SELECT LAST_INSERT_ID()";
+                string sql = "INSERT INTO camionlote(id_camion, id_lote) VALUES@id_camion, @id_lote); SELECT LAST_INSERT_ID()";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id_camion", id_camion);
@@ -127,7 +127,7 @@ namespace Models.TruckLotModel
         {
             try
             {
-                string sql = "UPDATE CamionLote SET id_camion = @id_camion, id_lote = @id_lote WHERE id = @id";
+                string sql = "UPDATE camionlote SET id_camion = @id_camion, id_lote = @id_lote WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
@@ -160,7 +160,7 @@ namespace Models.TruckLotModel
         {
             try
             {
-                string sql = "DELETE FROM CamionLote WHERE id = @id";
+                string sql = "DELETE FROM camionlote WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);

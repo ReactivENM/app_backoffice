@@ -35,7 +35,7 @@ namespace Models.ClientModel
 
             try
             {
-                string sql = "SELECT * FROM Cliente";
+                string sql = "SELECT * FROM cliente";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -68,7 +68,7 @@ namespace Models.ClientModel
         {
             try
             {
-                string sql = "INSERT INTO Cliente(nombre, calle, telefono) VALUES(@nombre, @calle, @telefono); SELECT LAST_INSERT_ID()";
+                string sql = "INSERT INTO cliente(nombre, calle, telefono) VALUES(@nombre, @calle, @telefono); SELECT LAST_INSERT_ID()";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@nombre", nombre);
@@ -94,7 +94,7 @@ namespace Models.ClientModel
         {
             try
             {
-                string sql = "UPDATE Cliente SET nombre = @nombre, calle = @calle, telefono = @telefono WHERE id = @id";
+                string sql = "UPDATE cliente SET nombre = @nombre, calle = @calle, telefono = @telefono WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
@@ -127,7 +127,7 @@ namespace Models.ClientModel
         {
             try
             {
-                string sql = "DELETE FROM Cliente WHERE id = @id";
+                string sql = "DELETE FROM cliente WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);

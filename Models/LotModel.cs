@@ -33,7 +33,7 @@ namespace Models.LotModel
 
             try
             {
-                string sql = "SELECT * FROM Lote";
+                string sql = "SELECT * FROM lote";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -64,7 +64,7 @@ namespace Models.LotModel
         {
             try
             {
-                string sql = "INSERT INTO Lote(id_almacen, estado) VALUES(@id_almacen, @estado); SELECT LAST_INSERT_ID()";
+                string sql = "INSERT INTO lote(id_almacen, estado) VALUES(@id_almacen, @estado); SELECT LAST_INSERT_ID()";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id_almacen", id_almacen);
@@ -89,7 +89,7 @@ namespace Models.LotModel
         {
             try
             {
-                string sql = "UPDATE Lote SET id_almacen = @id_almacen, estado = @estado  WHERE id = @id";
+                string sql = "UPDATE lote SET id_almacen = @id_almacen, estado = @estado  WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
@@ -123,7 +123,7 @@ namespace Models.LotModel
         {
             try
             {
-                string sql = "DELETE FROM Lote WHERE id = @id";
+                string sql = "DELETE FROM lote WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);

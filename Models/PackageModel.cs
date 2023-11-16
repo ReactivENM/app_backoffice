@@ -39,7 +39,7 @@ namespace Models.PackageModel
 
             try
             {
-                string sql = "SELECT * FROM Paquete";
+                string sql = "SELECT * FROM paquete";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -74,7 +74,7 @@ namespace Models.PackageModel
         {
             try
             {
-                string sql = "INSERT INTO Paquete(id_externo, id_cliente, peso, dir_envio, estado) VALUES(@id_externo, @id_cliente, @peso, @dir_envio, @estado); SELECT LAST_INSERT_ID()";
+                string sql = "INSERT INTO paquete(id_externo, id_cliente, peso, dir_envio, estado) VALUES(@id_externo, @id_cliente, @peso, @dir_envio, @estado); SELECT LAST_INSERT_ID()";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id_externo", id_externo);
@@ -102,7 +102,7 @@ namespace Models.PackageModel
         {
             try
             {
-                string sql = "UPDATE Paquete SET id_externo = @id_externo, id_cliente = @id_cliente, peso = @peso, dir_envio = @dir_envio, estado = @estado  WHERE id_interno = @id_interno";
+                string sql = "UPDATE paquete SET id_externo = @id_externo, id_cliente = @id_cliente, peso = @peso, dir_envio = @dir_envio, estado = @estado  WHERE id_interno = @id_interno";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id_interno", id_interno);
@@ -137,7 +137,7 @@ namespace Models.PackageModel
         {
             try
             {
-                string sql = "DELETE FROM Paquete WHERE id_interno = @id_interno";
+                string sql = "DELETE FROM paquete WHERE id_interno = @id_interno";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id_interno", id_interno);

@@ -37,7 +37,7 @@ namespace Models.TruckModel
 
             try
             {
-                string sql = "SELECT * FROM Camion";
+                string sql = "SELECT * FROM camion";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -70,7 +70,7 @@ namespace Models.TruckModel
         {
             try
             {
-                string sql = "INSERT INTO Camion(matricula, marca, modelo, capacidad) VALUES(@matricula, @marca, @modelo, @capacidad); SELECT LAST_INSERT_ID()";
+                string sql = "INSERT INTO camion(matricula, marca, modelo, capacidad) VALUES(@matricula, @marca, @modelo, @capacidad); SELECT LAST_INSERT_ID()";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@matricula", matricula);
@@ -79,7 +79,7 @@ namespace Models.TruckModel
                     command.Parameters.AddWithValue("@capacidad", capacidad);
 
                     int id = Convert.ToInt32(command.ExecuteScalar());
-                    Console.WriteLine($"Camion agregado exitosamente con ID: {id}");
+                    Console.WriteLine($"camion agregado exitosamente con ID: {id}");
                     return id;
                 }
             }
@@ -98,7 +98,7 @@ namespace Models.TruckModel
         {
             try
             {
-                string sql = "UPDATE Camion SET matricula = @matricula, marca = @marca, modelo = @modelo, capacidad = @capacidad WHERE id = @id";
+                string sql = "UPDATE camion SET matricula = @matricula, marca = @marca, modelo = @modelo, capacidad = @capacidad WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
@@ -133,7 +133,7 @@ namespace Models.TruckModel
         {
             try
             {
-                string sql = "DELETE FROM Camion WHERE id = @id";
+                string sql = "DELETE FROM camion WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);

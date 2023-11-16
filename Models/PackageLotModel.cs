@@ -35,7 +35,7 @@ namespace Models.PackageLotModel
 
             try
             {
-                string sql = "SELECT * FROM PaqueteLote WHERE id_interno_paquete = @id_interno_paquete";
+                string sql = "SELECT * FROM paquetelote WHERE id_interno_paquete = @id_interno_paquete";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id_interno_paquete", id_interno_paquete);
@@ -71,7 +71,7 @@ namespace Models.PackageLotModel
 
             try
             {
-                string sql = "SELECT p.id_externo, u.p_nombre, u.p_apellido, fecha_hora FROM PaqueteLote pq JOIN Paquete p ON p.id_externo = pq.id_externo_paquete JOIN Usuario u ON u.id = pq.id_usuario WHERE id_lote = @id_lote;";
+                string sql = "SELECT p.id_externo, u.p_nombre, u.p_apellido, fecha_hora FROM paquetelote pq JOIN Paquete p ON p.id_externo = pq.id_externo_paquete JOIN Usuario u ON u.id = pq.id_usuario WHERE id_lote = @id_lote;";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id_lote", id_lote);
@@ -107,7 +107,7 @@ namespace Models.PackageLotModel
 
             try
             {
-                string sql = "INSERT INTO PaqueteLote(id_externo_paquete, id_lote, id_usuario) VALUES(@id_externo_paquete, @id_lote, @id_usuario); SELECT p.id_externo, u.p_nombre, u.p_apellido, fecha_hora FROM PaqueteLote pq JOIN Paquete p ON p.id_externo = pq.id_externo_paquete JOIN Usuario u ON u.id = pq.id_usuario WHERE id_externo_paquete = @id_externo_paquete;";
+                string sql = "INSERT INTO paquetelote(id_externo_paquete, id_lote, id_usuario) VALUES(@id_externo_paquete, @id_lote, @id_usuario); SELECT p.id_externo, u.p_nombre, u.p_apellido, fecha_hora FROM paquetelote pq JOIN Paquete p ON p.id_externo = pq.id_externo_paquete JOIN Usuario u ON u.id = pq.id_usuario WHERE id_externo_paquete = @id_externo_paquete;";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id_externo_paquete", id_externo_paquete);
@@ -144,7 +144,7 @@ namespace Models.PackageLotModel
         {
             try
             {
-                string sql = "UPDATE PaqueteLote SET id_lote = @id_lote, id_usuario = @id_usuario, fecha_hora = @fecha_hora WHERE id_externo_paquete = @id_externo_paquete";
+                string sql = "UPDATE paquetelote SET id_lote = @id_lote, id_usuario = @id_usuario, fecha_hora = @fecha_hora WHERE id_externo_paquete = @id_externo_paquete";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id_externo_paquete", id_externo_paquete);
@@ -178,7 +178,7 @@ namespace Models.PackageLotModel
         {
             try
             {
-                string sql = "DELETE FROM PaqueteLote WHERE id_externo_paquete = @id_externo_paquete";
+                string sql = "DELETE FROM paquetelote WHERE id_externo_paquete = @id_externo_paquete";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id_externo_paquete", id_externo_paquete);

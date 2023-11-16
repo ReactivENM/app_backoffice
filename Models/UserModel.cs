@@ -49,7 +49,7 @@ namespace Models.UserModel
             string hashedPassword = contrasena.GetMD5();
             try
             {
-                string sql = "SELECT contrasena FROM Usuario WHERE correo = @correo";
+                string sql = "SELECT contrasena FROM usuario WHERE correo = @correo";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@correo", correo);
@@ -84,7 +84,7 @@ namespace Models.UserModel
 
             try
             {
-                string sql = "SELECT * FROM Usuario";
+                string sql = "SELECT * FROM usuario";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -124,7 +124,7 @@ namespace Models.UserModel
             string hashedPassword = contrasena.GetMD5();
             try
             {
-                string sql = "INSERT INTO Usuario(correo, contrasena, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, rol) VALUES(@correo, @contrasena, @p_nombre, @s_nombre, @p_apellido, @s_apellido, @nro_documento, @nacionalidad, @rol); SELECT LAST_INSERT_ID()";
+                string sql = "INSERT INTO usuario(correo, contrasena, p_nombre, s_nombre, p_apellido, s_apellido, nro_documento, nacionalidad, rol) VALUES(@correo, @contrasena, @p_nombre, @s_nombre, @p_apellido, @s_apellido, @nro_documento, @nacionalidad, @rol); SELECT LAST_INSERT_ID()";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@correo", correo);
@@ -138,7 +138,7 @@ namespace Models.UserModel
                     command.Parameters.AddWithValue("@rol", rol);
 
                     int id = Convert.ToInt32(command.ExecuteScalar());
-                    Console.WriteLine($"Usuario agregado exitosamente con ID: {id}");
+                    Console.WriteLine($"usuario agregado exitosamente con ID: {id}");
                     return id;
                 }
             }
@@ -160,10 +160,10 @@ namespace Models.UserModel
                 string sql = "";
                 if(contrasena.Length == 0)
                 {
-                    sql = "UPDATE Usuario SET correo = @correo, p_nombre = @p_nombre, s_nombre = @s_nombre, p_apellido = @p_apellido, s_apellido = @s_apellido, nro_documento = @nro_documento, nacionalidad = @nacionalidad, deshabilitado = @deshabilitado, rol = @rol  WHERE id = @id";
+                    sql = "UPDATE usuario SET correo = @correo, p_nombre = @p_nombre, s_nombre = @s_nombre, p_apellido = @p_apellido, s_apellido = @s_apellido, nro_documento = @nro_documento, nacionalidad = @nacionalidad, deshabilitado = @deshabilitado, rol = @rol  WHERE id = @id";
                 } else
                 {
-                    sql = "UPDATE Usuario SET correo = @correo, contrasena = @contrasena, p_nombre = @p_nombre, s_nombre = @s_nombre, p_apellido = @p_apellido, s_apellido = @s_apellido, nro_documento = @nro_documento, nacionalidad = @nacionalidad, deshabilitado = @deshabilitado, rol = @rol  WHERE id = @id";
+                    sql = "UPDATE usuario SET correo = @correo, contrasena = @contrasena, p_nombre = @p_nombre, s_nombre = @s_nombre, p_apellido = @p_apellido, s_apellido = @s_apellido, nro_documento = @nro_documento, nacionalidad = @nacionalidad, deshabilitado = @deshabilitado, rol = @rol  WHERE id = @id";
                 }
                         
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
@@ -206,7 +206,7 @@ namespace Models.UserModel
         {
             try
             {
-                string sql = "DELETE FROM Usuario WHERE id = @id";
+                string sql = "DELETE FROM usuario WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
